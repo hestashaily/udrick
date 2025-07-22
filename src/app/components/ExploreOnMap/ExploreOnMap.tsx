@@ -19,6 +19,13 @@ import PropertyCard from "../ReusableComponents/PropertiesCard";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Slider from "@/components/ui/slider";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const data = {
   images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
@@ -205,13 +212,43 @@ const ExploreOnMap = () => {
                       max={100}
                       step={1}
                       showValue
+                      className="h-6"
                       rangeClassName="bg-[#936639]"
                       thumbClassName="bg-white"
+                      trackClassName="h-2 bg-[#936639]"
                     />
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label>Number Of Bedrooms</Label>
+                    <Label className="mb-5">Number Of Bedrooms</Label>
+                    <div className="flex gap-4">
+                      <div>
+                        <p className="mb-2">Min No. Of Bedrooms</p>
+                        <Select>
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Select" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">1</SelectItem>
+                            <SelectItem value="2">2</SelectItem>
+                            <SelectItem value="3">3</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <p className="mb-2">Max No. Of Bedrooms</p>
+                        <Select>
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Select" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">1</SelectItem>
+                            <SelectItem value="2">2</SelectItem>
+                            <SelectItem value="3">3</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
@@ -225,6 +262,7 @@ const ExploreOnMap = () => {
                       showValue
                       rangeClassName="bg-[#936639]"
                       thumbClassName="bg-white"
+                      trackClassName="h-2 bg-[#936639]"
                     />
                   </div>
                   <div className="px-4">
