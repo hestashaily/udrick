@@ -147,16 +147,18 @@ export default function CommonLogin({ role, onBack }: Props) {
             </span>
           </Link>
         </div>
+        <Link href="/home">
         <button
           disabled={!isFormValid}
           className={`py-[16px] font-[600] text-[16px] text-white w-full rounded-[12px] mt-[25px] transition-all duration-200 ${
             isFormValid
-              ? "bg-[#936639] cursor-pointer"
-              : "bg-gray-300 cursor-not-allowed"
+            ? "bg-[#936639] cursor-pointer"
+            : "bg-gray-300 cursor-not-allowed"
           }`}
-        >
+          >
           Login
         </button>
+          </Link>
 
         <div className="flex items-center justify-center py-[30px] gap-2">
           <p className="bg-[#E6EAF5] h-[1px] w-[50%]"></p>

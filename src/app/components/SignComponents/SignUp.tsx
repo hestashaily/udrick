@@ -212,7 +212,7 @@ const SignUp = ({ onContinue }: { onContinue: () => void }) => {
         <div className="max-w-[226px] w-full m-auto pt-[30px]">
           <p className="font-[400] text-[14px] text-[#6A6A6A]">
             Don’t have an account yet?{" "}
-            <Link href="/" className="cursor-pointer">
+            <Link href="/home" className="cursor-pointer">
               <span className="font-[500] text-[#9A7449]">Login</span>
             </Link>
           </p>
