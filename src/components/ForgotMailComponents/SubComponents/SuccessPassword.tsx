@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const SuccessPassword = () => {
   return (
-    <div className="max-w-[428px] m-auto text-center mt-[60px]">
+    <div className="max-w-[428px] m-auto text-center">
       <Image
         src="/auth-images/success.png"
         alt="success"

@@ -1,7 +1,8 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import PropertyCard from "../../app/components/ReusableComponents/PropertiesCard";
+import PropertyCard from "../ReusableComponents/PropertiesCard";
+
 
 const data = {
     images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
