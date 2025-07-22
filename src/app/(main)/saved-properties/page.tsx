@@ -1,7 +1,8 @@
+import PropertyCard from "@/components/ReusableComponents/PropertiesCard";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import PropertyCard from "../ReusableComponents/PropertiesCard";
+
 
 const data = {
   images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
@@ -15,7 +16,7 @@ const data = {
   size: "1690 sqft",
   agent: "Emeka Nzerem",
 };
-const ViewAllProperties = () => {
+const SavedProperties = () => {
   return (
     <div>
       <div className="shadow">
@@ -25,10 +26,10 @@ const ViewAllProperties = () => {
               <ArrowLeft size={18} />
               <div className="flex flex-col">
                 <h3 className="font-bold text-3xl text-[#0d0d0c]">
-                  All Properties
+                  Saved Properties
                 </h3>
                 <span className="inline-block font-normal text-sm text-[#6D6D6D]">
-                  Discover the perfect home that matches your lifestyle
+                 8 saved properties
                 </span>
               </div>
             </div>
@@ -47,4 +48,4 @@ const ViewAllProperties = () => {
   );
 };
 
-export default ViewAllProperties;
+export default  SavedProperties;
