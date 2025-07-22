@@ -10,7 +10,7 @@ const SingleAboutPage = () => {
     <div>
       {/* Back Button */}
       <div className="container mx-auto px-4">
-        <Link href="/home">
+        <Link href="/">
           <div className="flex gap-2 py-6 items-center">
             <ArrowLeft size={18} />
             <span className="inline-block font-normal text-sm text-[#515151]">

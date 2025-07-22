@@ -77,7 +77,7 @@ const ExploreOnMap = () => {
         <div className="flex items-center justify-between gap-4 py-4">
           <div className="flex flex-1 items-center gap-4">
             {/* Back Button */}
-            <Link href="/home">
+            <Link href="/">
               <div className="flex gap-2 items-center text-[#9c6b3c]">
                 <ArrowLeft size={18} />
                 <span className="text-sm">Back</span>

@@ -1,6 +1,20 @@
 "use client";
 
-import { Bell, CalendarDays, Heart, House, HousePlus, LogOut, Mail, Menu, Settings, User, UserCheck, X } from "lucide-react";
+import {
+  Bell,
+  CalendarDays,
+  Heart,
+  House,
+  HousePlus,
+  LogOut,
+  Mail,
+  Menu,
+  MessageSquareMore,
+  Settings,
+  User,
+  UserCheck,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,25 +24,28 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
-
-function PopoverItem({ icon, label }: { icon: React.ReactNode; label: string }) {
+function PopoverItem({
+  icon,
+  label,
+}: {
+  icon: React.ReactNode;
+  label: string;
+}) {
   return (
-    <button
-      className="flex items-center w-full px-3 py-2 text-sm font-normal rounded-md hover:bg-muted transition"
-    >
+    <button className="flex items-center w-full px-3 py-2 text-sm font-normal rounded-md hover:bg-muted transition">
       <span className="mr-2">{icon}</span>
       {label}
     </button>
-  )
+  );
 }
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const toggleMenu = () => setIsOpen(!isOpen);
-  const login = false;
+  const login = true;
 
   return (
     <div className="shadow py-3 w-full">
@@ -70,7 +87,10 @@ const Header = () => {
                 }`}
               >
                 <House className="h-5 w-5" />
+                <span className="leading-none">
+
                 Home
+                </span>
               </Link>
             </li>
 
@@ -85,10 +105,19 @@ const Header = () => {
                     : "hover:bg-[#936639] hover:text-white"
                 }`}
               >
+                 {login ? (
+                <Heart className="h-5 w-5" />
+              ) : (
                 <UserCheck className="h-5 w-5" />
-                About Us
+              )}
+             <span className="leading-none">
+                {login ? "Saved Property" : "About Us"}
+              </span>
               </Link>
             </li>
+           
+
+             
 
             <li className="h-6 border-l border-gray-400 mx-3" />
 
@@ -97,62 +126,83 @@ const Header = () => {
                 href="/contact"
                 className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-[#936639] hover:text-white"
               >
+                {login ? (
+                <MessageSquareMore className="h-5 w-5" />
+              ) : (
                 <Mail className="h-5 w-5" />
-                Contact Us
+              )}
+
+              <span className="leading-none">
+                {login ? "Chat" : "COntact Us"}
+              </span>
               </Link>
             </li>
+            
           </ul>
         </nav>
 
         {/* Desktop Buttons */}
-       {
-        login ? 
-        <>
-         <div className="hidden lg:flex gap-3">
-          <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm lg:text-base">
-            Post Property
-          </button>
-          <Link href="/auth/usertype">
-            <button className="border bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm lg:text-base">
-              Login
-            </button>
-          </Link>
-        </div>
-        
-        </>
-        :
-        <>
-        <div className="flex gap-4 items-center">
-      {/* Notification Bell */}
-      <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
-        <Bell size={18} color="white" />
-      </div>
+        {login ? (
+          <>
+            <div className="flex gap-4 items-center">
+              {/* Notification Bell */}
+              <Link href="/notification">
+                <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
+                  <Bell size={18} color="white" />
+                </div>
+              </Link>
 
-      {/* Avatar with Popover */}
-      <Popover>
-        <PopoverTrigger asChild>
-          <div className="cursor-pointer">
-            <Avatar className="h-10 w-10">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </div>
-        </PopoverTrigger>
+              {/* Avatar with Popover */}
+              <Popover>
+                <PopoverTrigger asChild>
+                  <div className="cursor-pointer">
+                    <Avatar className="h-10 w-10">
+                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                </PopoverTrigger>
 
-        <PopoverContent className="w-56 p-2 space-y-1">
-          <Link href="/visit-request">
-          <PopoverItem icon={<CalendarDays size={16} />} label="Visit Request" />
-          </Link>
-          <PopoverItem icon={<Heart size={16} />} label="Save Property" />
-          <PopoverItem icon={<HousePlus size={16} />} label="Property History" />
-          <PopoverItem icon={<User size={16} />} label="Profile" />
-          <PopoverItem icon={<Settings size={16} />} label="Settings" />
-          <PopoverItem icon={<LogOut size={16} />} label="Logout" />
-        </PopoverContent>
-      </Popover>
-    </div>
-        </>
-       }
+                <PopoverContent className="w-56 p-2 space-y-1">
+                  <Link href="/visit-request">
+                    <PopoverItem
+                      icon={<CalendarDays size={16} />}
+                      label="Visit Request"
+                    />
+                  </Link>
+                  <Link href="/saved-properties">
+                    <PopoverItem
+                      icon={<Heart size={16} />}
+                      label="Save Property"
+                    />
+                  </Link>
+                  <PopoverItem
+                    icon={<HousePlus size={16} />}
+                    label="Property History"
+                  />
+                  <Link href="/profile">
+                    <PopoverItem icon={<User size={16} />} label="Profile" />
+                  </Link>
+                  <PopoverItem icon={<Settings size={16} />} label="Settings" />
+                  <PopoverItem icon={<LogOut size={16} />} label="Logout" />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="hidden lg:flex gap-3">
+              <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm lg:text-base">
+                Post Property
+              </button>
+              <Link href="/auth/usertype">
+                <button className="border bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm lg:text-base">
+                  Login
+                </button>
+              </Link>
+            </div>
+          </>
+        )}
       </header>
 
       {/* Mobile Sheet Style Menu */}
@@ -194,8 +244,15 @@ const Header = () => {
               onClick={toggleMenu}
               className="flex items-center justify-start gap-2 px-4 py-2  text-sm rounded-full hover:bg-[#936639] hover:text-white"
             >
-              <UserCheck className="h-4 w-4" />
-              <span className="leading-none">About Us</span>
+              {login ? (
+                <Heart className="h-4 w-4" />
+              ) : (
+                <UserCheck className="h-4 w-4" />
+              )}
+
+              <span className="leading-none">
+                {login ? "Saved Property" : "About Us"}
+              </span>
             </Link>
 
             <Link
@@ -203,8 +260,15 @@ const Header = () => {
               onClick={toggleMenu}
               className="flex items-center gap-2 px-4 py-2 justify-start text-sm rounded-full hover:bg-[#936639] hover:text-white"
             >
-              <Mail className="h-4 w-4" />
-              <span className="leading-none">Contact Us</span>
+              {login ? (
+                <MessageSquareMore className="h-4 w-4" />
+              ) : (
+                <Mail className="h-4 w-4" />
+              )}
+
+              <span className="leading-none">
+                {login ? "Chat" : "COntact Us"}
+              </span>
             </Link>
 
             <div className="flex flex-col gap-2 mt-3">
