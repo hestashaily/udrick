@@ -43,6 +43,7 @@ const data = {
 
 const ExploreOnMap = () => {
   const [value, setValue] = useState("buy");
+  const [lookingfor, setLookingFor] = useState("buy");
   const [priceRange, setPriceRange] = useState<[number, number]>([20, 80]);
   const [SqFeet, setSqFeet] = useState<[number, number]>([20, 80]);
   const [map, setMap] = useState("grid");
@@ -74,7 +75,6 @@ const ExploreOnMap = () => {
     <div>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between gap-4 py-4">
-          {/* Left: Back + Tabs */}
           <div className="flex flex-1 items-center gap-4">
             {/* Back Button */}
             <Link href="/home">
@@ -85,8 +85,8 @@ const ExploreOnMap = () => {
             </Link>
 
             {/* Tabs */}
+            {/* Sliding Background */}
             <div className="relative inline-flex border border-[#b38758] rounded-full p-1 overflow-hidden">
-              {/* Sliding Background */}
               <div
                 className={clsx(
                   "absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-gradient-to-r from-[#9c6b3c] to-[#b38758] transition-all duration-300",
@@ -109,7 +109,7 @@ const ExploreOnMap = () => {
                   className={clsx(
                     "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     "data-[state=on]:bg-transparent",
-                    value === "buy" ? "text-white" : "text-[#9c6b3c]"
+                    value === "buy" ? "!text-white" : "text-[#9c6b3c]"
                   )}
                 >
                   <Home size={16} />
@@ -121,7 +121,7 @@ const ExploreOnMap = () => {
                   className={clsx(
                     "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     "data-[state=on]:bg-transparent",
-                    value === "rent" ? "text-white" : "text-[#9c6b3c]"
+                    value === "rent" ? "!text-white" : "text-[#9c6b3c]"
                   )}
                 >
                   <Home size={16} />
@@ -134,10 +134,8 @@ const ExploreOnMap = () => {
           {/* Middle: Search */}
           <div className="flex-1">
             <div className="relative w-full">
-              {/* Search Icon */}
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
 
-              {/* Input */}
               <input
                 type="text"
                 className="w-full border rounded-full pl-10 pr-4 py-2 text-sm"
@@ -147,11 +145,11 @@ const ExploreOnMap = () => {
           </div>
 
           {/* Right: Filter Button */}
-          {/* Filter Sheet */}
+         
           <div className="flex-1 flex gap-6 justify-end">
             <Sheet>
-              <SheetTrigger asChild className="">
-                <button className="px-4  gap-2 text-base flex items-center justify-center rounded-4xl border text-[#515151] border-[#515151] hover:bg-[#f8f4ef]">
+              <SheetTrigger asChild className="!p-0">
+                <button className="!px-4 py-1  gap-2 text-base flex items-center justify-center rounded-4xl border text-[#515151] border-[#515151] hover:bg-[#f8f4ef]">
                   <Funnel size={16} /> Filter
                 </button>
               </SheetTrigger>
@@ -159,14 +157,14 @@ const ExploreOnMap = () => {
                 side="right"
                 className="!w-[550px] pb-10 overflow-y-scroll  sm:w-[400px]"
               >
-                <h2 className="text-lg font-semibold px-4 pt-4">
+                <h2 className="text-lg tracking-wider font-semibold px-4 pt-4">
                   Property Search Filter
                 </h2>
                 <hr />
                 <div className="space-y-6">
                   <div className=" flex flex-col space-y-2">
                     {/* Search Location */}
-                    <Label className="px-4">Search Location</Label>
+                    <Label className="px-4 font-medium text-[#313131] text-base">Search Location</Label>
                     <input
                       type="text"
                       className="px-4 py-2  border-b outline-none"
@@ -175,27 +173,73 @@ const ExploreOnMap = () => {
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label>Looking For</Label>
+                    <Label className="mb-4 font-medium text-[#313131] text-base">Looking For</Label>
+                    <div className="relative inline-flex border border-[#b38758] rounded-full p-1 overflow-hidden">
+                      {/* Sliding Background */}
+                      <div
+                        className={clsx(
+                          "absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-gradient-to-r from-[#9c6b3c] to-[#b38758] transition-all duration-300",
+                          lookingfor === "rent"
+                            ? "translate-x-[calc(94%+0.5rem)]"
+                            : "translate-x-0"
+                        )}
+                      />
+
+                      <ToggleGroup
+                        type="single"
+                        value={lookingfor}
+                        onValueChange={(val) => {
+                          if (val) setLookingFor(val);
+                        }}
+                        className="relative z-10 flex gap-x-2"
+                      >
+                        <ToggleGroupItem
+                          value="buy"
+                          className={clsx(
+                            "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                            "data-[state=on]:bg-transparent",
+                            lookingfor === "buy"
+                              ? "!text-white"
+                              : "text-[#9c6b3c]"
+                          )}
+                        >
+                          Buy
+                        </ToggleGroupItem>
+
+                        <ToggleGroupItem
+                          value="rent"
+                          className={clsx(
+                            "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                            "data-[state=on]:bg-transparent",
+                            lookingfor === "rent"
+                              ? "!text-white"
+                              : "text-[#9c6b3c]"
+                          )}
+                        >
+                          Rent
+                        </ToggleGroupItem>
+                      </ToggleGroup>
+                    </div>
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label className="py-4">Property Type</Label>
+                    <Label className="mb-4 font-medium text-[#313131] text-base">Property Type</Label>
                     <div className="">
                       <RadioGroup
                         defaultValue="ApartMent"
-                        className="grid grid-cols-2  gap-4"
+                        className="flex gap-4 flex-wrap"
                       >
                         {propertyType.map((type) => (
                           <div
                             key={type}
-                            className="flex items-center border rounded-3xl p-3 space-x-2"
+                            className="flex items-center border cursor-pointer  rounded-3xl p-3 space-x-2"
                           >
                             <RadioGroupItem
                               value={type}
                               id={`property-${type}`}
-                              className="text-[#936639]  border-[#936639] [&_svg]:fill-[#936639]"
+                              className="text-[#936639]  cursor-pointer  border-[#936639] [&_svg]:fill-[#936639]"
                             />
-                            <Label htmlFor={`property-${type}`}>{type}</Label>
+                            <Label className="cursor-pointer !font-normal !text-sm tracking-wider " htmlFor={`property-${type}`}>{type}</Label>
                           </div>
                         ))}
                       </RadioGroup>
@@ -203,25 +247,24 @@ const ExploreOnMap = () => {
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label className="mb-10">Price Range</Label>
+                    <Label className="mb-10 font-medium text-[#313131] text-base">Price Range</Label>
                     <Slider
                       value={priceRange}
                       onValueChange={(val: [number, number]) =>
                         setPriceRange(val)
                       }
                       min={0}
-                      max={100}
-                      step={1}
-                      showValue
-                      className="h-6"
-                      rangeClassName="bg-[#936639]"
-                      thumbClassName="bg-white"
-                      trackClassName="h-2 bg-[#936639]"
+                      max={3000}
+                      step={50}
+                      className="h-8"
+                      trackClassName="bg-gray-200 h-2 rounded-full"
+                      rangeClassName="bg-gradient-to-r from-[#C19A6B] to-[#936639] h-2 rounded-full"
+                      thumbClassName="h-5 w-5 border-2 border-white bg-white shadow"
                     />
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label className="mb-5">Number Of Bedrooms</Label>
+                    <Label className="mb-5 font-medium text-[#313131] text-base">Number Of Bedrooms</Label>
                     <div className="flex gap-4">
                       <div>
                         <p className="mb-2">Min No. Of Bedrooms</p>
@@ -253,7 +296,7 @@ const ExploreOnMap = () => {
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label className="mb-10">Area Aq. ft.</Label>
+                    <Label className="mb-10 font-medium text-[#313131] text-base">Area Aq. ft.</Label>
                     <Slider
                       value={SqFeet}
                       onValueChange={(val: [number, number]) => setSqFeet(val)}
@@ -261,30 +304,30 @@ const ExploreOnMap = () => {
                       max={100}
                       step={1}
                       showValue
-                      rangeClassName="bg-[#936639]"
-                      thumbClassName="bg-white"
-                      trackClassName="h-2 bg-[#936639]"
+                      trackClassName="bg-gray-200 h-2 rounded-full"
+                      rangeClassName="bg-gradient-to-r from-[#C19A6B] to-[#936639] h-2 rounded-full"
+                      thumbClassName="h-5 w-5 border-2 border-white bg-white shadow"
                     />
                   </div>
                   <div className="px-4">
-                    <Label className="my-6">Property Status</Label>
+                    <Label className="my-6 font-medium text-[#313131] text-base">Property Status</Label>
                     <div className="">
                       <RadioGroup
-                        defaultValue="ApartMent"
+                        defaultValue="Under Contruction"
                         className="grid grid-cols-2  gap-4"
                       >
                         {propertyStatus.map((type) => (
                           <div
                             key={type}
-                            className="flex items-center text-sm border rounded-3xl p-3 space-x-2"
+                            className="flex items-center cursor-pointer   text-sm border rounded-3xl p-3 space-x-2"
                           >
                             <RadioGroupItem
                               value={type}
                               id={`property-${type}`}
-                              className="text-[#936639]  border-[#936639] [&_svg]:fill-[#936639]"
+                              className="text-[#936639] cursor-pointer   border-[#936639] [&_svg]:fill-[#936639]"
                             />
                             <Label
-                              className="text-[13px]"
+                              className="text-[13px] cursor-pointer "
                               htmlFor={`property-${type}`}
                             >
                               {type}
@@ -296,23 +339,23 @@ const ExploreOnMap = () => {
                   </div>
                   <div className="px-4">
                     {/* Search Location */}
-                    <Label className="my-6">Amenities</Label>
+                    <Label className="my-6 font-medium text-[#313131] text-base">Amenities</Label>
                     <div className="">
                       <RadioGroup
-                        defaultValue="ApartMent"
-                        className="grid grid-cols-2  gap-4"
+                        defaultValue="Parking"
+                        className="flex gap-4  flex-wrap"
                       >
                         {Amenities.map((type) => (
                           <div
                             key={type}
-                            className="flex items-center border rounded-3xl p-3 space-x-2"
+                            className="flex items-center cursor-pointer  border rounded-3xl p-3 space-x-2"
                           >
                             <RadioGroupItem
                               value={type}
                               id={`property-${type}`}
-                              className="text-[#936639]  border-[#936639] [&_svg]:fill-[#936639]"
+                              className="text-[#936639] cursor-pointer   border-[#936639] [&_svg]:fill-[#936639]"
                             />
-                            <Label htmlFor={`property-${type}`}>{type}</Label>
+                            <Label className="cursor-pointer " htmlFor={`property-${type}`}>{type}</Label>
                           </div>
                         ))}
                       </RadioGroup>
@@ -355,7 +398,7 @@ const ExploreOnMap = () => {
                   className={clsx(
                     "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     "data-[state=on]:bg-transparent",
-                    map === "grid" ? "text-white" : "text-[#9c6b3c]"
+                    map === "grid" ? "!text-white" : "text-[#9c6b3c]"
                   )}
                 >
                   <LayoutGrid size={20} />
@@ -366,7 +409,7 @@ const ExploreOnMap = () => {
                   className={clsx(
                     "flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
                     "data-[state=on]:bg-transparent",
-                    map === "map" ? "text-white" : "text-[#9c6b3c]"
+                    map === "map" ? "!text-white" : "text-[#9c6b3c]"
                   )}
                 >
                   <Map size={20} />
@@ -377,7 +420,7 @@ const ExploreOnMap = () => {
         </div>
       </div>
 
-      {/* main */}
+    
       {/* main */}
       <div className="container mx-auto my-6">
         {map === "grid" ? (

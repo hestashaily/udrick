@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#162A35] text-white">
       {/* Top Border Section */}
-      <div className="border-y mt-8 border-white/20 px-4 py-6 md:px-20 lg:px-40 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="border-y  border-white/20 px-4 py-6 md:px-20 lg:px-40 flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Image src="/footer/logo.svg" alt="Logo" width={125} height={50} />

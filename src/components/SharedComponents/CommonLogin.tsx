@@ -147,7 +147,7 @@ export default function CommonLogin({ role, onBack }: Props) {
             </span>
           </Link>
         </div>
-        <Link href="/home">
+        <Link href="/">
         <button
           disabled={!isFormValid}
           className={`py-[16px] font-[600] text-[16px] text-white w-full rounded-[12px] mt-[25px] transition-all duration-200 ${
