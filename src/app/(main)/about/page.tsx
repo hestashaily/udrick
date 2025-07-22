@@ -1,4 +1,4 @@
-import SingleAboutPage from '@/app/components/LandingPage/SingleAboutPage/SingleAboutPage'
+import SingleAboutPage from '@/components/LandingPage/SingleAboutPage/SingleAboutPage'
 import React from 'react'
 
 const page = () => {

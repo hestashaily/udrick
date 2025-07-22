@@ -1,5 +1,5 @@
 import React from 'react'
-import Phone from "../../components/ForgotPhoneComponents/Phone"
+import Phone from '@/components/ForgotPhoneComponents/Phone'
 
 const page = () => {
   return (

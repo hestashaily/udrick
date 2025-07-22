@@ -1,4 +1,4 @@
-import ViewAllProperties from '@/app/components/ViewAllProperties/ViewAllProperties'
+import ViewAllProperties from '@/components/ViewAllProperties/ViewAllProperties'
 import React from 'react'
 
 const page = () => {

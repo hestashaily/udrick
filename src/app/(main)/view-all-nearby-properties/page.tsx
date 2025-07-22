@@ -1,4 +1,4 @@
-import ViewAllNearByProperty from '@/app/components/ViewAllNearByProperty/ViewAllNearByProperty'
+import ViewAllNearByProperty from '@/components/ViewAllNearByProperty/ViewAllNearByProperty'
 import React from 'react'
 
 const page = () => {

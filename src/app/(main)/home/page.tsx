@@ -1,10 +1,10 @@
-import Hero from "@/app/components/Hero/Hero";
-import AboutUs from "@/app/components/LandingPage/Aboutus/AboutUs";
-import AllProperties from "@/app/components/LandingPage/AllProperties/AllProperties";
-import ContactUs from "@/app/components/LandingPage/ContactUsForm/ContactUs";
-import NearByListing from "@/app/components/LandingPage/NearByListing/NearByListing";
-import OurService from "@/app/components/LandingPage/OurServices/OurService";
-import YourHomePartner from "@/app/components/LandingPage/YourHomepartner/YourHomePartner";
+import Hero from "@/components/Hero/Hero";
+import AboutUs from "@/components/LandingPage/Aboutus/AboutUs";
+import AllProperties from "@/components/LandingPage/AllProperties/AllProperties";
+import ContactUs from "@/components/LandingPage/ContactUsForm/ContactUs";
+import NearByListing from "@/components/LandingPage/NearByListing/NearByListing";
+import OurService from "@/components/LandingPage/OurServices/OurService";
+import YourHomePartner from "@/components/LandingPage/YourHomepartner/YourHomePartner";
 
 export default function HomePage() {
   return (

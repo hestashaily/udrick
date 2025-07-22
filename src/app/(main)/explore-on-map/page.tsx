@@ -1,4 +1,4 @@
-import ExploreOnMap from '@/app/components/ExploreOnMap/ExploreOnMap'
+import ExploreOnMap from '@/components/ExploreOnMap/ExploreOnMap'
 import React from 'react'
 
 const page = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ForgotMail from '@/app/components/ForgotMailComponents/ForgotMail'
+import ForgotMail from '@/components/ForgotMailComponents/ForgotMail'
 
 const page = () => {
   return <ForgotMail/>

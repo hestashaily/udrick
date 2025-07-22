@@ -53,12 +53,12 @@
 "use client";
 import { useState } from "react";
 
-import SignUp from "@/app/components/SignComponents/SignUp";
-import SignProfilePicture from "@/app/components/SignComponents/SignProfilePicture";
-import CompleteProfile from "@/app/components/SignComponents/CompleteProfile";
-import ContactInfo from "@/app/components/SignComponents/ContactInfo";
-import EmailPhnVerify from "@/app/components/SignComponents/EmailPhnVerify";
-import SuccessPassword from "@/app/components/ForgotMailComponents/SubComponents/SuccessPassword";
+import SignUp from "@/components/SignComponents/SignUp";
+import SignProfilePicture from "@/components/SignComponents/SignProfilePicture";
+import CompleteProfile from "@/components/SignComponents/CompleteProfile";
+import ContactInfo from "@/components/SignComponents/ContactInfo";
+import EmailPhnVerify from "@/components/SignComponents/EmailPhnVerify";
+import SuccessPassword from "@/components/ForgotMailComponents/SubComponents/SuccessPassword";
 
 export default function SignUpPage() {
   const [step, setStep] = useState<

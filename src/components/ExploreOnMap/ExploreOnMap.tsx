@@ -15,7 +15,7 @@ import React, { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import clsx from "clsx";
 import Image from "next/image";
-import PropertyCard from "../ReusableComponents/PropertiesCard";
+
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Slider from "@/components/ui/slider";
@@ -26,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import PropertyCard from "../ReusableComponents/PropertiesCard";
 
 const data = {
   images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import CommonLogin from "../../components/SharedComponents/CommonLogin";
+import CommonLogin from "../../../components/SharedComponents/CommonLogin";
 
 export default function UserTypePage() {
   const [selectedRole, setSelectedRole] = useState<"buyer" | "seller" | null>(null);
