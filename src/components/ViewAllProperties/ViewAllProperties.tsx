@@ -20,7 +20,7 @@ const ViewAllProperties = () => {
     <div>
       <div className="shadow">
         <div className="container mx-auto px-4">
-          <Link href="/home">
+          <Link href="/">
             <div className="flex gap-6 py-6 items-center">
               <ArrowLeft size={18} />
               <div className="flex flex-col">

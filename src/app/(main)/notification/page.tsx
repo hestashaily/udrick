@@ -1,27 +1,25 @@
 import NotificationCard from "@/components/NotificationComponents/notificationCard";
-import PropertyCard from "@/components/ReusableComponents/PropertiesCard";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+
 import React from "react";
 
-const data = {
-  images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
-  title: "5 Bedroom Detached Duplex",
-  price: "₦500,000,000",
-  location: "Victoria Island (VI), Lagos",
-  description:
-    "Egestas fringilla phasellus faucibus scelerisque eleifend donec. Porta nibh venenatis...",
-  beds: 5,
-  baths: 3,
-  size: "1690 sqft",
-  agent: "Emeka Nzerem",
-};
+// const data = {
+//   images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
+//   title: "5 Bedroom Detached Duplex",
+//   price: "₦500,000,000",
+//   location: "Victoria Island (VI), Lagos",
+//   description:
+//     "Egestas fringilla phasellus faucibus scelerisque eleifend donec. Porta nibh venenatis...",
+//   beds: 5,
+//   baths: 3,
+//   size: "1690 sqft",
+//   agent: "Emeka Nzerem",
+// };
 const Notification = () => {
   return (
     <div>
       <div className="shadow">
         <div className="container mx-auto px-4">
-          <Link href="/home">
+         
             <div className="flex gap-6 py-6 items-center">
               <div className="flex flex-col">
                 <h3 className="font-bold text-3xl text-[#0d0d0c]">
@@ -32,7 +30,7 @@ const Notification = () => {
                 </span>
               </div>
             </div>
-          </Link>
+         
         </div>
       </div>
       <div className="container mx-auto mt-6 mb-14 px-4 sm:px-6 lg:px-8">

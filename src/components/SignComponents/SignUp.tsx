@@ -2,13 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const SignUp = ({ onContinue }: { onContinue: () => void }) => {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -212,7 +210,7 @@ const SignUp = ({ onContinue }: { onContinue: () => void }) => {
         <div className="max-w-[226px] w-full m-auto pt-[30px]">
           <p className="font-[400] text-[14px] text-[#6A6A6A]">
             Don’t have an account yet?{" "}
-            <Link href="/home" className="cursor-pointer">
+            <Link href="/auth/usertype" className="cursor-pointer">
               <span className="font-[500] text-[#9A7449]">Login</span>
             </Link>
           </p>
