@@ -33,7 +33,6 @@ const Notification = () => {
          
         </div>
       </div>
-
       <div className="container mx-auto mt-6 mb-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-full w-full flex flex-col gap-[25px]">
           <NotificationCard
