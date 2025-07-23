@@ -18,6 +18,14 @@ const listings: Array<{
   frequency: string;
   status: ListingStatus;
   payment: "Paid" | "Unpaid";
+  paymentDate?: string,
+  dueDate?:string
+   transactions?: Array<{
+    month: string;
+    paymentDate: string;
+    amount: string;
+    status: "Paid" | "Unpaid";
+  }>;
 }> = [
   {
     id: 1,
@@ -29,7 +37,29 @@ const listings: Array<{
     price: "₦36,000",
     frequency: "/month",
     status: "Rented",
+     dueDate: "30/08/2025",
+     paymentDate: "18/07/2025",
     payment: "Paid",
+    transactions: [
+      {
+        month: "June 2025",
+        paymentDate: "05/06/2025",
+        amount: "₦30,000",
+        status: "Paid",
+      },
+      {
+        month: "July 2025",
+        paymentDate: "05/07/2025",
+        amount: "₦20,000",
+        status: "Paid",
+      },
+      {
+        month: "August 2025",
+        paymentDate: "",
+        amount: "",
+        status: "Unpaid",
+      },
+    ],
   },
   {
     id: 2,
@@ -65,7 +95,29 @@ const listings: Array<{
   price: "₦25,000",
   frequency: "/month",
   status: "Rented",
-  payment: "Unpaid",
+  payment: "Paid",
+  paymentDate: "15/07/2025",
+  dueDate:"21/05/2025",
+  transactions: [
+      {
+        month: "June 2025",
+        paymentDate: "05/06/2025",
+        amount: "₦10,000",
+        status: "Paid",
+      },
+      {
+        month: "July 2025",
+        paymentDate: "05/07/2025",
+        amount: "₦10,000",
+        status: "Paid",
+      },
+      {
+        month: "August 2025",
+        paymentDate: "",
+        amount: "",
+        status: "Unpaid",
+      },
+    ],
 }
 ];
 

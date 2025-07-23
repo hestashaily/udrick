@@ -1,4 +1,4 @@
-import PropertyHistory from '@/components/PropoertyHistroy/PropertyHistory'
+import PropertyHistory from '@/components/MyProfile/PropoertyHistroy/PropertyHistory'
 import React from 'react'
 
 const page = () => {
