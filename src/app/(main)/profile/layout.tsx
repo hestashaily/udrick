@@ -34,7 +34,7 @@ const links = [
     icon: <House />,
   },
   { href: "/profile/refund", label: "Refunds", icon: <CircleDollarSign /> },
-  { href: "/profile/id-proof", label: "Uploaded ID Proof", icon: <FileText /> },
+  { href: "/profile/upload-document", label: "Uploaded ID Proof", icon: <FileText /> },
   {
     href: "/profile/reset-password",
     label: "Reset Password",
@@ -75,7 +75,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
 
       <div className="container mx-auto flex gap-4 p-4 flex-1">
         {/* Sidebar */}
-        <div className="w-1/5 border flex flex-col p-4 space-y-2">
+        <div className="w-1/5 border rounded-2xl flex flex-col p-4 space-y-2">
           {links.map((link) => {
             const isActive = pathname === link.href;
             const isDelete = link.label === "Delete Account";
@@ -91,7 +91,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                 href={link.href}
                 onClick={handleClick}
                 className={clsx(
-                  "p-3 rounded-2xl flex items-center gap-4 transition text-sm font-medium",
+                  "p-3 rounded-2xl flex items-center gap-4 transition text-sm font-normal",
                   {
                     "bg-gradient-to-t from-[#A68A64] to-[#936639] text-white":
                       isActive && !isDelete,
@@ -100,7 +100,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                     "text-red-600": isDelete && !isActive,
                     "hover:text-white hover:bg-red-600": isDelete,
                     "bg-red-600 text-white": isDelete && isActive,
-                    "text-[#0d0d0c]": !isActive && !isDelete,
+                    "text-[#313131]": !isActive && !isDelete,
                   }
                 )}
               >

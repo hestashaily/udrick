@@ -12,6 +12,7 @@ import {
   
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 type Transaction = {
@@ -63,6 +64,10 @@ export default function PropertyHistoryCard({ listing }: { listing: Listing }) {
 
   const isRented = status === "Rented";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const router = useRouter();
+  const handleViewDetails = () => {
+  router.push(`/view-property?id=${listing.id}`);
+};
 
   return (
     <div className="flex rounded-2xl border p-4 shadow-sm items-center gap-4">
@@ -164,7 +169,7 @@ export default function PropertyHistoryCard({ listing }: { listing: Listing }) {
           {isRented ? (
             <>
               {/* Left side: View Details */}
-              <button className="flex items-center gap-1 border rounded-2xl px-3 py-2 text-sm">
+              <button onClick={handleViewDetails} className="flex items-center gap-1 border rounded-2xl px-3 py-2 text-sm">
                 <Eye className="w-4 h-4" />
                 View Details
               </button>
@@ -184,7 +189,7 @@ export default function PropertyHistoryCard({ listing }: { listing: Listing }) {
             </>
           ) : (
             <div className="ml-auto">
-              <button className="flex items-center gap-1 border rounded-2xl px-3 py-2 text-sm">
+              <button onClick={handleViewDetails} className="flex items-center gap-1 border rounded-2xl px-3 py-2 text-sm">
                 <Eye className="w-4 h-4" />
                 View Details
               </button>

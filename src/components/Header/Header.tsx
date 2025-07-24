@@ -98,9 +98,9 @@ const Header = () => {
 
             <li>
               <Link
-                href="/about"
+                href={login ? "/saved-properties" : "/about"}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                  pathname === "/about"
+                     pathname === (login ? "/saved-properties" : "/about")
                     ? "bg-[#936639] text-white"
                     : "hover:bg-[#936639] hover:text-white"
                 }`}
