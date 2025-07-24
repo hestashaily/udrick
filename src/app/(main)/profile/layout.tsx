@@ -4,11 +4,13 @@ import Link from "next/link";
 import { ReactNode, useState } from "react";
 import {
   ArrowLeft,
+  BadgeAlert,
   BadgeQuestionMark,
   CircleDollarSign,
   FileText,
   House,
   KeyRound,
+  LockKeyhole,
   ReceiptText,
   Shield,
   Trash,
@@ -32,7 +34,7 @@ const links = [
     icon: <House />,
   },
   { href: "/profile/refund", label: "Refunds", icon: <CircleDollarSign /> },
-  { href: "/profile/id-proof", label: "Uploaded ID Proof", icon: <FileText /> },
+  { href: "/profile/upload-document", label: "Uploaded ID Proof", icon: <FileText /> },
   {
     href: "/profile/reset-password",
     label: "Reset Password",
@@ -73,7 +75,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
 
       <div className="container mx-auto flex gap-4 p-4 flex-1">
         {/* Sidebar */}
-        <div className="w-1/5 border flex flex-col p-4 space-y-2">
+        <div className="w-1/5 border rounded-2xl flex flex-col p-4 space-y-2">
           {links.map((link) => {
             const isActive = pathname === link.href;
             const isDelete = link.label === "Delete Account";
@@ -89,7 +91,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                 href={link.href}
                 onClick={handleClick}
                 className={clsx(
-                  "p-3 rounded-2xl flex items-center gap-4 transition text-sm font-medium",
+                  "p-3 rounded-2xl flex items-center gap-4 transition text-sm font-normal",
                   {
                     "bg-gradient-to-t from-[#A68A64] to-[#936639] text-white":
                       isActive && !isDelete,
@@ -98,7 +100,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                     "text-red-600": isDelete && !isActive,
                     "hover:text-white hover:bg-red-600": isDelete,
                     "bg-red-600 text-white": isDelete && isActive,
-                    "text-[#0d0d0c]": !isActive && !isDelete,
+                    "text-[#313131]": !isActive && !isDelete,
                   }
                 )}
               >
@@ -164,19 +166,44 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
       <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-sm p-4 mt-6 bg-[#F44336] rounded-2xl text-white font-normal text-center">
-              Deleting your account is permanent. You will lose access to all your data, order history, and earnings.
-              
+            <DialogTitle className="text-sm p-4 le flex items-start justify-start mt-6 bg-[#F44336] rounded-2xl text-white font-normal text-center">
+              <BadgeAlert className="" size={30} />{" "}
+              <span className="mt-1">
+                Deleting your account is permanent. You will lose access to all
+                your data, order history, and earnings.
+              </span>
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-4">
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border rounded-lg px-4 py-2"
-            />
+          <div className="">
+            <div>
+              <label className="font-bold text-lg text-[#515151]">
+                Enter Password
+              </label>
+              <p className="text-[#888888] font-normal text-sm">
+                Please enter your password to confirm your decision.
+              </p>
+            </div>
+            <div className="my-4 relative">
+              {/* Input with padding-right to make space for icon */}
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border rounded-lg pl-4 pr-12 py-3"
+              />
+              {/* Icon positioned inside input on the right */}
+              <LockKeyhole
+                className="absolute right-4 top-6 -translate-y-1/2 text-[#A68A64]"
+                size={25}
+              />
+
+              {/* Forget Password text */}
+              <p className="flex justify-end mt-1 px-2 bg-gradient-to-t from-[#A68A64] to-[#936639] bg-clip-text text-transparent cursor-pointer">
+                Forget Password?
+              </p>
+            </div>
+
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {
@@ -188,17 +215,9 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                     alert("Please enter a valid password.");
                   }
                 }}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg"
+                className="px-4 py-4 w-full bg-gradient-to-t from-[#A68A64] to-[#936639] text-white  rounded-2xl"
               >
-                Confirm Delete
-              </button>
-              <button
-                onClick={() => {
-                  setShowPasswordDialog(false);
-                }}
-                className="px-4 py-2 border rounded-lg"
-              >
-                Cancel
+                Delete My Account
               </button>
             </div>
           </div>
