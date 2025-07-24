@@ -90,13 +90,15 @@ const SiteVisit = () => {
         </div>
       </div>
 
-      <button className="mt-[15px] w-full h-[48px] rounded-full font-[700] text-[14px] text-white bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]">
+      <button 
+      onClick={() => setShowPopup(true)}
+      className="mt-[15px] w-full h-[48px] rounded-full font-[700] text-[14px] text-white bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]">
         Schedule Site Visit
       </button>
 
       <button
         className="mt-[15px] w-full h-[48px] rounded-full font-[700] text-[14px] text-white bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]"
-        onClick={() => setShowPopup(true)}
+        
       >
         Ready to Buy
       </button>
