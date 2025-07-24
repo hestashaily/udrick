@@ -1,39 +1,20 @@
-// "use client";
+"use client";
 
-import Header from "@/components/Header/Header";
-import Hero from "@/components/Hero/Hero";
-import AboutUs from "@/components/LandingPage/Aboutus/AboutUs";
-import AllProperties from "@/components/LandingPage/AllProperties/AllProperties";
-import ContactUs from "@/components/LandingPage/ContactUsForm/ContactUs";
-import NearByListing from "@/components/LandingPage/NearByListing/NearByListing";
-import OurService from "@/components/LandingPage/OurServices/OurService";
-import YourHomePartner from "@/components/LandingPage/YourHomepartner/YourHomePartner";
-
-// import AuthLayout from "./auth/layout";
-
-// import UserTypePage from "./auth/usertype/page";
-
-// export default function HomePage() {
-//   return (
-//     <AuthLayout>
-//       <UserTypePage />
-//     </AuthLayout>
-//   );
-// }
-// src/app/page.tsx
+import LandingPage from "@/components/LandingPage/LandingPage";
+import SellerDashBoard from "@/components/Seller/DashBoard/SellerDashBoard";
+import { useEffect, useState } from "react";
 
 export default function RootPage() {
-  return (
-    <>
-      <Header />
+  const [role, setRole] = useState<string | null>(null);
 
-      <Hero />
-      <AllProperties />
-      <OurService />
-      <NearByListing />
-      <AboutUs />
-      <ContactUs />
-      <YourHomePartner />
-    </>
-  );
+  useEffect(() => {
+    const storedRole = localStorage.getItem("role");
+    setRole(storedRole);
+  }, []);
+
+  console.log(role, "role");
+  if (!role) return <p>Loading...</p>;
+  
+
+  return <>{role === "seller" ? <SellerDashBoard /> : <LandingPage />}</>;
 }

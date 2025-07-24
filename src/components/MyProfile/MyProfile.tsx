@@ -34,7 +34,7 @@ const MyProfile = () => {
   };
 
   return (
-    <div>
+    <div className="w-full ">
       {/* <Card className="p-4">
         <div className="flex gap-6 items-center">
           <div className="relative">
@@ -53,7 +53,7 @@ const MyProfile = () => {
           </div>
         </div>
       </Card> */}
-      <ProfileCard/>
+      <ProfileCard />
 
       <div className="flex justify-between my-8">
         <h1 className="font-medium text-2xl">Personal Information</h1>
@@ -75,7 +75,7 @@ const MyProfile = () => {
             </Button>
             <Button
               onClick={handleSave}
-            //   variant="outline"
+              //   variant="outline"
               className="rounded-xl !px-8 !py-6 text-base text-white  bg-gradient-to-t from-[#A68A64] to-[#936639]"
             >
               <Save />
@@ -85,7 +85,7 @@ const MyProfile = () => {
         )}
       </div>
 
-      <Card className="p-4">
+      <Card className="p-4 w-full">
         <div className="flex gap-6">
           <div>
             <Avatar className="h-32 w-32">

@@ -34,7 +34,11 @@ const links = [
     icon: <House />,
   },
   { href: "/profile/refund", label: "Refunds", icon: <CircleDollarSign /> },
-  { href: "/profile/upload-document", label: "Uploaded ID Proof", icon: <FileText /> },
+  {
+    href: "/profile/upload-document",
+    label: "Uploaded ID Proof",
+    icon: <FileText />,
+  },
   {
     href: "/profile/reset-password",
     label: "Reset Password",
@@ -73,15 +77,15 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <div className="container mx-auto flex gap-4 p-4 flex-1">
+      <div className="container mx-auto flex gap-4 p-3 lg:p-4 flex-1">
         {/* Sidebar */}
-        <div className="w-1/5 border rounded-2xl flex flex-col p-4 space-y-2">
+        <div className="w-[80px] lg:w-1/5 border rounded-2xl flex flex-col p-4 space-y-2">
           {links.map((link) => {
             const isActive = pathname === link.href;
             const isDelete = link.label === "Delete Account";
             const handleClick = (e: React.MouseEvent) => {
               if (isDelete) {
-                e.preventDefault(); // Prevent navigation
+                e.preventDefault();
                 setShowDeleteDialog(true);
               }
             };
@@ -105,16 +109,18 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                 )}
               >
                 {link.icon}
-                {link.label}
+                <span className="hidden lg:block">{link.label}</span>
+                
               </Link>
             );
           })}
         </div>
 
         {/* Dynamic Content */}
-        <div className="w-4/5 pl-4 ">{children}</div>
+        <div className="w-full lg:w-4/5 pl-4 ">{children}</div>
       </div>
 
+      {/* Delete  Account */}
       <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader className="flex items-center">

@@ -4,7 +4,7 @@ import React from "react";
 
 
 import ChatDesktop from "./ChatDesktop";
-import { useIsMobile } from "./CustomHooks/ChatMobile";
+import { useIsMobile } from "./CustomHooks/CustomHookChat";
 import ChatMobile from "./ChatMobileUi";
 
 export default function ChatWrapper() {

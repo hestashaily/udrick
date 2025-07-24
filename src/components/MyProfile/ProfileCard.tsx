@@ -11,7 +11,7 @@ const ProfileCard = () => {
       });
   return (
     <div>
-        <Card className="p-4">
+        <Card className="p-4 w-full">
         <div className="flex gap-6 items-center">
           <div className="relative">
             <Avatar className="h-20 w-20">

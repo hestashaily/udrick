@@ -7,8 +7,12 @@ export default function UserTypePage() {
   const [selectedRole, setSelectedRole] = useState<"buyer" | "seller" | null>(null);
   const [isConfirmed, setIsConfirmed] = useState(false); 
 
+  console.log(selectedRole);
+  
+
   const handleSelect = (role: "buyer" | "seller") => {
     setSelectedRole(role);
+    localStorage.setItem("role", role);
   };
 
   const handleContinue = () => {

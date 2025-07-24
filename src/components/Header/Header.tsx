@@ -13,12 +13,13 @@ import {
   Settings,
   User,
   UserCheck,
+  Wallet,
   X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Popover,
@@ -45,10 +46,15 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const toggleMenu = () => setIsOpen(!isOpen);
+  const [role, setRole] = useState<string | null>(null);
   const login = true;
+  useEffect(() => {
+    const storedRole = localStorage.getItem("role");
+    setRole(storedRole);
+  }, [role]);
 
   return (
-    <div className="shadow py-3 w-full">
+    <div className="shadow-md border-b border-[#FCBE4B] py-3 w-full">
       <header className="flex items-center justify-between  px-4 lg:px-0  mx-auto container">
         {/* Logo */}
         <div>
@@ -61,17 +67,6 @@ const Header = () => {
               className="object-cover"
             />
           </Link>
-        </div>
-
-        {/* Hamburger for Mobile */}
-        <div className="lg:hidden">
-          <button onClick={toggleMenu} aria-label="Toggle Menu">
-            {isOpen ? (
-              <X className="w-6 h-6 text-[#936639]" />
-            ) : (
-              <Menu className="w-6 h-6 text-[#936639]" />
-            )}
-          </button>
         </div>
 
         {/* Desktop Navigation */}
@@ -87,9 +82,34 @@ const Header = () => {
                 }`}
               >
                 <House className="h-5 w-5" />
-                <span className="leading-none">
+                <span className="leading-none">Home</span>
+              </Link>
+            </li>
 
-                Home
+            <li className="h-6 border-l border-gray-400 mx-3" />
+
+            <li>
+              <Link
+                href={
+                  login && role === "buyer" ? "/saved-properties" : "/about"
+                }
+                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
+                  pathname === (login ? "/saved-properties" : "/about")
+                    ? "bg-[#936639] text-white"
+                    : "hover:bg-[#936639] hover:text-white"
+                }`}
+              >
+                {login && role === "buyer" ? (
+                  <Heart className="h-5 w-5" />
+                ) : login && role === "seller" ?
+                (
+                  <CalendarDays className="h-5 w-5"/>
+                )
+                : (
+                  <UserCheck className="h-5 w-5" />
+                )}
+                <span className="leading-none">
+                  {login && role === "buyer" ? "Saved Property" : login && role === "seller" ?  "Visit Request" :"About Us"}
                 </span>
               </Link>
             </li>
@@ -98,47 +118,39 @@ const Header = () => {
 
             <li>
               <Link
-                href={login ? "/saved-properties" : "/about"}
+                href={login ? "chat" : "/contact"}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                     pathname === (login ? "/saved-properties" : "/about")
+                  pathname === (login ? "/chat" : "/contact")
                     ? "bg-[#936639] text-white"
                     : "hover:bg-[#936639] hover:text-white"
                 }`}
               >
-                 {login ? (
-                <Heart className="h-5 w-5" />
-              ) : (
-                <UserCheck className="h-5 w-5" />
-              )}
-             <span className="leading-none">
-                {login ? "Saved Property" : "About Us"}
-              </span>
-              </Link>
-            </li>
-           
-
-             
-
-            <li className="h-6 border-l border-gray-400 mx-3" />
-
-            <li>
-              <Link
-              
-                href={login ? "chat" : "/contact"}
-                className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-[#936639] hover:text-white"
-              >
                 {login ? (
-                <MessageSquareMore className="h-5 w-5" />
-              ) : (
-                <Mail className="h-5 w-5" />
-              )}
+                  <MessageSquareMore className="h-5 w-5" />
+                ) : (
+                  <Mail className="h-5 w-5" />
+                )}
 
-              <span className="leading-none">
-                {login ? "Chat" : "Contact Us"}
-              </span>
+                <span className="leading-none">
+                  {login ? "Chat" : "Contact Us"}
+                </span>
               </Link>
             </li>
-            
+
+            <li className={`${role === "seller" && login ? "block" :"hidden"}`}>
+              <Link
+                href="/wallet"
+                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
+                  pathname === "wallet"
+                    ? "bg-[#936639] text-white"
+                    : "hover:bg-[#936639] hover:text-white"
+                }`}
+              >
+                <Wallet className="h-5 w-5" />
+
+                <span className="leading-none">Wallet</span>
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -188,6 +200,17 @@ const Header = () => {
                   <PopoverItem icon={<LogOut size={16} />} label="Logout" />
                 </PopoverContent>
               </Popover>
+
+              {/* Hamburger for Mobile */}
+              <div className="lg:hidden">
+                <button onClick={toggleMenu} aria-label="Toggle Menu">
+                  {isOpen ? (
+                    <X className="w-6 h-6 text-[#936639]" />
+                  ) : (
+                    <Menu className="w-6 h-6 text-[#936639]" />
+                  )}
+                </button>
+              </div>
             </div>
           </>
         ) : (

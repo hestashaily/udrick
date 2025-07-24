@@ -12,11 +12,11 @@ const YourHomePartner = () => {
             <p className="font-medium text-base mb-4 text-white">
               #YourHomePartner
             </p>
-            <h2 className="font-bold text-3xl md:text-4xl leading-snug mb-4 text-white">
+            <h2 className="font-bold text-2xl md:text-4xl leading-snug mb-4 text-white">
               Find Property, Schedule Visits,
               Buy or Rent — All in One App
             </h2>
-            <p className="text-white font-normal text-base mb-6">
+            <p className="text-white font-normal text-sm md:text-base mb-6">
               This app is your complete real estate companion. Explore properties,
               track site visits, sign documents, and make secure payments —
               directly from your phone.
