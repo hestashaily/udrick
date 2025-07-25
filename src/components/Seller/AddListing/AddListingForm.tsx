@@ -14,15 +14,33 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import {  useAppSelector } from "@/redux/hooks";
 
 export default function AddListingForm() {
+  const router = useRouter();
+  const [propertyType, setPropertyType] = useState<string | undefined>("");
+   const {  step } = useAppSelector((state) => state.step);
+   console.log(step);
+   
+
+  const handleNavigate = () => {
+    if (!propertyType) {
+      alert("Please select a property type.");
+      return;
+    }
+    // router.push(`/add-listing/add-unit-details?type=${propertyType}`);
+    router.push(`/add-listing/add-unit-details?type=${propertyType}&step=${step}`);
+  };
+
   return (
     <div className="w-full mt-4 space-y-5 ">
       {/* Seller Type */}
-      <div className="space-y-1">
+      <div className="">
         <label className="text-sm font-medium">Seller Type</label>
         <Select>
-          <SelectTrigger className="w-full py-5 h-auto">
+          <SelectTrigger className="w-full py-5 mt-2 h-auto">
             <SelectValue placeholder="Select" />
           </SelectTrigger>
           <SelectContent>
@@ -34,10 +52,10 @@ export default function AddListingForm() {
       </div>
 
       {/* Property Type */}
-      <div className="space-y-1">
+      <div className="">
         <label className="text-sm font-medium">Property Type</label>
-        <Select>
-          <SelectTrigger className="w-full py-5 h-auto  ">
+        <Select required onValueChange={(value) => setPropertyType(value)}>
+          <SelectTrigger className="w-full mt-2 py-5 h-auto  ">
             <SelectValue placeholder="Select" />
           </SelectTrigger>
           <SelectContent className="">
@@ -63,34 +81,37 @@ export default function AddListingForm() {
       </div>
 
       {/* Building or Project Name */}
-      <div className="space-y-1">
+      <div className="">
         <label className="text-sm font-medium">Building or Project Name</label>
         <Input
-          className="py-3 h-auto"
+          className="py-3 h-auto mt-2"
           placeholder="Enter building or project name"
         />
       </div>
 
       {/* Address */}
-      <div className="space-y-1">
+      <div className="">
         <label className="text-sm font-medium">Address</label>
-        <Input className="py-3 h-auto" placeholder="Enter Address" />
+        <Input className="py-3 h-auto mt-2" placeholder="Enter Address" />
       </div>
 
       {/* City and State */}
       <div className="flex flex-col gap-4 md:flex-row md:gap-6">
-        <div className="w-full space-y-1">
+        <div className="w-full ">
           <label className="text-sm font-medium">City</label>
-          <Input className="py-3 h-auto" placeholder="Enter city name" />
+          <Input className="py-3 h-auto mt-2" placeholder="Enter city name" />
         </div>
-        <div className="w-full space-y-1">
+        <div className="w-full ">
           <label className="text-sm font-medium">State</label>
-          <Input className="py-3 h-auto" placeholder="Enter state name" />
+          <Input className="py-3 h-auto mt-2" placeholder="Enter state name" />
         </div>
       </div>
 
       {/* Add Unit Details Button */}
-      <div className="mt-2 w-full flex px-4 rounded-xl py-2 h-auto justify-between border-2 border-[#b88b4a] text-[#b88b4a] hover:bg-[#f3ece3] hover:text-[#b88b4a]">
+      <div
+        onClick={handleNavigate}
+        className="mt-2 w-full flex px-4 rounded-xl py-2 h-auto justify-between border-2 border-[#b88b4a] text-[#b88b4a] hover:bg-[#f3ece3] hover:text-[#b88b4a]"
+      >
         <span className="flex items-center gap-1">
           <Tooltip>
             <TooltipTrigger>
