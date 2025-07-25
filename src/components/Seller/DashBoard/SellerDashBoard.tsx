@@ -78,9 +78,9 @@ const sellerRentListingData: LeftPanelProps[] = [
 
 const SellerDashBoard = () => {
   return (
-    <div>
+    <div className="">
       <Header />
-      <div className="min-h-screen bg-red">
+      <div className="min-h-screen ">
         <div className="bg-white shadow">
           <div className="container mx-auto p-4">
             <div className="flex gap-6 justify-between pr-6">

@@ -13,8 +13,8 @@ export default function RootPage() {
   }, []);
 
   console.log(role, "role");
-  if (!role) return <p>Loading...</p>;
+  if (!role) return <div>Loading...</div>;
   
 
-  return <>{role === "seller" ? <SellerDashBoard /> : <LandingPage />}</>;
+  return <div className="">{role === "seller" ? <SellerDashBoard /> : <LandingPage />}</div>;
 }
