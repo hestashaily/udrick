@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -6,11 +8,12 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
+import SignatureCanvas from "react-signature-canvas";
 
 interface SignatureDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (signatureDataUrl: string) => void; // pass signature to parent
+  onSubmit: (signatureDataUrl: string) => void;
 }
 
 const SignatureDialog = ({
@@ -18,96 +21,68 @@ const SignatureDialog = ({
   onOpenChange,
   onSubmit,
 }: SignatureDialogProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [signature, setSignature] = useState<string | null>(null);
+  const sigCanvasRef = useRef<SignatureCanvas>(null);
   const [isSaved, setIsSaved] = useState(false);
+  const [signature, setSignature] = useState<string | null>(null);
 
   useEffect(() => {
     if (!open) {
-      // Clear state when dialog is closed
-      setSignature(null);
-      setIsSaved(false);
-      clearCanvas();
+      handleClear();
     }
   }, [open]);
 
-  const startDrawing = (e: React.MouseEvent) => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
-    if (!context) return;
-    context.beginPath();
-    context.moveTo(
-      e.nativeEvent.offsetX,
-      e.nativeEvent.offsetY
-    );
-    setIsDrawing(true);
-  };
-
-  const draw = (e: React.MouseEvent) => {
-    if (!isDrawing) return;
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
-    if (!context) return;
-    context.lineTo(
-      e.nativeEvent.offsetX,
-      e.nativeEvent.offsetY
-    );
-    context.stroke();
-  };
-
-  const stopDrawing = () => {
-    setIsDrawing(false);
-  };
-
-  const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
-    if (canvas && context) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
+  const handleSave = () => {
+    if (sigCanvasRef.current?.isEmpty()) {
+      return;
+    }
+    const dataUrl = sigCanvasRef.current?.getTrimmedCanvas().toDataURL();
+    if (dataUrl) {
+      setSignature(dataUrl);
+      setIsSaved(true);
     }
   };
 
-  const handleSave = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const dataUrl = canvas.toDataURL();
-    setSignature(dataUrl);
-    setIsSaved(true);
-  };
-
-  const handleRedraw = () => {
-    clearCanvas();
+  const handleClear = () => {
+    sigCanvasRef.current?.clear();
     setSignature(null);
     setIsSaved(false);
+  };
+
+  const handleSubmit = () => {
+    if (signature) {
+      onSubmit(signature);
+      onOpenChange(false);
+    }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-center text-[#000000] font-medium text-3xl">Draw Your Signature</DialogTitle>
-          <p className="text-center text-[#515151] font-normal text-base">Please sign in the box below to proceed</p>
+          <DialogTitle className="text-center text-[#000000] font-medium text-3xl">
+            Draw Your Signature
+          </DialogTitle>
+          <p className="text-center text-[#515151] font-normal text-base">
+            Please sign in the box below to proceed
+          </p>
         </DialogHeader>
 
-
         <div className="border p-2 rounded-md shadow-sm">
-          <canvas
-            ref={canvasRef}
-            width={400}
-            height={150}
-            className="border border-dashed border-gray-400 w-full"
-            onMouseDown={startDrawing}
-            onMouseMove={draw}
-            onMouseUp={stopDrawing}
-            onMouseLeave={stopDrawing}
+          <SignatureCanvas
+            ref={sigCanvasRef}
+            penColor="black"
+            canvasProps={{
+              width: 400,
+              height: 150,
+              className: "border border-dashed border-gray-400 w-full",
+            }}
           />
         </div>
 
         <div className="flex gap-2 justify-center mt-4">
           <Button
             className="bg-gray-300 text-black hover:bg-gray-400"
-            onClick={handleRedraw}
+            onClick={handleClear}
           >
             Redraw
           </Button>
@@ -119,12 +94,7 @@ const SignatureDialog = ({
         <div className="flex justify-center mt-6">
           <Button
             disabled={!isSaved}
-            onClick={() => {
-              if (signature) {
-                onSubmit(signature);
-                onOpenChange(false);
-              }
-            }}
+            onClick={handleSubmit}
             className={`px-6 py-2 rounded-xl ${
               isSaved
                 ? "bg-[#936639] text-white"

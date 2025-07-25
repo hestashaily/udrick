@@ -123,7 +123,8 @@ const Header = () => {
 
             <li>
               <Link
-                href="/contact"
+              
+                href={login ? "chat" : "/contact"}
                 className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-[#936639] hover:text-white"
               >
                 {login ? (
@@ -133,7 +134,7 @@ const Header = () => {
               )}
 
               <span className="leading-none">
-                {login ? "Chat" : "COntact Us"}
+                {login ? "Chat" : "Contact Us"}
               </span>
               </Link>
             </li>
