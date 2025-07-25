@@ -33,7 +33,7 @@ const handleBackToHome = () => {
           <p className="font-[500] text-[28px] text-[#000000]">
          Payment Successful!
           </p>
-          <p className="font-[400] text-[16px] text-[#25384E] mb-[64px]">
+          <p className="font-[400] text-[16px] text-[#25384E] md:mb-[64px] mb-[20px]">
             Your transaction is complete. Receipt sent to your email.
           </p>
         </div>

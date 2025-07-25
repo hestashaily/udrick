@@ -98,7 +98,7 @@ const StepFour: React.FC<StepFourProps> = ({ sigCanvasRef, onConfirm, onPrevious
         </button>
       </div>
 
-      <div className="bg-white py-6 flex items-center px-[146px] w-full">
+      <div className="bg-white py-6 flex items-center md:px-[146px] px-[10px] w-full">
         <button
           onClick={onPrevious}
           className="flex items-center gap-2 py-2 px-4 rounded-full border border-[#EFD9C7]"
