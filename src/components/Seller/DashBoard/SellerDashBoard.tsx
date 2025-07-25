@@ -80,7 +80,7 @@ const SellerDashBoard = () => {
   return (
     <div>
       <Header />
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-red">
         <div className="bg-white shadow">
           <div className="container mx-auto p-4">
             <div className="flex gap-6 justify-between pr-6">
