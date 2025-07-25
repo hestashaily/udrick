@@ -13,7 +13,7 @@ const StepOne: React.FC<StepOneProps> = ({ onConfirm }) => {
       <div className="max-w-[743px] w-full m-auto px-4 py-6 flex items-center justify-center flex-col">
         <div className="space-y-4 text-center">
           <p className="font-[500] text-[28px] text-[#000000]">Ready to Buy</p>
-          <p className="font-[400] text-[16px] text-[#25384E] mb-[64px]">
+          <p className="font-[400] text-[16px] text-[#25384E] md:mb-[64px] mb-[20px]">
             Review your property selection and confirm your purchase
           </p>
         </div>

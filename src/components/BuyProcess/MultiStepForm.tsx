@@ -114,7 +114,7 @@ const MultiStepForm = () => {
         </div>
       </div>
 
-      <div className="flex items-center border-t border-[#43475545] bg-white shadow-md justify-between px-[182px] py-4 overflow-x-auto">
+      <div className="flex items-center border-t border-[#43475545] bg-white shadow-md justify-between md:px-[182px] px-[10px] py-4 overflow-x-auto">
         {steps.map((label, index) => (
           <div key={index} className="flex gap-[10px] items-center">
             <div
@@ -137,12 +137,12 @@ const MultiStepForm = () => {
               />
             </div>
 
-            <span className="text-[10px] text-center mt-1">{label}</span>
+            <span className="text-[10px] text-center mt-1 md:flex hidden">{label}</span>
           </div>
         ))}
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="min-h-screen">
         {step === 0 && <StepOne onConfirm={handleNext} />}
         {step === 1 && <StepTwo onConfirm={handleNext} />}
         {step === 2 && (

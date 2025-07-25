@@ -13,10 +13,10 @@ const Hero = () => {
       style={{ backgroundImage: "url('/landing/hero.png')" }}
     >
       <div className="container mx-auto flex flex-col items-center text-center px-4">
-        <h1 className="text-white font-bold text-5xl md:text-6xl leading-tight">
+        <h1 className="text-white font-bold text-3xl md:text-6xl leading-tight">
           Looking for Your Dream <br /> House?
         </h1>
-        <p className="text-white mt-4 max-w-2xl text-lg">
+        <p className="text-white mt-4 max-w-2xl text-base md:text-lg">
           Discover the perfect home that matches your lifestyle and budget.
           Browse thousands of verified properties or explore our interactive
           map.
@@ -82,12 +82,12 @@ const Hero = () => {
         {/* Action Buttons */}
         <div className="flex gap-4 my-10">
           <Link href="explore-on-map">
-          <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-6 py-2 rounded-full text-sm font-medium shadow">
-            <MapPin/> Explore on Map
+          <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-3 md:px-6 py-2 rounded-full text-[12px] md:text-sm font-medium shadow">
+            <MapPin size={18}/> Explore on Map
           </button>
           </Link>
-          <button className="flex items-center gap-2 bg-white px-6 py-2 rounded-full text-sm font-medium shadow border">
-            <Logs/> Browse Listings
+          <button className="flex items-center gap-2 bg-white px-3 md:px-6 py-2 rounded-full text-[12px] md:text-sm font-medium shadow border">
+            <Logs size={18}/> Browse Listings
           </button>
         </div>
       </div>

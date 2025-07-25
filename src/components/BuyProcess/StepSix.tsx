@@ -47,7 +47,7 @@ const StepSix: React.FC<StepSixProps> = ({ onConfirm, onPrevious }) => {
           <p className="font-[500] text-[28px] text-[#000000]">
             Payment Checkout
           </p>
-          <p className="font-[400] text-[16px] text-[#25384E] mb-[64px]">
+          <p className="font-[400] text-[16px] text-[#25384E] md:mb-[64px] mb-[20px]">
             Complete your purchase securely
           </p>
         </div>
@@ -182,10 +182,10 @@ const StepSix: React.FC<StepSixProps> = ({ onConfirm, onPrevious }) => {
           />
         </button>
       </div>
-      <div className="bg-white py-[26px] flex   items-center px-[146px] w-full">
+      <div className="bg-white py-[26px] flex   items-center md:px-[146px] px-[10px] w-full">
         <button
           onClick={onPrevious}
-          className="flex items-center gap-[10px] py-[8px] px-[15px] rounded-full border border-[#EFD9C7]"
+          className="flex items-center font-[400] md:text-[16px] text-[12px] text-[#515151] gap-[10px] py-[8px] px-[15px] rounded-full border border-[#EFD9C7]"
         >
           <Image
             src="/propertydetail/previous.png"
