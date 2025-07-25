@@ -101,15 +101,17 @@ const Header = () => {
               >
                 {login && role === "buyer" ? (
                   <Heart className="h-5 w-5" />
-                ) : login && role === "seller" ?
-                (
-                  <CalendarDays className="h-5 w-5"/>
-                )
-                : (
+                ) : login && role === "seller" ? (
+                  <CalendarDays className="h-5 w-5" />
+                ) : (
                   <UserCheck className="h-5 w-5" />
                 )}
                 <span className="leading-none">
-                  {login && role === "buyer" ? "Saved Property" : login && role === "seller" ?  "Visit Request" :"About Us"}
+                  {login && role === "buyer"
+                    ? "Saved Property"
+                    : login && role === "seller"
+                    ? "Visit Request"
+                    : "About Us"}
                 </span>
               </Link>
             </li>
@@ -137,7 +139,9 @@ const Header = () => {
               </Link>
             </li>
 
-            <li className={`${role === "seller" && login ? "block" :"hidden"}`}>
+            <li
+              className={`${role === "seller" && login ? "block" : "hidden"}`}
+            >
               <Link
                 href="/wallet"
                 className={`flex items-center gap-2 px-4 py-2 rounded-full ${
@@ -176,29 +180,52 @@ const Header = () => {
                   </div>
                 </PopoverTrigger>
 
-                <PopoverContent className="w-56 p-2 space-y-1">
-                  <Link href="/visit-request">
+                {login && (
+                  <PopoverContent className="w-56 p-2 space-y-1">
+                    {/* Buyer-only */}
+                    {role === "buyer" && (
+                      <>
+                        <Link href="/visit-request">
+                          <PopoverItem
+                            icon={<CalendarDays size={16} />}
+                            label="Visit Request"
+                          />
+                        </Link>
+                        <Link href="/saved-properties">
+                          <PopoverItem
+                            icon={<Heart size={16} />}
+                            label="Save Property"
+                          />
+                        </Link>
+                        <PopoverItem
+                          icon={<HousePlus size={16} />}
+                          label="Property History"
+                        />
+                      </>
+                    )}
+
+                    {/* Seller-only */}
+                    {role === "seller" && (
+                      <Link href="/my-properties">
+                        <PopoverItem
+                          icon={<CalendarDays size={16} />}
+                          label="My Properties"
+                        />
+                      </Link>
+                    )}
+
+                    {/* Common Items */}
+
+                    <Link href="/profile">
+                      <PopoverItem icon={<User size={16} />} label="Profile" />
+                    </Link>
                     <PopoverItem
-                      icon={<CalendarDays size={16} />}
-                      label="Visit Request"
+                      icon={<Settings size={16} />}
+                      label="Settings"
                     />
-                  </Link>
-                  <Link href="/saved-properties">
-                    <PopoverItem
-                      icon={<Heart size={16} />}
-                      label="Save Property"
-                    />
-                  </Link>
-                  <PopoverItem
-                    icon={<HousePlus size={16} />}
-                    label="Property History"
-                  />
-                  <Link href="/profile">
-                    <PopoverItem icon={<User size={16} />} label="Profile" />
-                  </Link>
-                  <PopoverItem icon={<Settings size={16} />} label="Settings" />
-                  <PopoverItem icon={<LogOut size={16} />} label="Logout" />
-                </PopoverContent>
+                    <PopoverItem icon={<LogOut size={16} />} label="Logout" />
+                  </PopoverContent>
+                )}
               </Popover>
 
               {/* Hamburger for Mobile */}

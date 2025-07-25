@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import SellerRentListingCard from "../SellerRentListingCard/SellerRentListingCard";
+import { useRouter } from "next/navigation";
 
 export interface LeftPanelProps {
  
@@ -23,6 +24,7 @@ interface LeftSideVisitRequestsProps {
 }
 
 const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
+  const router = useRouter()
   return (
     <div className="w-full md:w-2/3 rounded-xl">
       {listings.length > 0 && (
@@ -32,6 +34,8 @@ const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
           </h2>
           <Button
             variant="default"
+            onClick={()=>router.push("/add-listing")}
+          
             className="bg-gradient-to-r from-[#C69C6D] to-[#936639] text-white flex items-center gap-1 rounded-xl px-6 py-2 text-sm"
           >
             <Plus className="w-4 h-4" />

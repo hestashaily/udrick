@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 
-export default function MainLayout({
+export default function SellerLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export default function MainLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <main className="">{children}</main>
 
       <Footer />
     </div>
