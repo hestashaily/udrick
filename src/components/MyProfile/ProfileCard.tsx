@@ -1,25 +1,25 @@
-'use client'
-import React, { useState } from 'react'
-import { Card } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+"use client";
+import React, { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ProfileCard = () => {
-    const [profile, setProfile] = useState({
-        name: "John Mitchell",
-        email: "john.mitchell@email.com",
-        mobile: "9876543210",
-      });
+  const [profile, setProfile] = useState({
+    name: "John Mitchell",
+    email: "john.mitchell@email.com",
+    mobile: "9876543210",
+  });
   return (
     <div>
-        <Card className="p-4 w-full">
-        <div className="flex gap-6 items-center">
+      <Card className="p-4 w-full">
+        <div className="flex gap-4 flex-col md:flex-row justify-center md:justify-start items-center">
           <div className="relative">
             <Avatar className="h-20 w-20">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 md:text-start text-center">
             <h1 className="font-medium text-lg text-[#313131]">
               {profile.name}
             </h1>
@@ -30,7 +30,7 @@ const ProfileCard = () => {
         </div>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileCard
+export default ProfileCard;

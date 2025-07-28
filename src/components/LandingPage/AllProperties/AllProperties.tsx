@@ -34,7 +34,9 @@ const AllProperties = () => {
           ))}
         </div>
         <div className="flex justify-center mt-8 items-center">
-          <Link href="/view-all-properties">
+          {/* <Link href="/view-all-properties"> */}
+          <Link href="/">
+
             <button className="border px-8 py-2 border-gray-300 rounded-xl">
               View All Propertis
             </button>

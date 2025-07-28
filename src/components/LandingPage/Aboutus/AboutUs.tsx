@@ -10,14 +10,16 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row items-center gap-10">
           
           {/* Left: Image */}
-          <div className="flex-1 w-full flex justify-start">
-            <Image
-              src="/landing/about.svg"
-              height={538}
-              width={650}
-              className="object-contain w-full max-w-[600px] h-auto"
-              alt="About"
-            />
+           <div className="flex-1 w-full">
+            <div className="relative w-full h-auto">
+              <Image
+                src="/landing/about.svg"
+                alt="About"
+                width={650}
+                height={538}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
 
           {/* Right: Text */}
@@ -34,7 +36,7 @@ const AboutUs = () => {
               finding the perfect property. Our platform combines cutting-edge
               technology with local expertise to deliver exceptional results.
             </p>
-            <Link href="/about">
+            <Link href="/">
             <button className="mt-6 inline-flex items-center justify-center gap-2 tracking-wider font-medium text-base md:text-lg border bg-gradient-to-t from-[#A68A64] to-[#936639] text-white py-3.5 px-6 rounded-xl hover:opacity-90 transition">
               <Eye color="white" /> See More
             </button>

@@ -1,7 +1,14 @@
 "use client";
-import { ArrowLeft, CircleAlert, Eye, FileText, PenTool } from "lucide-react";
+import {
+  ArrowDownToLine,
+  ArrowLeft,
+  CircleAlert,
+  Eye,
+  FileText,
+  PenTool,
+} from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -86,31 +93,32 @@ const PropertyDetail = [
 
 const ViewSingleProperty = () => {
   const property = PropertyDetail[0];
-//    const [isAgreementOpen, setAgreementOpen] = useState(false);
-//   const [isSignatureOpen, setSignatureOpen] = useState(false);
-//   const [signatureData, setSignatureData] = useState<string | null>(null);
-//   console.log(signatureData);
+
   const [showAgreement, setShowAgreement] = useState(false);
   const [showSignature, setShowSignature] = useState(false);
   const [signatureImage, setSignatureImage] = useState<string | null>(null);
+  const [role, setRole] = useState<string | null>(null);
 
-  // when Confirm & Sign clicked in Agreement
   const handleStartSigning = () => {
-    setShowAgreement(false); // close agreement
-    setShowSignature(true);  // open signature
+    setShowAgreement(false);
+    setShowSignature(true);
   };
 
   const handleSignatureComplete = (signature: string) => {
-    setSignatureImage(signature);      // save signature
-    setShowSignature(false);          // close signature dialog
-    setShowAgreement(true);           // re-open agreement dialog
+    setSignatureImage(signature);
+    setShowSignature(false);
+    setShowAgreement(true);
   };
 
   const handleSubmitAgreement = () => {
     console.log("Agreement submitted with signature:", signatureImage);
     setShowAgreement(false);
   };
-  
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem("role");
+    setRole(storedRole);
+  }, []);
 
   return (
     <div>
@@ -209,12 +217,11 @@ const ViewSingleProperty = () => {
                       rightValue={property.overview.roomNumber}
                     />
                     <OverviewRow
-                    
                       leftLabel="Bathrooms"
                       leftValue={String(property.overview.bathrooms)}
                       rightLabel="Bedrooms"
                       rightValue={String(property.overview.bedrooms)}
-                      isLast 
+                      isLast
                     />
 
                     <div className="mt-4">
@@ -348,31 +355,46 @@ const ViewSingleProperty = () => {
                     </div>
                     <div className="flex gap-2 justify-center items-start">
                       <Button
-                      onClick={() => setShowAgreement(true)}
+                        onClick={() => {
+                          if (role === "buyer") {
+                            setShowAgreement(true);
+                          } else {
+                            alert("Only buyers can view this agreement.");
+                          }
+                        }}
                         id="PurchessAgreement"
                         className="bg-white p-2 hover:bg-white"
                       >
                         <Eye size={25} className="text-[#B99872]" />
                       </Button>
-                      <Button className="bg-white hover:bg-white">
-                        <PenTool className="text-[#B99872]" />
-                      </Button>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <CircleAlert
-                            className="leading-0 text-[#B99872]"
-                            size={16}
-                          />
-                        </TooltipTrigger>
-                        <TooltipContent side="left">
-                          <p className=" font-normal text-[10px]">
-                            The seller hasn&#39;t uploaded the property
-                            documents yet.
-                            <br /> You&#39;ll be able to view and sign them once
-                            they are available.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
+                      {role === "seller" ? (
+                        <Button className="bg-white hover:bg-white">
+                          <ArrowDownToLine className="text-[#B99872]" />
+                        </Button>
+                      ) : (
+                        <Button className="bg-white hover:bg-white">
+                          <PenTool className="text-[#B99872]" />
+                        </Button>
+                      )}
+
+                      {role === "buyer" && (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <CircleAlert
+                              className="leading-0 text-[#B99872]"
+                              size={16}
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent side="left">
+                            <p className=" font-normal text-[10px]">
+                              The seller hasn&#39;t uploaded the property
+                              documents yet.
+                              <br /> You&#39;ll be able to view and sign them
+                              once they are available.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
                     </div>
                   </div>
                   <div className="bg-[#936639]/3 p-4 flex justify-between rounded-2xl ">
@@ -390,6 +412,11 @@ const ViewSingleProperty = () => {
                       <Button className="bg-white hover:bg-white">
                         <Eye className="text-[#B99872]" />
                       </Button>
+                      {role === "seller" && (
+                        <Button className="bg-white hover:bg-white">
+                          <ArrowDownToLine className="text-[#B99872]" />
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -398,13 +425,13 @@ const ViewSingleProperty = () => {
           </div>
         </div>
       </div>
-     
-       <AgreementDialog
+
+      <AgreementDialog
         open={showAgreement}
         onOpenChange={setShowAgreement}
         onSignClick={handleStartSigning}
-        onSaveAgreement={handleSubmitAgreement} 
-         signature={signatureImage}
+        onSaveAgreement={handleSubmitAgreement}
+        signature={signatureImage}
       />
 
       <SignatureDialog
@@ -412,7 +439,6 @@ const ViewSingleProperty = () => {
         onOpenChange={setShowSignature}
         onSubmit={handleSignatureComplete}
       />
-
     </div>
   );
 };
@@ -454,9 +480,9 @@ const OverviewRow = ({
   rightValue,
   isLast = false,
 }: OverviewRowProps) => (
- <div
+  <div
     className={`flex items-center gap-[16px] py-[13px] ${
-      isLast ? '' : 'border-b border-[#E5E8EB]'
+      isLast ? "" : "border-b border-[#E5E8EB]"
     }`}
   >
     <div className="w-[334px]">

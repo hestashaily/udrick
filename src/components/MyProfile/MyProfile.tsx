@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import React, { useState } from "react";
@@ -34,49 +36,32 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="w-full ">
-      {/* <Card className="p-4">
-        <div className="flex gap-6 items-center">
-          <div className="relative">
-            <Avatar className="h-20 w-20">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </div>
-          <div className="mt-2">
-            <h1 className="font-medium text-lg text-[#313131]">
-              {profile.name}
-            </h1>
-            <p className="font-normal text-base text-[#51515]">
-              {profile.email}
-            </p>
-          </div>
-        </div>
-      </Card> */}
+    <div className="w-full px-4 sm:px-6 lg:px-8">
       <ProfileCard />
 
-      <div className="flex justify-between my-8">
-        <h1 className="font-medium text-2xl">Personal Information</h1>
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center my-6 gap-4">
+        <h1 className="font-medium text-xl sm:text-2xl text-center sm:text-left">
+          Personal Information
+        </h1>
         {!isEditing ? (
           <Button
-            className="flex gap-2 items-center px-8 py-6 text-base rounded-xl bg-gradient-to-t from-[#A68A64] to-[#936639] text-white"
+            className="flex gap-2 items-center px-6 py-5 text-sm sm:text-base  bg-gradient-to-t from-[#A68A64] to-[#936639] text-white w-full sm:w-auto justify-center"
             onClick={() => setIsEditing(true)}
           >
             <SquarePen /> Edit Profile
           </Button>
         ) : (
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Button
               onClick={handleCancel}
-              className="bg-transparent border text-black hover:bg-transparent !px-8 !py-6 text-base rounded-xl"
+              className="bg-transparent border text-black hover:bg-transparent px-6 py-5 text-sm sm:text-base  w-full sm:w-auto"
             >
               <X />
               Cancel
             </Button>
             <Button
               onClick={handleSave}
-              //   variant="outline"
-              className="rounded-xl !px-8 !py-6 text-base text-white  bg-gradient-to-t from-[#A68A64] to-[#936639]"
+              className=" px-6 py-5 text-sm sm:text-base text-white bg-gradient-to-t from-[#A68A64] to-[#936639] w-full sm:w-auto"
             >
               <Save />
               Save
@@ -85,17 +70,18 @@ const MyProfile = () => {
         )}
       </div>
 
-      <Card className="p-4 w-full">
-        <div className="flex gap-6">
-          <div>
-            <Avatar className="h-32 w-32">
+      <Card className="p-4 sm:p-6 w-full">
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Avatar Section */}
+          <div className="flex flex-col items-center md:items-start">
+            <Avatar className="h-28 w-28 sm:h-32 sm:w-32">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             {isEditing && (
               <Button
                 variant="outline"
-                className="mt-2 w-full flex gap-2 items-center justify-center text-sm"
+                className="mt-3 w-full flex gap-2 items-center justify-center text-sm"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,16 +107,17 @@ const MyProfile = () => {
               </Button>
             )}
           </div>
+
+          {/* Form Section */}
           <div className="mt-2 w-full">
+            {/* Full Name */}
             <div className="mb-4">
-              <Label className="mb-1 font-medium text-base block">
-                Full Name
-              </Label>
+              <Label className="mb-1 font-medium text-base block">Full Name</Label>
               {isEditing ? (
                 <Input
                   value={tempProfile.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  className="focus:outline-none focus:ring-2"
+                  className="focus:outline-none focus:ring-2 w-full"
                   style={{
                     borderColor: "#936639",
                     borderWidth: "1px",
@@ -138,19 +125,19 @@ const MyProfile = () => {
                   }}
                 />
               ) : (
-                <p>{profile.name}</p>
+                <p className="text-gray-700">{profile.name}</p>
               )}
             </div>
-            <div className="flex w-full gap-6">
-              <div className="w-1/2">
-                <Label className="mb-1 font-medium text-base block">
-                  Mobile Number
-                </Label>
+
+            {/* Mobile & Email */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
+                <Label className="mb-1 font-medium text-base block">Mobile Number</Label>
                 {isEditing ? (
                   <Input
                     value={tempProfile.mobile}
                     onChange={(e) => handleChange("mobile", e.target.value)}
-                    className="focus:outline-none focus:ring-2"
+                    className="focus:outline-none focus:ring-2 w-full"
                     style={{
                       borderColor: "#936639",
                       borderWidth: "1px",
@@ -158,18 +145,16 @@ const MyProfile = () => {
                     }}
                   />
                 ) : (
-                  <p>{profile.mobile}</p>
+                  <p className="text-gray-700">{profile.mobile}</p>
                 )}
               </div>
-              <div className="w-1/2">
-                <Label className="mb-1 font-medium text-base block">
-                  Email
-                </Label>
+              <div className="w-full sm:w-1/2">
+                <Label className="mb-1 font-medium text-base block">Email</Label>
                 {isEditing ? (
                   <Input
                     value={tempProfile.email}
                     onChange={(e) => handleChange("email", e.target.value)}
-                    className="focus:outline-none focus:ring-2"
+                    className="focus:outline-none focus:ring-2 w-full"
                     style={{
                       borderColor: "#936639",
                       borderWidth: "1px",
@@ -177,7 +162,7 @@ const MyProfile = () => {
                     }}
                   />
                 ) : (
-                  <p>{profile.email}</p>
+                  <p className="text-gray-700">{profile.email}</p>
                 )}
               </div>
             </div>
@@ -189,3 +174,4 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
+
