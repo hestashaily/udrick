@@ -9,7 +9,7 @@ const Hero = () => {
 
   return (
     <div
-      className="py-20 bg-no-repeat bg-cover bg-center"
+      className="py-24 bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: "url('/landing/hero.svg')" }}
     >
       <div className="container mx-auto flex flex-col items-center text-center px-4">
@@ -23,7 +23,7 @@ const Hero = () => {
         </p>
 
         {/* Search Card */}
-        <div className="bg-white mt-10 w-full max-w-4xl rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white mt-14 w-full max-w-4xl rounded-xl shadow-md overflow-hidden">
           {/* Tabs */}
           <div className="flex border-b justify-start px-6 pb-1 pt-4 gap-8">
             {["buy", "rent"].map((tab) => (
@@ -31,12 +31,12 @@ const Hero = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab as "buy" | "rent")}
                 className={`relative pb-2 text-sm font-semibold capitalize ${
-                  activeTab === tab ? "text-[#5C3A1E]" : "text-gray-400"
+                  activeTab === tab ? "text-[#936639]" : "text-gray-400"
                 }`}
               >
                 {tab}
                 {activeTab === tab && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] w-[50px] bg-[#5C3A1E]"></span>
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] w-[50px] bg-[#936639] rounded-tl-2xl rounded-tr-2xl"></span>
                 )}
               </button>
             ))}
@@ -73,14 +73,14 @@ const Hero = () => {
               placeholder="Search 1 BHK in Lagos"
               className="flex-1 px-4 py-2  text-sm outline-none"
             />
-            <button className="inline-flex items-center justify-center gap-2 tracking-wider font-medium text-sm md:text-lg border bg-gradient-to-t from-[#A68A64] to-[#936639] text-white py-2 px-6 rounded-xl hover:opacity-90 transition">
+            <button className="inline-flex items-center justify-center gap-2 tracking-wider font-medium text-sm md:text-lg border bg-[#936639] text-white py-2 px-6 rounded-xl hover:opacity-90 transition">
               <Search/> Search
             </button>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4 my-10">
+        <div className="flex gap-4 my-14">
           {/* <Link href="explore-on-map"> */}
           <Link href="/">
 

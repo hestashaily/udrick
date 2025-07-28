@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { FaBed, FaBath } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import { Bath, BedDouble, ChevronLeft, ChevronRight, Heart, SquareDivide } from "lucide-react";
 import Slider, { CustomArrowProps } from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -101,16 +100,17 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
           </Link>
         </p>
 
-        <div className="flex items-center justify-between text-sm text-gray-700  rounded-md overflow-hidden mt-2">
-          <div className="flex-1 flex items-center justify-center border-gray-300 gap-1 py-2 border-r">
-            <FaBed className="text-[#B3884B]" />
+        <div className="flex items-center justify-between text-sm text-gray-700 px-2  rounded-md overflow-hidden mt-2">
+          <div className="flex-1 flex items-center justify-start border-gray-300 gap-2 py-2 border-r">
+            <BedDouble size={18} />
             {beds} Bed
           </div>
           <div className="flex-1 flex items-center justify-center gap-1 py-2 border-gray-300 border-r">
-            <FaBath className="text-[#B3884B]" />
+            <Bath  size={18} />
             {baths} Bath
           </div>
-          <div className="flex-1 flex items-center justify-center gap-1 py-2">
+          <div className="flex-1 flex items-center justify-end gap-1 py-2">
+            <SquareDivide size={18}/>
             {size}
           </div>
         </div>
