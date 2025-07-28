@@ -11,7 +11,7 @@ import StepFour from "./StepFour";
 import StepFive from "./StepFive";
 import StepSix from "./StepSix";
 import StepSeven from "./StepSeven";
-import Link from "next/link";
+
 import { ArrowLeft } from "lucide-react";
 import SignatureCanvas from "react-signature-canvas"; 
 import home from "../../../public/auth-images/home.svg";

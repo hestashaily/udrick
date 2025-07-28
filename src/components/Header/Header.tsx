@@ -162,12 +162,20 @@ const Header = () => {
         {login ? (
           <>
             <div className="flex gap-4 items-center">
-              {/* Notification Bell */}
-              <Link href="/notification">
+             
+              {/* <Link href="/notification">
                 <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
                   <Bell size={18} color="white" />
                 </div>
-              </Link>
+              </Link> */}
+
+              {/* Notification Bell */}
+<Link href={role === "seller" ? "/notification-seller" : "/notification"}>
+  <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
+    <Bell size={18} color="white" />
+  </div>
+</Link>
+
 
               {/* Avatar with Popover */}
               <Popover>
