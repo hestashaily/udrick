@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
@@ -12,8 +12,7 @@ import YourHomePartner from "@/components/LandingPage/YourHomepartner/YourHomePa
 const LandingPage = () => {
   return (
     <div>
-        
-         <Header />
+      <Header />
 
       <Hero />
       <AllProperties />
@@ -22,9 +21,9 @@ const LandingPage = () => {
       <AboutUs />
       <ContactUs />
       <YourHomePartner />
-      <Footer/>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

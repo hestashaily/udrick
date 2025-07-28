@@ -1,8 +1,10 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import React from "react";
+import React, { useState } from "react";
 import RightSideVisitRequest, { VisitRequest } from "./RightSideVisitRequest";
 import LeftPanel, { LeftPanelProps } from "./LeftSideRentListing";
+import ToggleSwitch from "@/components/ReusableComponents/ToggleSwitch";
+import { Building2, Home } from "lucide-react";
 
 const VisitReqCardData: VisitRequest[] = [
   {
@@ -77,6 +79,7 @@ const sellerRentListingData: LeftPanelProps[] = [
 ];
 
 const SellerDashBoard = () => {
+  const [value, setValue] = useState("sell");
   return (
     <div>
       <Header />
@@ -125,7 +128,23 @@ const SellerDashBoard = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div>
+            {/* <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div> */}
+            <div>
+              <ToggleSwitch
+                value={value}
+                onChange={setValue}
+                options={[
+                  { label: "Sell", value: "sell", icon: <Home size={16} /> },
+                  {
+                    label: "Rent",
+                    value: "rent",
+                    icon: <Building2 size={16} />,
+                  },
+                ]}
+                activeColors={{ from: "#9c6b3c", to: "#b38758" }}
+                borderColor="#b38758"
+              />
+            </div>
           </div>
         </div>
 
