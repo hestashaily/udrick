@@ -2,13 +2,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import CommonLogin from "../../../components/SharedComponents/CommonLogin";
+import Link from "next/link";
 
 export default function UserTypePage() {
-  const [selectedRole, setSelectedRole] = useState<"buyer" | "seller" | null>(null);
-  const [isConfirmed, setIsConfirmed] = useState(false); 
+  const [selectedRole, setSelectedRole] = useState<"buyer" | "seller" | null>(
+    null
+  );
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   console.log(selectedRole);
-  
 
   const handleSelect = (role: "buyer" | "seller") => {
     setSelectedRole(role);
@@ -30,14 +32,15 @@ export default function UserTypePage() {
 
   return (
     <div className="flex items-center justify-center flex-col rounded-xl max-w-[388px] w-full py-[65px] ">
+      <Link href="/">
       <Image
         src="/auth-images/udrick-logo.png"
         alt="udrick logo"
         width={88}
         height={110}
         className="pb-[40px]"
-      />
-
+        />
+        </Link>
 
       {!isConfirmed && (
         <>
@@ -54,7 +57,12 @@ export default function UserTypePage() {
               selectedRole === "buyer" ? "bg-[#936639] text-white" : ""
             }`}
           >
-            <Image src="/auth-images/seller.png" alt="buyer" width={54} height={54} />
+            <Image
+              src="/auth-images/seller.png"
+              alt="buyer"
+              width={54}
+              height={54}
+            />
             <div>
               <p
                 className={`font-[500] text-[16px] ${
@@ -78,7 +86,12 @@ export default function UserTypePage() {
               selectedRole === "seller" ? "bg-[#936639] text-white" : ""
             }`}
           >
-            <Image src="/auth-images/buyer.png" alt="seller" width={54} height={54} />
+            <Image
+              src="/auth-images/buyer.png"
+              alt="seller"
+              width={54}
+              height={54}
+            />
             <div>
               <p
                 className={`font-[500] text-[16px] ${

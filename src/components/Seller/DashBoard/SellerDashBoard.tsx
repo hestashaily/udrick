@@ -129,7 +129,7 @@ const SellerDashBoard = () => {
             </div>
 
             {/* <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div> */}
-            <div>
+            <div className="mt-2 md:mt-0">
               <ToggleSwitch
                 value={value}
                 onChange={setValue}

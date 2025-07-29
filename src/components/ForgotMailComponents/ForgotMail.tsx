@@ -1,17 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import ResetEmail from "@/app/components/ForgotMailComponents/SubComponents/ResetEmail";
-import OtpEmail from "@/app/components/ForgotMailComponents/SubComponents/OtpEmail";
-import SetPassword from "@/app/components/ForgotMailComponents/SubComponents/setpass";
-import SuccessPassword from "./SubComponents/SuccessPassword";
 
-const SuccessComponent = () => (
-  <div className="text-center mt-20">
-    <h2 className="text-2xl font-bold text-green-600">Password Set Successfully!</h2>
-    <p className="mt-4 text-gray-600">You can now log in with your new password.</p>
-  </div>
-);
+import SuccessPassword from "./SubComponents/SuccessPassword";
+import ResetEmail from "./SubComponents/ResetEmail";
+import OtpEmail from "./SubComponents/OtpEmail";
+import SetPassword from "./SubComponents/setpass";
+
+
 
 const ForgotMail = () => {
   const [step, setStep] = useState<"email" | "otp" | "setpass" | "success">("email");

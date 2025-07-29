@@ -30,20 +30,20 @@ export default function ToggleSwitch({
 }: ToggleSwitchProps) {
   return (
     <div
-      className={clsx(
-        "relative inline-flex rounded-full p-1 overflow-hidden border",
-        `border-[${borderColor}]`
-      )}
+    className="relative inline-flex rounded-full p-1 overflow-hidden border"
+      style={{ borderColor }}
     >
       {/* Active Background Slider */}
       <div
         className={clsx(
           "absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full transition-all duration-300",
-          `bg-gradient-to-r from-[${activeColors.from}] to-[${activeColors.to}]`,
           value === options[1]?.value
-            ? "translate-x-[calc(94%+0.6rem)]"
+            ? "translate-x-[calc(94%+0.4rem)]"
             : "translate-x-0"
         )}
+        style={{
+          background: `linear-gradient(to right, ${activeColors.from}, ${activeColors.to})`,
+        }}
       />
 
       {/* Toggle Items */}

@@ -81,8 +81,8 @@ const Hero = () => {
 
         {/* Action Buttons */}
         <div className="flex gap-4 my-14">
-          {/* <Link href="explore-on-map"> */}
-          <Link href="/">
+          <Link href="explore-on-map">
+          {/* <Link href="/"> */}
 
           <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-3 md:px-6 py-3.5 rounded-full text-[12px] md:text-sm font-medium shadow">
             <MapPin size={18}/> Explore on Map

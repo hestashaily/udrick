@@ -23,11 +23,13 @@ type Property = {
   beds: number;
   baths: number;
   sqft: number;
+  actionType?: "rent" | "sell";
 };
 
 interface PropertyCardProps {
   property: Property;
   onMarkAsRented: (id: number) => void;
+  onMarkAsSold: (id: number) => void;
 }
 
 const statusColors: Record<Property["status"], string> = {
@@ -39,13 +41,14 @@ const statusColors: Record<Property["status"], string> = {
 export default function SellerPropertyHistoryCard({
   property,
   onMarkAsRented,
+  onMarkAsSold
 }: PropertyCardProps) {
   const router = useRouter();
   const handleViewDetails = () => {
     router.push(`/view-property?id=${property.id}`);
   };
   return (
-    <Card className="rounded-2xl p-0 shadow-md overflow-hidden w-[360px]">
+    <Card className="rounded-2xl p-0 shadow-md overflow-hidden w-[340px]  ">
       {/* Image + Status */}
       <div className="relative w-full rounded-2xl  h-[250px]">
         <Image
@@ -93,14 +96,25 @@ export default function SellerPropertyHistoryCard({
 
         {/* Buttons */}
         <div className="flex gap-3 my-4">
-          {property.status === "Available" && (
-            <Button
-              className="bg-gradient-to-t from-[#A68A64] to-[#936639]  text-white w-1/2 rounded-full"
-              onClick={() => onMarkAsRented(property.id)}
-            >
-              <CircleCheckBig /> Mark as Rented
-            </Button>
-          )}
+          {property.status === "Available" &&
+            property.actionType === "rent" && (
+              <Button
+                className="bg-gradient-to-t from-[#A68A64] to-[#936639] text-white w-1/2 rounded-full"
+                onClick={() => onMarkAsRented(property.id)}
+              >
+                <CircleCheckBig /> Mark as Rented
+              </Button>
+            )}
+
+          {property.status === "Available" &&
+            property.actionType === "sell" && (
+              <Button
+                className="bg-gradient-to-t from-[#A68A64] to-[#936639] text-white w-1/2 rounded-full"
+                onClick={() => onMarkAsSold(property.id)}
+              >
+                <CircleCheckBig /> Mark as Sold
+              </Button>
+            )}
 
           <Button
             onClick={handleViewDetails}

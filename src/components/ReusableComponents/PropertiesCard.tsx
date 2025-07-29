@@ -65,7 +65,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   return (
     <div className="max-w-[450px] w-full bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Image Slider */}
-      <div className="relative  w-full h-[360px]">
+      <div className="relative  w-full ">
         <Heart size={30} className="absolute top-3 cursor-pointer right-3 z-20  text-white  "/>
 
         <Slider {...settings}>
@@ -76,7 +76,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
                 alt={`Property ${index}`}
                 width={370}
                 height={350}
-                className="w-full h-[340px] object-cover"
+                className="w-full h-[280px] md:h-[340px]  object-cover"
               />
             </div>
           ))}

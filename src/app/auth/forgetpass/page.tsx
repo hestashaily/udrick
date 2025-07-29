@@ -20,9 +20,9 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-full w-full">
-      <div className="flex items-center gap-[7px] justify-start pl-[28px]">
-        <Link href="/" className="flex gap-[7px] items-center">
+    <div className="flex flex-col  max-w-full w-full">
+      <div className="flex items-center  gap-[7px] justify-start pl-[28px]">
+        <Link href="/auth/usertype" className="flex absolute top-6 md:top-4 left-6  gap-[7px] items-center">
           <Image
             src="/auth-images/back.png"
             alt="back"

@@ -17,16 +17,19 @@ import {
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {  useAppSelector } from "@/redux/hooks";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
-interface Props {
-  selectedOption?: string | null;
-}
 
-export default function AddListingForm({selectedOption}:Props) {
+
+export default function AddListingForm() {
   const router = useRouter();
   const [propertyType, setPropertyType] = useState<string | undefined>("");
    const {  step } = useAppSelector((state) => state.step);
-   console.log(selectedOption);
+   const selectedOption = useSelector(
+     (state: RootState) => state.selectedListing.selectedOption
+    );
+    console.log(selectedOption);
    
 
   const handleNavigate = () => {

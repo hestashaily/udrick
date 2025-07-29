@@ -35,7 +35,7 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
       {/* MOBILE UI */}
       <div className="lg:hidden block">
         {/* Header */}
-        <div className="bg-gradient-to-t from-[#A68A64] to-[#936639] p-4 flex items-center text-white">
+        <div className="bg-gradient-to-t from-[#A68A64] to-[#936639] p-2 flex items-center text-white">
           {isMainMenu ? (
             <>
               <Link href="/">
@@ -57,11 +57,11 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
           <>
             {/* ✅ Menu Page */}
             <div className="flex items-center gap-4 p-4">
-              <Image src="/avatar.png" alt="Profile" width={60} height={60} className="rounded-full" />
+              <Image src="/chat/user.svg" alt="Profile" width={60} height={60} className="rounded-full" />
               <div>
                 <h2 className="font-semibold">Name Ipsum</h2>
                 <p className="text-gray-500 text-sm">example@mail.com</p>
-                <Link href="/profile/edit" className="text-[#A68A64] text-sm">Edit Profile</Link>
+               
               </div>
             </div>
 
