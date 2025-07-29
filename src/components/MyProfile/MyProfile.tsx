@@ -36,7 +36,7 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8">
+    <div className="w-full  ">
       <ProfileCard />
 
       <div className="flex flex-col sm:flex-row justify-between sm:items-center my-6 gap-4">
