@@ -78,70 +78,65 @@ const sellerRentListingData: LeftPanelProps[] = [
 
 const SellerDashBoard = () => {
   return (
-    <div className="">
+    <div>
       <Header />
-      <div className="min-h-screen ">
+      <div className="min-h-screen">
         <div className="bg-white shadow">
           <div className="container mx-auto p-4">
-            <div className="flex gap-6 justify-between pr-6">
+            {/* Top Section */}
+            <div className="flex flex-col lg:flex-row gap-6 justify-between">
               <div>
-                <h1 className="text-4xl font-medium">
-                  Hello, Alex Johnson! 👋
+                <h1 className="text-2xl md:text-4xl font-medium">
+                  Hello, Alex Johnson! 👋
                 </h1>
-                <p className="text-base font-normal text-[#6D6D6D]">
+                <p className="text-sm md:text-base font-normal text-[#6D6D6D]">
                   Welcome back to your seller dashboard. Manage your properties
                   and connect with buyers.
                 </p>
               </div>
-              <div className="py-4 px-8 bg-white flex justify-around items-center gap-10 shadow rounded-2xl">
-                <div className=" flex items-center justify-between flex-col space-y-2">
-                  <p className="h-10 text-xl text-[#313131] bg-[#313131]/10 w-10 flex justify-center items-center rounded-full border">
-                    0
-                  </p>
-                  <p className="text-[#6D6D6D] font-normal text-base">All</p>
-                </div>
-                <div className=" flex items-center justify-between flex-col space-y-2">
-                  <p className="h-10 w-10 text-xl text-[#34A853]  bg-[#34A853]/10 flex justify-center items-center rounded-full border">
-                    0
-                  </p>
-                  <p className="text-[#6D6D6D] font-normal text-base">
-                    Available
-                  </p>
-                </div>
-                <div className=" flex items-center justify-between flex-col space-y-2">
-                  <p className="h-10 w-10 text-xl text-[#EF9D30] bg-[#EF9D30]/10 flex justify-center items-center rounded-full border">
-                    0
-                  </p>
-                  <p className="text-[#6D6D6D] font-normal text-base">
-                    Pending
-                  </p>
-                </div>
-                <div className=" flex items-center justify-between flex-col space-y-2">
-                  <p className="h-10 w-10 text-xl text-[#EF9D30] bg-[#EF9D30]/10 flex justify-center items-center rounded-full border">
-                    0
-                  </p>
-                  <p className="text-[#6D6D6D] font-normal text-base">Rented</p>
-                </div>
-                <div className=" flex items-center justify-between flex-col space-y-2">
-                  <p className="h-10 w-10 text-xl text-[#367DC9] bg-[#367DC9]/10 flex justify-center items-center rounded-full border">
-                    0
-                  </p>
-                  <p className="text-[#6D6D6D] font-normal text-base">Sold</p>
-                </div>
+
+              {/* Stats Section */}
+              <div className="py-4 px-6 bg-white flex flex-wrap justify-around items-center gap-6 shadow rounded-2xl">
+                {[
+                  { label: "All", color: "#313131" },
+                  { label: "Available", color: "#34A853" },
+                  { label: "Pending", color: "#EF9D30" },
+                  { label: "Rented", color: "#EF9D30" },
+                  { label: "Sold", color: "#367DC9" },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between flex-col space-y-2"
+                  >
+                    <p
+                      className="h-10 w-10 text-xl flex justify-center items-center rounded-full border"
+                      style={{
+                        color: item.color,
+                        backgroundColor: `${item.color}20`,
+                      }}
+                    >
+                      0
+                    </p>
+                    <p className="text-[#6D6D6D] font-normal text-sm md:text-base">
+                      {item.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div>Sell/Rent</div>
+
+            <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div>
           </div>
         </div>
-        <div className=" flex items-center justify-center">
-          <div className="container  mx-auto py-6">
-            <div className="flex flex-col md:flex-row gap-4">
-              {/* Left box */}
 
+        {/* Main Content */}
+        <div className="flex items-center justify-center">
+          <div className="container mx-auto py-6">
+            <div className="flex flex-col lg:flex-row px-2 md:px-0 gap-6">
+              {/* Left Panel */}
               <LeftPanel listings={sellerRentListingData} />
 
-              {/* Right box */}
-
+              {/* Right Panel */}
               <RightSideVisitRequest data={VisitReqCardData} />
             </div>
           </div>

@@ -1,9 +1,11 @@
 // components/SellerDashboard/LeftPanel.tsx
-import { Plus } from "lucide-react";
+import { CloudUpload, Plus } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import SellerRentListingCard from "../SellerRentListingCard/SellerRentListingCard";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export interface LeftPanelProps {
  
@@ -25,6 +27,7 @@ interface LeftSideVisitRequestsProps {
 
 const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
   const router = useRouter()
+  const [open, setOpen] = useState(false);
   return (
     <div className="w-full md:w-2/3 rounded-xl">
       {listings.length > 0 && (
@@ -44,7 +47,7 @@ const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
         </div>
       )}
       {listings.length > 0 ? (
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-5">
           {listings.map((item) => (
             <SellerRentListingCard key={item.id} {...item} />
           ))}
@@ -65,11 +68,45 @@ const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
             Start listing now to attract potential buyers and maximize your
             reach.
           </p>
-          <button className="px-6 flex items-center py-2 mt-2 text-sm font-normal rounded-2xl bg-gradient-to-t from-[#A68A64] to-[#936639] text-white">
+          <button   onClick={() => setOpen(true)} className="px-6 flex items-center py-2 mt-2 text-sm font-normal rounded-2xl bg-gradient-to-t from-[#A68A64] to-[#936639] text-white">
             Add a Listing
           </button>
         </div>
       )}
+
+
+
+      {/* Diloage for upload docuemnt */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="!max-w-xl !py-15 px-12 rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-center">
+              Upload business licenses & ID for verification
+            </DialogTitle>
+          </DialogHeader>
+          <p className="text-center text-sm text-gray-500">
+            Verify Your Identity & List Properties Securely. Ensuring a trusted marketplace by verifying seller credentials before listing properties.
+          </p>
+
+          <div className=" rounded-xl shadow-md p-4 flex flex-col items-center gap-2 mt-4">
+            <div className="text-4xl text-[#936639]"><CloudUpload size={50}/></div>
+            <p className="font-medium text-base">Upload business licenses & ID for verification</p>
+            <p className="text-[13px] font-normal  text-[#8C8C8C]">Accepted formats are .jpg, .png, .pdf</p>
+          </div>
+
+          <Button className="w-full font-medium tracking-wider text-base py-6 bg-gradient-to-r from-[#C69C6D] to-[#936639] text-white  mt-4">
+            Submit for Approval
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full py-6 font-medium text-base "
+            onClick={() => setOpen(false)}
+          >
+            Skip
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

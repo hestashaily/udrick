@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div
       className="py-20 bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: "url('/landing/hero.png')" }}
+      style={{ backgroundImage: "url('/landing/hero.svg')" }}
     >
       <div className="container mx-auto flex flex-col items-center text-center px-4">
         <h1 className="text-white font-bold text-3xl md:text-6xl leading-tight">
@@ -81,12 +81,14 @@ const Hero = () => {
 
         {/* Action Buttons */}
         <div className="flex gap-4 my-10">
-          <Link href="explore-on-map">
-          <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-3 md:px-6 py-2 rounded-full text-[12px] md:text-sm font-medium shadow">
+          {/* <Link href="explore-on-map"> */}
+          <Link href="/">
+
+          <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-3 md:px-6 py-3.5 rounded-full text-[12px] md:text-sm font-medium shadow">
             <MapPin size={18}/> Explore on Map
           </button>
           </Link>
-          <button className="flex items-center gap-2 bg-white px-3 md:px-6 py-2 rounded-full text-[12px] md:text-sm font-medium shadow border">
+          <button className="flex items-center gap-2 bg-white px-3 md:px-6 py-3 rounded-full text-[12px] md:text-sm font-medium shadow border">
             <Logs size={18}/> Browse Listings
           </button>
         </div>

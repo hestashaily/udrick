@@ -69,7 +69,7 @@ const AddUnitDetails = () => {
 
         <div className="rounded-md my-5 bg-white border-gray-100 border shadow py-6 px-8">
           {step === 1 ? (
-            <AddUnitDetailForm propertyType={propertyType} />
+            <AddUnitDetailForm  propertyType={propertyType} />
           ) : (
             <UnitDetailsUploadDoc
               propertyType={propertyType}

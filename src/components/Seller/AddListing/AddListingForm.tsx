@@ -18,11 +18,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {  useAppSelector } from "@/redux/hooks";
 
-export default function AddListingForm() {
+interface Props {
+  selectedOption?: string | null;
+}
+
+export default function AddListingForm({selectedOption}:Props) {
   const router = useRouter();
   const [propertyType, setPropertyType] = useState<string | undefined>("");
    const {  step } = useAppSelector((state) => state.step);
-   console.log(step);
+   console.log(selectedOption);
    
 
   const handleNavigate = () => {
@@ -30,7 +34,6 @@ export default function AddListingForm() {
       alert("Please select a property type.");
       return;
     }
-    // router.push(`/add-listing/add-unit-details?type=${propertyType}`);
     router.push(`/add-listing/add-unit-details?type=${propertyType}&step=${step}`);
   };
 
@@ -38,15 +41,15 @@ export default function AddListingForm() {
     <div className="w-full mt-4 space-y-5 ">
       {/* Seller Type */}
       <div className="">
-        <label className="text-sm font-medium">Seller Type</label>
+        <label className="text-sm font-medium">{selectedOption === "sell" ? "Seller Type" :"Landlord Type" }</label>
         <Select>
           <SelectTrigger className="w-full py-5 mt-2 h-auto">
             <SelectValue placeholder="Select" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="owner">Owner</SelectItem>
-            <SelectItem value="realtor">Realtor</SelectItem>
-            <SelectItem value="developer">Developer</SelectItem>
+            <SelectItem value="realtor">{selectedOption === "sell" ? "Realtor" :"Agent" }</SelectItem>
+            <SelectItem value="developer">{selectedOption === "sell" ? "Developer" :"Propert Manager" }</SelectItem>
           </SelectContent>
         </Select>
       </div>
