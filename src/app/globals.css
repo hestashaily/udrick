@@ -244,13 +244,18 @@ abbr:where([title]) {
     transform: rotate(360deg);
   }
 }
-
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+@keyframes l11-2 {
+  0%,49.99% {background:#EB9F9F}
+  50%,100%  {background:#A79C8E}
 }
 
-/* Loader end */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

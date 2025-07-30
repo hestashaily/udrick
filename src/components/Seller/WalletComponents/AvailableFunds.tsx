@@ -1,200 +1,61 @@
-// import React from "react";
-// import Image from "next/image";
 
-// const AvailableFunds = () => {
-//   return (
-//     <div className="flex items-center gap-[20px]">
-//       <div className="max-w-[544px] w-full rounded-[12px] shadow-[0px_2px_8px_0px_#63636333] p-[15px]">
-//         <Image
-//           src="/seller/wallet/fund-img.png"
-//           alt="fund-img"
-//           width={510}
-//           height={226}
-//           className="w-[510px] h-[226px] rounded-[10px] cursor-pointer"
-//         />
-//         <div className="mt-[17px]">
-//           <div className="flex items-center justify-between">
-//             <p className="font-[500] text-[20px] text-[#313131]">
-//               5 Bedroom Detached Duplex
-//             </p>
-//             <button className="py-[5px] px-[12px] bg-[#9366391A] rounded-full font-[500] text-[14px] text-[#936639]">
-//               Rented
-//             </button>
-//           </div>
-//           <div className="flex items-center mt-[8px] gap-[8px]">
-//             <Image
-//               src="/seller/wallet/location.png"
-//               alt="location"
-//               width={10}
-//               height={14}
-//               className="w-[14px] h-[14px] rounded-[10px] cursor-pointer"
-//             />
-//             <p className="font-[400] text-[14px] text-[#6E7070]">
-//               Victoria Island (VI), Lagos
-//             </p>
-//           </div>
-//           <div>
-//             <div className="flex items-center gap-[16px] mt-[15px]">
-//               <p className="font-[400] text-[16px] text-[#8C8C8C]">
-//                 Amount Received:
-//               </p>
-//               <span className="font-[700] text-[20px] text-[#936639]">
-//                 ₦36,000
-//               </span>
-//             </div>
-//             <div className="flex items-center gap-[16px] mt-[10px]">
-//               <p className="font-[400] text-[16px] text-[#8C8C8C]">Date:</p>
-//               <span className="font-[500] text-[16px] text-[#515151]">
-//                 April 24, 2025 | 04:00 PM
-//               </span>
-//             </div>
-//             <button className=" flex items-center justify-center gap-[6px] mt-[20px] w-full p-[14px] font-[500] text-[12px] text-white rounded-[15px] bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]">
-//               <Image
-//                 src="/seller/wallet/download.png"
-//                 alt="download"
-//                 width={20}
-//                 height={20}
-//                 className="w-[20px] h-[20px] rounded-[10px] cursor-pointer"
-//               />
-//               Request Withdrawal
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//         <div className="max-w-[544px] w-full rounded-[12px] shadow-[0px_2px_8px_0px_#63636333] p-[15px]">
-//         <Image
-//           src="/seller/wallet/fund-img.png"
-//           alt="fund-img"
-//           width={510}
-//           height={226}
-//           className="w-[510px] h-[226px] rounded-[10px] cursor-pointer"
-//         />
-//         <div className="mt-[17px]">
-//           <div className="flex items-center justify-between">
-//             <p className="font-[500] text-[20px] text-[#313131]">
-//               5 Bedroom Detached Duplex
-//             </p>
-//             <button className="py-[5px] px-[12px] bg-[#9366391A] rounded-full font-[500] text-[14px] text-[#936639]">
-//               Sold
-//             </button>
-//           </div>
-//           <div className="flex items-center mt-[8px] gap-[8px]">
-//             <Image
-//               src="/seller/wallet/location.png"
-//               alt="location"
-//               width={10}
-//               height={14}
-//               className="w-[14px] h-[14px] rounded-[10px] cursor-pointer"
-//             />
-//             <p className="font-[400] text-[14px] text-[#6E7070]">
-//               Victoria Island (VI), Lagos
-//             </p>
-//           </div>
-//           <div>
-//             <div className="flex items-center gap-[16px] mt-[15px]">
-//               <p className="font-[400] text-[16px] text-[#8C8C8C]">
-//                 Amount Received:
-//               </p>
-//               <span className="font-[700] text-[20px] text-[#936639]">
-//                 ₦36,000
-//               </span>
-//             </div>
-//             <div className="flex items-center gap-[16px] mt-[10px]">
-//               <p className="font-[400] text-[16px] text-[#8C8C8C]">Date:</p>
-//               <span className="font-[500] text-[16px] text-[#515151]">
-//                 April 24, 2025 | 04:00 PM
-//               </span>
-//             </div>
-//             <button className=" flex items-center justify-center gap-[6px] mt-[20px] w-full p-[14px] font-[500] text-[12px] text-white rounded-[15px] bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]">
-//               <Image
-//                 src="/seller/wallet/download.png"
-//                 alt="download"
-//                 width={20}
-//                 height={20}
-//                 className="w-[20px] h-[20px] rounded-[10px] cursor-pointer"
-//               />
-//               Request Withdrawal
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AvailableFunds;
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import OriginalDocument from "./OriginalDocument"; // adjust path if needed
+import AccountDetailsPopup from "./AccountDetailsPopup";
+import FundCard from "./FundCard";
+import Invoice from "./Invoice";
+import OriginalDocument from "./OriginalDocument";
+import SignatureComponent from "./SignatureComponent";
+import SuccessPopup from "./SuccessPopup";
 
 const AvailableFunds = () => {
-  const [showDocument, setShowDocument] = useState(false);
+  const [step, setStep] = useState<
+    null | "document" | "signature" | "invoice" | "account" | "success"
+  >(null);
 
   return (
-    <div className="flex items-center gap-[20px]">
-      <div className="max-w-[544px] w-full rounded-[12px] shadow-[0px_2px_8px_0px_#63636333] p-[15px]">
-        <Image
-          src="/seller/wallet/fund-img.png"
-          alt="fund-img"
-          width={510}
-          height={226}
-          className="w-[510px] h-[226px] rounded-[10px] cursor-pointer"
-        />
-        <div className="mt-[17px]">
-          <div className="flex items-center justify-between">
-            <p className="font-[500] text-[20px] text-[#313131]">
-              5 Bedroom Detached Duplex
-            </p>
-            <button
-              onClick={() => setShowDocument(true)}
-              className="py-[5px] px-[12px] bg-[#9366391A] rounded-full font-[500] text-[14px] text-[#936639]"
-            >
-              Rented
-            </button>
-          </div>
-          <div className="flex items-center mt-[8px] gap-[8px]">
-            <Image
-              src="/seller/wallet/location.png"
-              alt="location"
-              width={10}
-              height={14}
-              className="w-[14px] h-[14px] rounded-[10px] cursor-pointer"
-            />
-            <p className="font-[400] text-[14px] text-[#6E7070]">
-              Victoria Island (VI), Lagos
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-[16px] mt-[15px]">
-              <p className="font-[400] text-[16px] text-[#8C8C8C]">
-                Amount Received:
-              </p>
-              <span className="font-[700] text-[20px] text-[#936639]">
-                ₦36,000
-              </span>
-            </div>
-            <div className="flex items-center gap-[16px] mt-[10px]">
-              <p className="font-[400] text-[16px] text-[#8C8C8C]">Date:</p>
-              <span className="font-[500] text-[16px] text-[#515151]">
-                April 24, 2025 | 04:00 PM
-              </span>
-            </div>
-            <button className=" flex items-center justify-center gap-[6px] mt-[20px] w-full p-[14px] font-[500] text-[12px] text-white rounded-[15px] bg-[linear-gradient(360deg,_#EFD9C7_-62.61%,_#A68A64_25.65%,_#936639_113.91%)]">
-              <Image
-                src="/seller/wallet/download.png"
-                alt="download"
-                width={20}
-                height={20}
-                className="w-[20px] h-[20px] rounded-[10px] cursor-pointer"
-              />
-              Request Withdrawal
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="flex flex-wrap gap-[20px]">
+      <FundCard label="Sold" onClick={() => setStep("document")} />
+      <FundCard label="Purchase" onClick={() => setStep("document")} />
 
-      {showDocument && <OriginalDocument onClose={() => setShowDocument(false)} />}
+      {step && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-50">
+         {step === "document" && (
+  <OriginalDocument
+    onClose={() => setStep(null)}
+    onNext={() => setStep("signature")}  
+    onSkip={() => setStep("invoice")}  
+  />
+)}
+
+
+
+          {step === "signature" && (
+            <SignatureComponent
+              onNext={() => setStep("invoice")}
+              onClose={() => setStep(null)}
+            />
+          )}
+
+          {step === "invoice" && (
+            <Invoice
+              onNext={() => setStep("account")}
+              onClose={() => setStep(null)}
+            />
+          )}
+
+          {step === "account" && (
+            <AccountDetailsPopup
+              onNext={() => setStep("success")}
+              onClose={() => setStep(null)}
+            />
+          )}
+
+          {step === "success" && (
+            <SuccessPopup onClose={() => setStep(null)} />
+          )}
+        </div>
+      )}
     </div>
   );
 };

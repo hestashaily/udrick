@@ -25,7 +25,7 @@ const WalletBalance = () => {
           </div>
         </div>
       </div>
-      <div className="my-[20px] bg-[#FAFAFA] ">
+      <div className="py-[20px] bg-[#FAFAFA] ">
       <div className="max-w-[1152px] w-full m-auto p-[16px] bg-white rounded-[12px] py-[12px]">
         <div className="bg-[url('/seller/wallet/wallet-bg.png')] h-[266px] bg-cover p-[40px] rounded-[25px]">
           <div className="flex items-end justify-end flex-col mt-[4px]">
