@@ -28,8 +28,8 @@ const SecureWallet: React.FC<SecureWalletProps> = ({ onSetPin }) => {
         </div>
       </div>
 
-      <div className="flex-1 flex justify-center items-center">
-        <div className="max-w-[412px] w-full shadow-[0px_7px_29px_0px_#64646F33] bg-white rounded-[20px] p-6 text-center">
+      <div className="flex-1 flex justify-center items-center md:m-[0px] m-[10px]">
+        <div className="max-w-[412px] w-full shadow-[0px_7px_29px_0px_#64646F33] bg-white rounded-[20px] p-6 text-center  ">
           <Image
             src="/seller/wallet/securewallet.png"
             alt="securewallet"
