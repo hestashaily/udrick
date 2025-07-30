@@ -47,7 +47,7 @@ export default function VisitRequestCard({
         <CardContent className="p-4 space-y-4">
           {/* ✅ Responsive Flex Layout */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
-           <div className="flex flex-col items-center md:flex-row gap-8">
+           <div className="flex flex-col items-center md:flex-row gap-4">
              {/* ✅ Left Section - Image */}
             <div className="flex-shrink-0">
               <Image
@@ -106,7 +106,7 @@ export default function VisitRequestCard({
            {/* ✅ Right Section - Status Badge */}
             <div
               className={clsx(
-                "flex items-center gap-2 px-3 py-1 justify-end border rounded-full text-xs sm:text-sm font-medium self-center md:self-center",
+                "flex items-center gap-2 px-3 py-1  border rounded-full text-xs sm:text-sm font-medium self-center md:self-center",
                 statusConfig[status].color
               )}
             >

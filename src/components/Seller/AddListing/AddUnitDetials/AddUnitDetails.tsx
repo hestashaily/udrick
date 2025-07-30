@@ -113,10 +113,10 @@ const AddUnitDetails = () => {
           }
         }}
       >
-        <DialogContent className="sm:max-w-md text-center">
+        <DialogContent className="sm:max-w-sm text-center">
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold">
-              Unit Details Added Successfully!
+            <DialogTitle className="text-lg text-center font-semibold">
+              Unit Details Added<br/> Successfully!
             </DialogTitle>
           </DialogHeader>
         </DialogContent>

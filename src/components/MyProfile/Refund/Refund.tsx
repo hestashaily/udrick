@@ -154,8 +154,8 @@ const Refund = () => {
             onValueChange={setActiveTab}
             className="w-full px-4"
           >
-            <TabsList className="flex w-full justify-between rounded-xl shadow bg-[#F7F7F7] px-4  py-6">
-              <TabsTrigger className="!py-5" value="all">
+            <TabsList className="flex w-full justify-between overflow-x-auto overflow-y-hidden rounded-xl shadow bg-[#F7F7F7] px-2  py-6">
+              <TabsTrigger className="!py-4 !px-4" value="all">
                 Properties (
                 {
                   listingsData.filter(

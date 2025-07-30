@@ -122,7 +122,7 @@ const Header = () => {
       {/* // <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-[#FCBE4B] py-3"> */}
 
       <header className="flex items-center justify-between px-4 lg:px-0 mx-auto container">
-        {/* ✅ Logo */}
+        {/*  Logo */}
         <Link href="/">
           <Image
             src="/header/logo.svg"
@@ -133,7 +133,7 @@ const Header = () => {
           />
         </Link>
 
-        {/* ✅ Desktop Navigation */}
+        {/*  Desktop Navigation */}
         <nav className="hidden lg:flex items-center font-normal text-base text-[#002855]">
           <ul className="flex items-center gap-3">
             {navItems.map((item) => (
@@ -154,11 +154,11 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* ✅ Right Side Actions */}
+        {/*  Right Side Actions */}
         <div className="flex gap-4 items-center">
           {login ? (
             <>
-              {/* ✅ Notification Bell */}
+              {/*  Notification Bell */}
               <Link
                 href={
                   role === "seller" ? "/notification-seller" : "/notification"
@@ -170,7 +170,7 @@ const Header = () => {
                 </div>
               </Link>
 
-              {/* ✅ Avatar Popover */}
+              {/*  Avatar Popover */}
               <Popover>
                 <PopoverTrigger asChild>
                   <div className="cursor-pointer">
@@ -223,7 +223,7 @@ const Header = () => {
               </Popover>
             </>
           ) : (
-            // ✅ Show Post Property & Login ONLY on desktop
+            //  Show Post Property & Login ONLY on desktop
             <div className="hidden lg:flex gap-3">
               <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm">
                 Post Property
@@ -236,7 +236,7 @@ const Header = () => {
             </div>
           )}
 
-          {/* ✅ Always show Hamburger on Mobile */}
+          {/*  Always show Hamburger on Mobile */}
           <button
             onClick={toggleMenu}
             aria-label="Toggle Menu"
@@ -251,7 +251,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* ✅ Mobile Sliding Sheet */}
+      {/*  Mobile Sliding Sheet */}
       <div className="lg:hidden">
         {isOpen && (
           <div
@@ -270,7 +270,7 @@ const Header = () => {
               <X className="w-6 h-6" />
             </button>
 
-            {/* ✅ Use same navItems for mobile */}
+            {/*  Use same navItems for mobile */}
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -283,7 +283,7 @@ const Header = () => {
               </Link>
             ))}
 
-            {/* ✅ Show Post Property & Login ONLY inside slider on mobile */}
+            {/*  Show Post Property & Login ONLY inside slider on mobile */}
             {!login && (
               <div className="flex flex-col gap-2 mt-3">
                 <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm">

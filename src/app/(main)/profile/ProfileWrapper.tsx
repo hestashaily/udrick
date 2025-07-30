@@ -89,6 +89,10 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
                 href="/profile/property-history"
               />
               <MenuLink
+                label="Refund"
+                href="/profile/refund"
+              />
+              <MenuLink
                 label="Uploaded License/ID"
                 href="/profile/upload-document"
               />

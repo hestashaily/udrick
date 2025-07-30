@@ -99,7 +99,7 @@ const SellerDashBoard = () => {
               </div>
 
               {/* Stats Section */}
-              <div className="py-4 px-6 bg-white flex flex-wrap justify-around items-center gap-6 shadow rounded-2xl">
+              <div className="py-4 px-6 bg-white flex flex-wrap justify-around items-center gap-6 md:gap-10 shadow rounded-2xl">
                 {[
                   { label: "All", color: "#313131" },
                   { label: "Available", color: "#34A853" },
@@ -109,10 +109,10 @@ const SellerDashBoard = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between flex-col space-y-2"
+                    className="flex items-center justify-between flex-col space-y-1"
                   >
                     <p
-                      className="h-10 w-10 text-xl flex justify-center items-center rounded-full border"
+                      className="h-7 md:h-10 w-7 md:w-10 text-sm md:text-xl flex justify-center items-center rounded-full border"
                       style={{
                         color: item.color,
                         backgroundColor: `${item.color}20`,
@@ -120,7 +120,7 @@ const SellerDashBoard = () => {
                     >
                       0
                     </p>
-                    <p className="text-[#6D6D6D] font-normal text-sm md:text-base">
+                    <p className="text-[#6D6D6D] font-normal text-xs md:text-base">
                       {item.label}
                     </p>
                   </div>
