@@ -58,7 +58,7 @@ const AddUnitDetails = () => {
             </div>
           </Link>
           <div className="flex flex-1 flex-col justify-center items-center">
-            <h2 className="text-[#313131] text-2xl font-medium">Add Listing</h2>
+            <h2 className="text-[#313131] text-xl md:text-2xl font-medium">Add Listing</h2>
           </div>
         </div>
       </div>

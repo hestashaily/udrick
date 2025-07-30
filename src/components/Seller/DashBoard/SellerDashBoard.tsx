@@ -129,7 +129,7 @@ const SellerDashBoard = () => {
             </div>
 
             {/* <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div> */}
-            <div className="mt-2 md:mt-0">
+            <div className="mt-2 lg:mt-0">
               <ToggleSwitch
                 value={value}
                 onChange={setValue}
@@ -151,7 +151,7 @@ const SellerDashBoard = () => {
         {/* Main Content */}
         <div className="flex items-center justify-center">
           <div className="container mx-auto py-6">
-            <div className="flex flex-col lg:flex-row px-2 md:px-0 gap-6">
+            <div className="flex flex-col lg:flex-row px-3 sm:px-4  gap-6">
               {/* Left Panel */}
               <LeftPanel listings={sellerRentListingData} />
 

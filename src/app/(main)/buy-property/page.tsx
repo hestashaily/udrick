@@ -3,9 +3,9 @@ import React from 'react'
 
 const samplePropertyData = {
   images: [
-    "/propertydetail/sliderimage.png",
-    "/propertydetail/sliderimage.png",
-    "/propertydetail/sliderimage.png",
+    "/propertydetail/sliderimage.svg",
+    "/propertydetail/sliderimage.svg",
+    "/propertydetail/sliderimage.svg",
   ],
   typeTags: ["Apartment", "For Sale"],
   title: "Modern Downtown Apartment",

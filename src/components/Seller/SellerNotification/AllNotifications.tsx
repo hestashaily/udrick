@@ -1,23 +1,17 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import RejectPopup from "../SellerCommonComponents/RejectPopup";
+import { RejectPopup } from "../SellerCommonComponents/RejectPopup";
 
 const AllNotifications = () => {
-  const [showRejectPopup, setShowRejectPopup] = useState(false);
-
-  const handleReject = () => {
-    setShowRejectPopup(true);
-  };
-
-  const handleClose = () => {
-    setShowRejectPopup(false);
-  };
-
-  const handleConfirmReject = () => {
-    console.log("Request Rejected");
-    setShowRejectPopup(false);
-  };
+   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
+    const handleConfirm = (reason: string) => {
+      console.log("Reason for rejection:", reason);
+      // 👉 Do API call or any logic here
+      setIsPopupOpen(false);
+    };
+  
 
   return (
     <div className="flex flex-col gap-[25px] p-[10px]">
@@ -99,7 +93,7 @@ const AllNotifications = () => {
                   Accept
                 </button>
                 <button
-                  onClick={handleReject}
+                  onClick={() => setIsPopupOpen(true)}
                   className="bg-[white] font-[400] text-[16px] text-[#936639] border border-[#936639] h-[42px] py-[13px] px-[25px] rounded-full flex items-center gap-[13px]"
                 >
                   <Image
@@ -258,10 +252,12 @@ const AllNotifications = () => {
         </div>
       </div>
 
-      {/* Reject Popup */}
-      {showRejectPopup && (
-        <RejectPopup onClose={handleClose} onConfirm={handleConfirmReject} />
-      )}
+      
+     <RejectPopup
+            open={isPopupOpen}
+            onClose={() => setIsPopupOpen(false)}
+            onConfirm={handleConfirm}
+          />
     </div>
   );
 };

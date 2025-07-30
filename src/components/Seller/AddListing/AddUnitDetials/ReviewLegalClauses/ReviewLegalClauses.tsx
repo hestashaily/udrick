@@ -191,7 +191,7 @@ const ReviewLegalClauses = () => {
             >
               <ArrowLeft size={18} /> Back
             </Button>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs px-6 text-center text-gray-500">
               Review all clauses before proceeding to the next step
             </p>
             <Button

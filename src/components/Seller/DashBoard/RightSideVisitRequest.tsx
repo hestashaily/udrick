@@ -4,6 +4,7 @@ import { CalendarDays } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import VisitRequestCard from "../VisitRequestCard/SellerVisitRequestCard";
+import { useRouter } from "next/navigation";
 
 export interface VisitRequest {
   id: number;
@@ -20,14 +21,15 @@ interface RightSideVisitRequestsProps {
 }
 
 const RightSideVisitRequest: React.FC<RightSideVisitRequestsProps> = ({ data }) => {
+  const router = useRouter()
   return (
-    <div className="w-full md:w-1/3 bg-white min:h-[600px] rounded-2xl shadow-md border p-6">
+    <div className="w-full lg:w-1/3 bg-white min:h-[600px] rounded-2xl shadow-md border p-6">
       <div className="flex justify-between items-center mb-3">
         <h2 className="flex gap-3 items-center mb-4 text-base font-semibold">
           <CalendarDays /> Visit Requests
         </h2>
         {data.length > 0 && (
-          <button className="px-6 py-2 border rounded-3xl shadow">
+          <button onClick={()=>router.push("/seller-visit-request")} className="px-6 py-2 border rounded-3xl shadow">
             View All
           </button>
         )}

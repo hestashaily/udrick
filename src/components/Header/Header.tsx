@@ -100,7 +100,7 @@ const Header = () => {
     navItems = [
       { href: "/", label: "Home", icon: <House className="h-5 w-5" /> },
       {
-        href: "/visit-request",
+        href: "/seller-visit-request",
         label: "Visit Request",
         icon: <CalendarDays className="h-5 w-5" />,
       },
@@ -164,8 +164,9 @@ const Header = () => {
                   role === "seller" ? "/notification-seller" : "/notification"
                 }
               >
-                <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
-                  <Bell size={18} color="white" />
+                <div className="h-10 w-10 relative rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
+                  <div className="absolute h-3 w-3 rounded-full bg-[#EF9D30] top-2 right-2"/>
+                  <Bell size={20} color="white" fill="white" />
                 </div>
               </Link>
 

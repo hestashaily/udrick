@@ -36,7 +36,7 @@ const AboutUs = () => {
               finding the perfect property. Our platform combines cutting-edge
               technology with local expertise to deliver exceptional results.
             </p>
-            <Link href="/">
+            <Link href="/about">
             <button className="mt-6 inline-flex items-center justify-center gap-2 tracking-wider font-medium text-base md:text-lg border bg-gradient-to-t from-[#A68A64] to-[#936639] text-white py-3.5 px-6 rounded-xl hover:opacity-90 transition">
               <Eye color="white" /> See More
             </button>
