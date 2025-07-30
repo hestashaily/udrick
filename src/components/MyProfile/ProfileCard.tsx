@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ProfileCard = () => {
-  const [profile, setProfile] = useState({
+ const [profile] = useState({
     name: "John Mitchell",
     email: "john.mitchell@email.com",
     mobile: "9876543210",

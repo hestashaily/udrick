@@ -334,7 +334,7 @@ export default function PropertyHistoryCard({ listing }: { listing: Listing }) {
   };
 
   return (
-   <div className="flex flex-col lg:flex-row rounded-2xl border p-4 shadow-sm gap-6 w-full max-w-[1000px] mx-auto">
+   <div className="flex flex-col lg:flex-row rounded-2xl border p-4 shadow-sm gap-6 w-full  ">
 
       {/* Image */}
      <div className="relative w-full sm:w-[208px] min-w-[208px] h-[180px] sm:h-[217px] rounded-xl overflow-hidden">
@@ -426,7 +426,7 @@ export default function PropertyHistoryCard({ listing }: { listing: Listing }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="mt-4 flex flex-col sm:flex-row justify-between gap-3">
+        <div className={`mt-4 flex flex-col sm:flex-row ${isRented ? "justify-between" :"justify-end"} gap-3`}>
           {isRented ? (
             <>
               <button

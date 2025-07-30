@@ -1,8 +1,10 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import React from "react";
+import React, { useState } from "react";
 import RightSideVisitRequest, { VisitRequest } from "./RightSideVisitRequest";
 import LeftPanel, { LeftPanelProps } from "./LeftSideRentListing";
+import ToggleSwitch from "@/components/ReusableComponents/ToggleSwitch";
+import { Building2, Home } from "lucide-react";
 
 const VisitReqCardData: VisitRequest[] = [
   {
@@ -77,6 +79,7 @@ const sellerRentListingData: LeftPanelProps[] = [
 ];
 
 const SellerDashBoard = () => {
+  const [value, setValue] = useState("sell");
   return (
     <div>
       <Header />
@@ -96,7 +99,7 @@ const SellerDashBoard = () => {
               </div>
 
               {/* Stats Section */}
-              <div className="py-4 px-6 bg-white flex flex-wrap justify-around items-center gap-6 shadow rounded-2xl">
+              <div className="py-4 px-6 bg-white flex flex-wrap justify-around items-center gap-6 md:gap-10 shadow rounded-2xl">
                 {[
                   { label: "All", color: "#313131" },
                   { label: "Available", color: "#34A853" },
@@ -106,10 +109,10 @@ const SellerDashBoard = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between flex-col space-y-2"
+                    className="flex items-center justify-between flex-col space-y-1"
                   >
                     <p
-                      className="h-10 w-10 text-xl flex justify-center items-center rounded-full border"
+                      className="h-7 md:h-10 w-7 md:w-10 text-sm md:text-xl flex justify-center items-center rounded-full border"
                       style={{
                         color: item.color,
                         backgroundColor: `${item.color}20`,
@@ -117,7 +120,7 @@ const SellerDashBoard = () => {
                     >
                       0
                     </p>
-                    <p className="text-[#6D6D6D] font-normal text-sm md:text-base">
+                    <p className="text-[#6D6D6D] font-normal text-xs md:text-base">
                       {item.label}
                     </p>
                   </div>
@@ -125,14 +128,30 @@ const SellerDashBoard = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div>
+            {/* <div className="mt-4 text-sm md:text-base font-semibold">Sell/Rent</div> */}
+            <div className="mt-2 lg:mt-0">
+              <ToggleSwitch
+                value={value}
+                onChange={setValue}
+                options={[
+                  { label: "Sell", value: "sell", icon: <Home size={16} /> },
+                  {
+                    label: "Rent",
+                    value: "rent",
+                    icon: <Building2 size={16} />,
+                  },
+                ]}
+                activeColors={{ from: "#9c6b3c", to: "#b38758" }}
+                borderColor="#b38758"
+              />
+            </div>
           </div>
         </div>
 
         {/* Main Content */}
         <div className="flex items-center justify-center">
           <div className="container mx-auto py-6">
-            <div className="flex flex-col lg:flex-row px-2 md:px-0 gap-6">
+            <div className="flex flex-col lg:flex-row px-3 sm:px-4  gap-6">
               {/* Left Panel */}
               <LeftPanel listings={sellerRentListingData} />
 

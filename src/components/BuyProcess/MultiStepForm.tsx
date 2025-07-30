@@ -21,16 +21,22 @@ import signature from "../../../public/auth-images/signature.svg";
 import review from "../../../public/auth-images/review.svg";
 import checkout from "../../../public/auth-images/checkout.svg";
 import confirmation from "../../../public/auth-images/confirmation.svg";
+import { useRouter } from "next/navigation";
 
-const steps = [
-  "Purchase Overview",
-  "Upload ID",
-  "Agreement",
-  "Signature",
-  "Review",
-  "Checkout",
-  "Confirmation",
-];
+
+interface MultiStepFormProps {
+  type: string | null; 
+}
+
+// const steps = [
+//   "Purchase Overview",
+//   "Upload ID",
+//   "Agreement",
+//   "Signature",
+//   "Review",
+//   "Checkout",
+//   "Confirmation",
+// ];
 
 const stepIcons = [
   home,
@@ -42,9 +48,22 @@ const stepIcons = [
   confirmation,
 ];
 
-const MultiStepForm = () => {
+
+const MultiStepForm: React.FC<MultiStepFormProps> = ({ type }) => {
   const [step, setStep] = useState(0);
   const sigCanvasRef = useRef<SignatureCanvas>(null); 
+
+  console.log(type);
+  
+   const steps = [
+    type === "rent" ? "Rent Overview" : "Purchase Overview",
+    "Upload ID",
+    "Agreement",
+    "Signature",
+    "Review",
+    "Checkout",
+    "Confirmation",
+  ];
 
   const resetForm = () => setStep(0);
 
@@ -95,13 +114,16 @@ const MultiStepForm = () => {
     console.log("Submitted:", formatted);
     alert("Form submitted successfully!");
   };
+  const router = useRouter();
 
   return (
     <div className="bg-[rgb(250,250,250)] rounded shadow-md mx-auto">
       <div className="bg-white mx-auto px-4">
         <div className="container mx-auto">
           <div className="flex gap-6 py-6 items-center">
-            <ArrowLeft size={18} />
+          {/* <Link href="/buy-process"> */}
+            <ArrowLeft size={18} className="cursor-pointer" onClick={() => router.back()} />
+          {/* </Link> */}
             <div className="flex flex-col text-center w-full">
               <h3 className="font-bold text-3xl text-[#0d0d0c]">
                 Purchase Process

@@ -45,139 +45,132 @@ function PopoverItem({
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [login, setLogin] = useState(false);
   const [role, setRole] = useState<string | null>(null);
-  const login = true;
   useEffect(() => {
     const storedRole = localStorage.getItem("role");
     setRole(storedRole);
-  }, [role]);
+    setLogin(!!storedRole);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("role");
+    setRole(null);
+    setLogin(false);
+
+    // window.dispatchEvent(new Event("storage"));
+    // router.push("/");
+     window.location.href = "/";
+  };
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  //  Define nav items based on login & role
+  let navItems: { href: string; label: string; icon: React.ReactNode }[] = [];
+
+  if (!login) {
+    navItems = [
+      { href: "/", label: "Home", icon: <House className="h-5 w-5" /> },
+      {
+        href: "/about",
+        label: "About Us",
+        icon: <UserCheck className="h-5 w-5" />,
+      },
+      {
+        href: "/contact",
+        label: "Contact Us",
+        icon: <Mail className="h-5 w-5" />,
+      },
+    ];
+  } else if (role === "buyer") {
+    navItems = [
+      { href: "/", label: "Home", icon: <House className="h-5 w-5" /> },
+      {
+        href: "/saved-properties",
+        label: "Saved Property",
+        icon: <Heart className="h-5 w-5" />,
+      },
+      {
+        href: "/chat",
+        label: "Chat",
+        icon: <MessageSquareMore className="h-5 w-5" />,
+      },
+    ];
+  } else if (role === "seller") {
+    navItems = [
+      { href: "/", label: "Home", icon: <House className="h-5 w-5" /> },
+      {
+        href: "/seller-visit-request",
+        label: "Visit Request",
+        icon: <CalendarDays className="h-5 w-5" />,
+      },
+      {
+        href: "/chat",
+        label: "Chat",
+        icon: <MessageSquareMore className="h-5 w-5" />,
+      },
+      {
+        href: "/wallet",
+        label: "Wallet",
+        icon: <Wallet className="h-5 w-5" />,
+      },
+    ];
+  }
 
   return (
     <div className="shadow-md border-b border-[#FCBE4B] py-3 w-full">
-      <header className="flex items-center justify-between  px-4 lg:px-0  mx-auto container">
-        {/* Logo */}
-        <div>
-          <Link href="/">
-            <Image
-              src="/header/logo.svg"
-              alt="logo"
-              height={50}
-              width={125}
-              className="object-cover"
-            />
-          </Link>
-        </div>
+      {/* // <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-[#FCBE4B] py-3"> */}
 
-        {/* Desktop Navigation */}
+      <header className="flex items-center justify-between px-4 lg:px-0 mx-auto container">
+        {/*  Logo */}
+        <Link href="/">
+          <Image
+            src="/header/logo.svg"
+            alt="logo"
+            height={50}
+            width={125}
+            className="object-cover"
+          />
+        </Link>
+
+        {/*  Desktop Navigation */}
         <nav className="hidden lg:flex items-center font-normal text-base text-[#002855]">
-          <ul className="flex items-center">
-            <li>
-              <Link
-                href="/"
-                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                  pathname === "/"
-                    ? "bg-[#936639] text-white"
-                    : "hover:bg-[#936639] hover:text-white"
-                }`}
-              >
-                <House className="h-5 w-5" />
-                <span className="leading-none">Home</span>
-              </Link>
-            </li>
-
-            <li className="h-6 border-l border-gray-400 mx-3" />
-
-            <li>
-              <Link
-                href={
-                  login && role === "buyer" ? "/saved-properties" : "/about"
-                }
-                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                  pathname === (login ? "/saved-properties" : "/about")
-                    ? "bg-[#936639] text-white"
-                    : "hover:bg-[#936639] hover:text-white"
-                }`}
-              >
-                {login && role === "buyer" ? (
-                  <Heart className="h-5 w-5" />
-                ) : login && role === "seller" ? (
-                  <CalendarDays className="h-5 w-5" />
-                ) : (
-                  <UserCheck className="h-5 w-5" />
-                )}
-                <span className="leading-none">
-                  {login && role === "buyer"
-                    ? "Saved Property"
-                    : login && role === "seller"
-                    ? "Visit Request"
-                    : "About Us"}
-                </span>
-              </Link>
-            </li>
-
-            <li className="h-6 border-l border-gray-400 mx-3" />
-
-            <li>
-              <Link
-                href={login ? "chat" : "/contact"}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                  pathname === (login ? "/chat" : "/contact")
-                    ? "bg-[#936639] text-white"
-                    : "hover:bg-[#936639] hover:text-white"
-                }`}
-              >
-                {login ? (
-                  <MessageSquareMore className="h-5 w-5" />
-                ) : (
-                  <Mail className="h-5 w-5" />
-                )}
-
-                <span className="leading-none">
-                  {login ? "Chat" : "Contact Us"}
-                </span>
-              </Link>
-            </li>
-
-            <li
-              className={`${role === "seller" && login ? "block" : "hidden"}`}
-            >
-              <Link
-                href="/wallet"
-                className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                  pathname === "wallet"
-                    ? "bg-[#936639] text-white"
-                    : "hover:bg-[#936639] hover:text-white"
-                }`}
-              >
-                <Wallet className="h-5 w-5" />
-
-                <span className="leading-none">Wallet</span>
-              </Link>
-            </li>
+          <ul className="flex items-center gap-3">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full ${
+                    pathname === item.href
+                      ? "bg-[#936639] text-white"
+                      : "hover:bg-[#936639] hover:text-white"
+                  }`}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
-        {/* Desktop Buttons */}
-        {login ? (
-          <>
-            <div className="flex gap-4 items-center">
-             
-              {/* <Link href="/notification">
-                <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
-                  <Bell size={18} color="white" />
+        {/*  Right Side Actions */}
+        <div className="flex gap-4 items-center">
+          {login ? (
+            <>
+              {/*  Notification Bell */}
+              <Link
+                href={
+                  role === "seller" ? "/notification-seller" : "/notification"
+                }
+              >
+                <div className="h-10 w-10 relative rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
+                  <div className="absolute h-3 w-3 rounded-full bg-[#EF9D30] top-2 right-2"/>
+                  <Bell size={20} color="white" fill="white" />
                 </div>
-              </Link> */}
+              </Link>
 
-              {/* Notification Bell */}
-<Link href={role === "seller" ? "/notification-seller" : "/notification"}>
-  <div className="h-10 w-10 rounded-full flex justify-center items-center bg-gradient-to-t from-[#A68A64] to-[#936639]">
-    <Bell size={18} color="white" />
-  </div>
-</Link>
-
-
-              {/* Avatar with Popover */}
+              {/*  Avatar Popover */}
               <Popover>
                 <PopoverTrigger asChild>
                   <div className="cursor-pointer">
@@ -188,156 +181,121 @@ const Header = () => {
                   </div>
                 </PopoverTrigger>
 
-                {login && (
-                  <PopoverContent className="w-56 p-2 space-y-1">
-                    {/* Buyer-only */}
-                    {role === "buyer" && (
-                      <>
-                        <Link href="/visit-request">
-                          <PopoverItem
-                            icon={<CalendarDays size={16} />}
-                            label="Visit Request"
-                          />
-                        </Link>
-                        <Link href="/saved-properties">
-                          <PopoverItem
-                            icon={<Heart size={16} />}
-                            label="Save Property"
-                          />
-                        </Link>
-                        <PopoverItem
-                          icon={<HousePlus size={16} />}
-                          label="Property History"
-                        />
-                      </>
-                    )}
-
-                    {/* Seller-only */}
-                    {role === "seller" && (
-                      <Link href="/my-properties">
+                <PopoverContent className="w-56 p-2 space-y-1">
+                  {role === "buyer" && (
+                    <>
+                      <Link href="/visit-request">
                         <PopoverItem
                           icon={<CalendarDays size={16} />}
-                          label="My Properties"
+                          label="Visit Request"
                         />
                       </Link>
-                    )}
-
-                    {/* Common Items */}
-
-                    <Link href="/profile">
-                      <PopoverItem icon={<User size={16} />} label="Profile" />
-                    </Link>
-                    <PopoverItem
-                      icon={<Settings size={16} />}
-                      label="Settings"
-                    />
-                    <PopoverItem icon={<LogOut size={16} />} label="Logout" />
-                  </PopoverContent>
-                )}
-              </Popover>
-
-              {/* Hamburger for Mobile */}
-              <div className="lg:hidden">
-                <button onClick={toggleMenu} aria-label="Toggle Menu">
-                  {isOpen ? (
-                    <X className="w-6 h-6 text-[#936639]" />
-                  ) : (
-                    <Menu className="w-6 h-6 text-[#936639]" />
+                      <Link href="/saved-properties">
+                        <PopoverItem
+                          icon={<Heart size={16} />}
+                          label="Saved Property"
+                        />
+                      </Link>
+                      <PopoverItem
+                        icon={<HousePlus size={16} />}
+                        label="Property History"
+                      />
+                    </>
                   )}
-                </button>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
+
+                  {role === "seller" && (
+                    <Link href="/my-properties">
+                      <PopoverItem
+                        icon={<CalendarDays size={16} />}
+                        label="My Properties"
+                      />
+                    </Link>
+                  )}
+
+                  <Link href="/profile">
+                    <PopoverItem icon={<User size={16} />} label="Profile" />
+                  </Link>
+                  <PopoverItem icon={<Settings size={16} />} label="Settings" />
+                  <div onClick={handleLogout}>
+                    <PopoverItem icon={<LogOut size={16} />} label="Logout" />
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </>
+          ) : (
+            //  Show Post Property & Login ONLY on desktop
             <div className="hidden lg:flex gap-3">
-              <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm lg:text-base">
+              <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm">
                 Post Property
               </button>
               <Link href="/auth/usertype">
-                <button className="border bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm lg:text-base">
+                <button className="border bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm">
                   Login
                 </button>
               </Link>
             </div>
-          </>
-        )}
+          )}
+
+          {/*  Always show Hamburger on Mobile */}
+          <button
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+            className="lg:hidden"
+          >
+            {isOpen ? (
+              <X className="w-6 h-6 text-[#936639]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#936639]" />
+            )}
+          </button>
+        </div>
       </header>
 
-      {/* Mobile Sheet Style Menu */}
+      {/*  Mobile Sliding Sheet */}
       <div className="lg:hidden">
-        {/* Backdrop */}
         {isOpen && (
           <div
-            className="fixed inset-0  bg-black/30 z-40"
+            className="fixed inset-0 bg-black/30 z-40"
             onClick={toggleMenu}
           />
         )}
 
-        {/* Sliding Sheet */}
         <div
-          className={`fixed top-0 right-0 h-full w-1/2 max-w-xs bg-white z-50 shadow-lg transform transition-transform duration-300 ${
+          className={`fixed top-0 right-0 h-full w-60 max-w-xs bg-white z-50 shadow-lg transform transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="p-4 flex flex-col gap-4 text-[#002855]">
-            <button
-              onClick={toggleMenu}
-              className="self-end text-[#936639]"
-              aria-label="Close"
-            >
+            <button onClick={toggleMenu} className="self-end text-[#936639]">
               <X className="w-6 h-6" />
             </button>
 
-            <Link
-              href="/"
-              onClick={toggleMenu}
-              className="flex items-center justify-start gap-2 px-4 py-2 text-sm rounded-full bg-gradient-to-r from-[#9c6b3c] to-[#b38758] text-white w-full"
-            >
-              <House className="h-4 w-4" />
-              <span className="leading-none">Home</span>
-            </Link>
+            {/*  Use same navItems for mobile */}
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={toggleMenu}
+                className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-[#936639] hover:text-white"
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </Link>
+            ))}
 
-            <Link
-              href="/about"
-              onClick={toggleMenu}
-              className="flex items-center justify-start gap-2 px-4 py-2  text-sm rounded-full hover:bg-[#936639] hover:text-white"
-            >
-              {login ? (
-                <Heart className="h-4 w-4" />
-              ) : (
-                <UserCheck className="h-4 w-4" />
-              )}
-
-              <span className="leading-none">
-                {login ? "Saved Property" : "About Us"}
-              </span>
-            </Link>
-
-            <Link
-              href="/contact"
-              onClick={toggleMenu}
-              className="flex items-center gap-2 px-4 py-2 justify-start text-sm rounded-full hover:bg-[#936639] hover:text-white"
-            >
-              {login ? (
-                <MessageSquareMore className="h-4 w-4" />
-              ) : (
-                <Mail className="h-4 w-4" />
-              )}
-
-              <span className="leading-none">
-                {login ? "Chat" : "COntact Us"}
-              </span>
-            </Link>
-
-            <div className="flex flex-col gap-2 mt-3">
-              <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm">
-                Post Property
-              </button>
-              <button className="border bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm">
-                Login
-              </button>
-            </div>
+            {/*  Show Post Property & Login ONLY inside slider on mobile */}
+            {!login && (
+              <div className="flex flex-col gap-2 mt-3">
+                <button className="border text-[#936639] border-[#936639] bg-transparent rounded-xl px-3 py-2 font-medium text-sm">
+                  Post Property
+                </button>
+                <Link href="/auth/usertype">
+                  <button className="border w-full bg-[#936639] text-white rounded-xl px-4 py-2 font-medium text-sm">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

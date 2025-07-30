@@ -1,15 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { FaBed, FaBath } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import {
+  Bath,
+  BedDouble,
+  ChevronLeft,
+  ChevronRight,
+  Heart,
+  SquareDivide,
+} from "lucide-react";
 import Slider, { CustomArrowProps } from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import { IoArrowForward } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 const NextArrow = ({ onClick }: CustomArrowProps) => (
   <div
@@ -30,6 +37,7 @@ const PrevArrow = ({ onClick }: CustomArrowProps) => (
 );
 
 interface PropertyCardProps {
+  id: number;
   images: string[];
   title: string;
   price: string;
@@ -39,9 +47,11 @@ interface PropertyCardProps {
   baths: number;
   size: string;
   agent: string;
+  sellType?: string;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({
+  id,
   images,
   title,
   price,
@@ -51,7 +61,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   baths,
   size,
   agent,
+  sellType,
 }) => {
+  const router = useRouter();
   const settings = {
     dots: false,
     infinite: true,
@@ -66,8 +78,11 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   return (
     <div className="max-w-[450px] w-full bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Image Slider */}
-      <div className="relative  w-full h-[360px]">
-        <Heart size={30} className="absolute top-3 cursor-pointer right-3 z-20  text-white  "/>
+      <div className="relative  w-full ">
+        <Heart
+          size={30}
+          className="absolute top-3 cursor-pointer right-3 z-20  text-white  "
+        />
 
         <Slider {...settings}>
           {images.map((img, index) => (
@@ -77,7 +92,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
                 alt={`Property ${index}`}
                 width={370}
                 height={350}
-                className="w-full h-[340px] object-cover"
+                className="w-full h-[280px] md:h-[340px]  object-cover"
               />
             </div>
           ))}
@@ -101,16 +116,17 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
           </Link>
         </p>
 
-        <div className="flex items-center justify-between text-sm text-gray-700  rounded-md overflow-hidden mt-2">
-          <div className="flex-1 flex items-center justify-center border-gray-300 gap-1 py-2 border-r">
-            <FaBed className="text-[#B3884B]" />
+        <div className="flex items-center justify-between text-sm text-gray-700 px-2  rounded-md overflow-hidden mt-2">
+          <div className="flex-1 flex items-center justify-start border-gray-300 gap-2 py-2 border-r">
+            <BedDouble size={18} />
             {beds} Bed
           </div>
           <div className="flex-1 flex items-center justify-center gap-1 py-2 border-gray-300 border-r">
-            <FaBath className="text-[#B3884B]" />
+            <Bath size={18} />
             {baths} Bath
           </div>
-          <div className="flex-1 flex items-center justify-center gap-1 py-2">
+          <div className="flex-1 flex items-center justify-end gap-1 py-2">
+            <SquareDivide size={18} />
             {size}
           </div>
         </div>
@@ -127,7 +143,17 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
             />
             {agent}
           </div>
-          <button className="border flex items-center gap-2 border-gray-300 rounded-full px-3 py-1 text-sm hover:bg-gray-100 transition">
+          <button
+            // onClick={()=>router.push(`/buy-property?${title}/${sellType}/${id}`)}
+            onClick={() =>
+              router.push(
+                `/buy-property?title=${encodeURIComponent(
+                  title
+                )}&type=${sellType}&id=${id}`
+              )
+            }
+            className="border flex items-center gap-2 border-gray-300 rounded-full px-3 py-1 text-sm hover:bg-gray-100 transition"
+          >
             Details <IoArrowForward />
           </button>
         </div>

@@ -5,6 +5,7 @@ import PropertyCard from "../ReusableComponents/PropertiesCard";
 
 
 const data = {
+  id:1,
     images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
     title: "5 Bedroom Detached Duplex",
     price: "₦500,000,000",
@@ -15,6 +16,7 @@ const data = {
     baths: 3,
     size: "1690 sqft",
     agent: "Emeka Nzerem",
+     selltype: "buy",
   };
 const ViewAllNearByProperty = () => {
   return (

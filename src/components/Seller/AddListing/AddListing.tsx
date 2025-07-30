@@ -23,8 +23,8 @@ const AddListing = () => {
             </div>
           </Link>
           <div className="flex  flex-1 flex-col justify-center items-center">
-            <h2 className="text-[#313131] text-2xl font-medium">Add Listing</h2>
-            <p className="text-[#8C8C8C] text-lg font-normal">
+            <h2 className="text-[#313131] text-xl md:text-2xl font-medium">Add Listing</h2>
+            <p className="text-[#8C8C8C] text-sm md:text-lg font-normal">
               Please fill the details of property you want to sell or rent
             </p>
           </div>

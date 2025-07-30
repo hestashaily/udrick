@@ -3,20 +3,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useState } from "react";
-import { ArrowLeft, LockKeyhole, BadgeAlert } from "lucide-react";
+import { ArrowLeft, LockKeyhole, BadgeAlert, User, Building2, CircleDollarSign, FileText, KeyRound, CircleQuestionMark, Shield, FileTerminal, Trash2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const links = [
-  { href: "/profile", label: "Personal Information" },
-  { href: "/profile/property-history", label: "Property History" },
-  { href: "/profile/upload-document", label: "Uploaded License/ID" },
-  { href: "/profile/reset-password", label: "Reset Password" },
-  { href: "/profile/faq-support", label: "FAQ’s & Support" },
-  { href: "/profile/privacy", label: "Privacy Policy" },
-  { href: "/profile/terms", label: "Terms & Conditions" },
-  { href: "/profile/delete", label: "Delete Account", isDelete: true },
+  { href: "/profile", label: "Personal Information", icon: <User size={20} /> },
+  { href: "/profile/property-history", label: "Property History" , icon:<Building2 size={20}/> },
+  { href: "/profile/refund", label: "Refund", icon:<CircleDollarSign size={20}/> },
+
+  { href: "/profile/upload-document", label: "Uploaded License/ID" , icon:<FileText size={20}/> },
+  { href: "/profile/reset-password", label: "Reset Password" , icon:<KeyRound size={20}/> },
+  { href: "/profile/faq-support", label: "FAQ’s & Support", icon:<CircleQuestionMark size={20}/> },
+  { href: "/profile/privacy", label: "Privacy Policy", icon:<Shield size={20}/> },
+  { href: "/profile/terms", label: "Terms & Conditions", icon:<FileTerminal size={20}/> },
+  { href: "/profile/delete", label: "Delete Account", isDelete: true, icon:<Trash2 size={20}/> },
 ];
 
 export default function ProfileWrapper({ children }: { children: ReactNode }) {
@@ -35,13 +42,15 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
       {/* MOBILE UI */}
       <div className="lg:hidden block">
         {/* Header */}
-        <div className="bg-gradient-to-t from-[#A68A64] to-[#936639] p-4 flex items-center text-white">
+        <div className="bg-gradient-to-t from-[#A68A64] to-[#936639] p-2 flex items-center text-white">
           {isMainMenu ? (
             <>
               <Link href="/">
                 <ArrowLeft size={20} />
               </Link>
-              <h1 className="text-lg font-semibold flex-1 text-center">Account</h1>
+              <h1 className="text-lg font-semibold flex-1 text-center">
+                Account
+              </h1>
             </>
           ) : (
             <>
@@ -57,23 +66,45 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
           <>
             {/* ✅ Menu Page */}
             <div className="flex items-center gap-4 p-4">
-              <Image src="/avatar.png" alt="Profile" width={60} height={60} className="rounded-full" />
+              <Image
+                src="/chat/user.svg"
+                alt="Profile"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
               <div>
                 <h2 className="font-semibold">Name Ipsum</h2>
                 <p className="text-gray-500 text-sm">example@mail.com</p>
-                <Link href="/profile/edit" className="text-[#A68A64] text-sm">Edit Profile</Link>
               </div>
             </div>
 
             <Section title="Profile">
-              <MenuLink label="Personal Information" href="/profile/view-profile" />
-              <MenuLink label="My Properties" href="/profile/property-history" />
-              <MenuLink label="Uploaded License/ID" href="/profile/upload-document" />
+              <MenuLink
+                label="Personal Information"
+                href="/profile/view-profile"
+              />
+              <MenuLink
+                label="My Properties"
+                href="/profile/property-history"
+              />
+              <MenuLink
+                label="Refund"
+                href="/profile/refund"
+              />
+              <MenuLink
+                label="Uploaded License/ID"
+                href="/profile/upload-document"
+              />
             </Section>
 
             <Section title="Settings">
               <MenuLink label="Reset Password" href="/profile/reset-password" />
-              <MenuLink label="Delete Account" isDelete onClick={() => setShowDeleteDialog(true)} />
+              <MenuLink
+                label="Delete Account"
+                isDelete
+                onClick={() => setShowDeleteDialog(true)}
+              />
             </Section>
 
             <Section title="Additional">
@@ -100,7 +131,9 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
             <Link href="/">
               <div className="flex gap-6 py-6 items-center">
                 <ArrowLeft size={18} />
-                <h3 className="font-bold text-3xl text-[#0d0d0c]">My Account</h3>
+                <h3 className="font-bold text-3xl text-[#0d0d0c]">
+                  My Account
+                </h3>
               </div>
             </Link>
           </div>
@@ -124,8 +157,10 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
                   className={clsx(
                     "p-3 rounded-2xl flex items-center gap-4 transition text-sm font-normal",
                     {
-                      "bg-gradient-to-t from-[#A68A64] to-[#936639] text-white": isActive && !link.isDelete,
-                      "hover:text-white hover:bg-gradient-to-t hover:from-[#A68A64] hover:to-[#936639]": !link.isDelete,
+                      "bg-gradient-to-t from-[#A68A64] to-[#936639] text-white":
+                        isActive && !link.isDelete,
+                      "hover:text-white hover:bg-gradient-to-t hover:from-[#A68A64] hover:to-[#936639]":
+                        !link.isDelete,
                       "text-red-600": link.isDelete && !isActive,
                       "hover:text-white hover:bg-red-600": link.isDelete,
                       "bg-red-600 text-white": link.isDelete && isActive,
@@ -133,7 +168,10 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
                     }
                   )}
                 >
-                  <span className="hidden lg:block">{link.label}</span>
+                  <div className="hidden lg:flex items-center gap-2">
+                    {link.icon}
+                    <span>{link.label}</span>
+                  </div>
                 </Link>
               );
             })}
@@ -144,11 +182,11 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-             {/* Delete  Account */}
+      {/* Delete  Account */}
       <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <DialogContent className="max-w-md">
-           <DialogHeader className="flex items-center">
-             <Image
+          <DialogHeader className="flex items-center">
+            <Image
               src="/deleteaccount/delete.svg"
               alt="delete"
               height={50}
@@ -161,17 +199,19 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
           </DialogHeader>
           <div>
             <ul>
-               <li>                 This action is irreversible. You will lose access to your
-   account, all restaurant data, order history, and earnings.
-               </li>
-               <li>
-                 Pending transactions and withdrawals must be completed before
-                 account deletion.
-               </li>
+              <li>
+                {" "}
+                This action is irreversible. You will lose access to your
+                account, all restaurant data, order history, and earnings.
+              </li>
+              <li>
+                Pending transactions and withdrawals must be completed before
+                account deletion.
+              </li>
             </ul>
-           </div>
-           <div className="flex justify-center flex-col gap-4 mt-4">
-             <button
+          </div>
+          <div className="flex justify-center flex-col gap-4 mt-4">
+            <button
               onClick={() => {
                 // Handle actual delete logic here
                 // alert("Account deleted");
@@ -192,51 +232,51 @@ export default function ProfileWrapper({ children }: { children: ReactNode }) {
         </DialogContent>
       </Dialog>
 
-       <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
-       {/* ✅ Confirm Password Dialog */}
-         <DialogContent className="max-w-md">
-           <DialogHeader>
-             <DialogTitle className="text-sm p-4 le flex items-start justify-start mt-6 bg-[#F44336] rounded-2xl text-white font-normal text-center">
-               <BadgeAlert className="" size={30} />{" "}
-               <span className="mt-1">
-                 Deleting your account is permanent. You will lose access to all
-                 your data, order history, and earnings.
-               </span>
-             </DialogTitle>
-           </DialogHeader>
-           <div className="">
-             <div>
-               <label className="font-bold text-lg text-[#515151]">
-                 Enter Password
-               </label>
-               <p className="text-[#888888] font-normal text-sm">
-                 Please enter your password to confirm your decision.
-               </p>
-             </div>
-             <div className="my-4 relative">
-               {/* Input with padding-right to make space for icon */}
-               <input
-                 type="password"
-                 placeholder="Enter your password"
-                 value={password}
-                 onChange={(e) => setPassword(e.target.value)}
-                 className="w-full border rounded-lg pl-4 pr-12 py-3"
-               />
-               {/* Icon positioned inside input on the right */}
-               <LockKeyhole
-                 className="absolute right-4 top-6 -translate-y-1/2 text-[#A68A64]"
-                 size={25}
-               />
+      <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
+        {/* ✅ Confirm Password Dialog */}
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-sm p-4 le flex items-start justify-start mt-6 bg-[#F44336] rounded-2xl text-white font-normal text-center">
+              <BadgeAlert className="" size={30} />{" "}
+              <span className="mt-1">
+                Deleting your account is permanent. You will lose access to all
+                your data, order history, and earnings.
+              </span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="">
+            <div>
+              <label className="font-bold text-lg text-[#515151]">
+                Enter Password
+              </label>
+              <p className="text-[#888888] font-normal text-sm">
+                Please enter your password to confirm your decision.
+              </p>
+            </div>
+            <div className="my-4 relative">
+              {/* Input with padding-right to make space for icon */}
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border rounded-lg pl-4 pr-12 py-3"
+              />
+              {/* Icon positioned inside input on the right */}
+              <LockKeyhole
+                className="absolute right-4 top-6 -translate-y-1/2 text-[#A68A64]"
+                size={25}
+              />
 
-               {/* Forget Password text */}
+              {/* Forget Password text */}
               <p className="flex justify-end mt-1 px-2 bg-gradient-to-t from-[#A68A64] to-[#936639] bg-clip-text text-transparent cursor-pointer">
-                 Forget Password?
-               </p>
-             </div>
+                Forget Password?
+              </p>
+            </div>
 
-             <div className="flex justify-center gap-4">
-               <button
-                 onClick={() => {
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => {
                   if (password.trim()) {
                     // Handle delete logic here
                     alert("Account deleted successfully.");
@@ -298,4 +338,3 @@ function MenuLink({
     </button>
   );
 }
-

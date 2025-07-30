@@ -58,7 +58,7 @@ const AddUnitDetails = () => {
             </div>
           </Link>
           <div className="flex flex-1 flex-col justify-center items-center">
-            <h2 className="text-[#313131] text-2xl font-medium">Add Listing</h2>
+            <h2 className="text-[#313131] text-xl md:text-2xl font-medium">Add Listing</h2>
           </div>
         </div>
       </div>
@@ -113,10 +113,10 @@ const AddUnitDetails = () => {
           }
         }}
       >
-        <DialogContent className="sm:max-w-md text-center">
+        <DialogContent className="sm:max-w-sm text-center">
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold">
-              Unit Details Added Successfully!
+            <DialogTitle className="text-lg text-center font-semibold">
+              Unit Details Added<br/> Successfully!
             </DialogTitle>
           </DialogHeader>
         </DialogContent>

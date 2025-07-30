@@ -172,7 +172,7 @@ const ViewSingleProperty = () => {
             <div className="w-full lg:w-2/3">
               <ImageSlider images={property.images} />
 
-              <div className="mt-[30px]  flex-wrap flex justify-center  items-center gap-[20px] lg:gap-[30px]">
+              <div className="mt-[30px]  flex-wrap flex justify-start  items-center gap-[15px] lg:gap-[30px]">
                 <FeatureBox
                   icon="/propertydetail/bedroom.png"
                   label="Bedrooms"
@@ -192,7 +192,7 @@ const ViewSingleProperty = () => {
 
               {/* Overview Section */}
               <div className="border-[#D9D9D9]">
-                <div className="p-[34px] flex items-center gap-[18px] lg:flex-row flex-col">
+                <div className="p-3 mt-6 flex items-center gap-[18px] lg:flex-row flex-col">
                   <div className="lg:max-w-[80%] max-w-full w-full">
                     <p className="font-bold text-[22px] text-[#161E2D] mb-[13px]">
                       Overview

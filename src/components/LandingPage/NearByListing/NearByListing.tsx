@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const NearByListing = () => {
   const data = {
+    id:1,
     images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
     title: "5 Bedroom Detached Duplex",
     price: "₦500,000,000",
@@ -14,6 +15,7 @@ const NearByListing = () => {
     baths: 3,
     size: "1690 sqft",
     agent: "Emeka Nzerem",
+     selltype: "buy",
   };
 
   return (
@@ -34,8 +36,8 @@ const NearByListing = () => {
           ))}
         </div>
         <div className="flex justify-center mt-8 items-center">
-          {/* <Link href="/view-all-nearby-properties"> */}
-          <Link href="/">
+          <Link href="/view-all-nearby-properties">
+          {/* <Link href="/"> */}
 
             <button className="border px-8 py-2 border-gray-300 rounded-xl">
               View All Propertis

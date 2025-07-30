@@ -126,7 +126,7 @@ export default function SellerRentListingCard({
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-2xl border shadow-md overflow-hidden p-4 gap-4 w-full">
       {/* Left: Image */}
-      <div className="relative w-full md:w-[300px] h-[200px] rounded-xl overflow-hidden">
+      <div className="relative w-full md:w-[300px] h-[150px] md:h-[200px]  rounded-xl overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
 
