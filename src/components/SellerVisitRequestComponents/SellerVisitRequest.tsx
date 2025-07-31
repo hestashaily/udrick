@@ -20,7 +20,7 @@ const SellerVisitRequest = () => {
     <div className="bg-[#FAFAFA] min-h-screen">
       <div className="bg-white shadow-[0px_4px_16px_0px_#5A7DBC0D]">
         <div className="container mx-auto">
-          <div className="flex gap-6 py-6 px-[30px] items-center">
+          <div className="flex gap-6 py-4 px-[30px] items-center">
             <Link href="/">
               <ArrowLeft size={18} />
             </Link>

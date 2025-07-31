@@ -8,7 +8,7 @@ interface FundCardProps {
 
 const FundCard: React.FC<FundCardProps> = ({ label, onClick }) => {
   return (
-    <div className="max-w-[544px] w-full rounded-[12px] shadow-[0px_2px_8px_0px_#63636333] p-[15px]">
+    <div className="lg:max-w-[544px] max-w-[400px] w-full rounded-[12px] shadow-[0px_2px_8px_0px_#63636333] p-[15px]">
       <Image
         src="/seller/wallet/fund-img.png"
         alt="fund-img"

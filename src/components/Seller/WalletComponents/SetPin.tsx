@@ -21,7 +21,7 @@ const SetPin: React.FC<SetPinProps> = ({ onSetPinComplete }) => {
     <div className="min-h-screen bg-[#F9F9F9] flex flex-col">
       <div className="bg-white shadow-[0px_4px_16px_0px_#5A7DBC0D]">
         <div className="container mx-auto">
-          <div className="flex gap-6 py-6 px-[30px] items-center">
+          <div className="flex gap-6 py-4 px-[30px] items-center">
             <ArrowLeft size={18} />
             <div className="flex items-center gap-[8px] max-w-[200px] m-auto text-center w-full">
               <Image
@@ -88,11 +88,12 @@ const SetPin: React.FC<SetPinProps> = ({ onSetPinComplete }) => {
               renderInput={(props) => (
                 <div className="relative w-[72px] h-[44px] border-b-2 border-b-brown-600 mr-[10px] text-center">
                   {!props.value && (
-                    <img
+                     <img
                       src="/seller/wallet/placeholder.png"
                       alt="placeholder"
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[12px] h-[12px] pointer-events-none"
                     />
+                   
                   )}
                   <input
                     {...props}

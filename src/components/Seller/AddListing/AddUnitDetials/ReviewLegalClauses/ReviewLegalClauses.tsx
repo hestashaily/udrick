@@ -81,7 +81,7 @@ const ReviewLegalClauses = () => {
 
   return (
     <div>
-      <div className="bg-white shadow p-4">
+      <div className="bg-white shadow p-4 mt-[76px]">
         <div className="container flex items-center mx-auto">
           <Link href="/add-listing">
             <div className="flex justify-center items-center">

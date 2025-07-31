@@ -56,7 +56,7 @@ const WithdrawlCard: React.FC<WithdrawlCardProps> = ({
   const withdrawalClass = withdrawalStatusStyles[withdrawalStatus];
 
   return (
-    <div className="p-[15px] max-w-[544px] w-full shadow-[0px_2px_8px_0px_#63636333] rounded-[12px]">
+    <div className="p-[15px] lg:max-w-[544px] max-w-full w-full shadow-[0px_2px_8px_0px_#63636333] rounded-[12px]">
       <div className="flex items-start gap-[16px] md:flex-row flex-col">
         <Image
           src="/seller/wallet/fund-img.png"

@@ -50,7 +50,7 @@ const AddUnitDetails = () => {
   return (
     <div className="bg-gray-50 relative min-h-screen">
       {/* Header */}
-      <div className="bg-white shadow p-4">
+      <div className="bg-white shadow p-4 mt-[76px]">
         <div className="container flex items-center mx-auto">
           <Link
             href={

@@ -5,7 +5,7 @@ import NotificationsTabs from "./NotificationsTabs";
 const Sellernotification = () => {
   return (
     <div className="bg-[#FAFAFA]">
-      <div className="bg-[white] shadow-md">
+      <div className="bg-[white] shadow-md mt-[76px]">
         <div className="container m-auto">
           <div className="flex items-center justify-between p-[26px]">
             <div>

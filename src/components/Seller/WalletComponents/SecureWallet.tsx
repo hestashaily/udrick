@@ -12,7 +12,7 @@ const SecureWallet: React.FC<SecureWalletProps> = ({ onSetPin }) => {
     <div className="min-h-screen bg-[#F9F9F9] flex flex-col">
       <div className="bg-white shadow-[0px_4px_16px_0px_#5A7DBC0D]">
         <div className="container mx-auto">
-          <div className="flex gap-6 py-6 px-[30px] items-center">
+          <div className="flex gap-6 py-4 px-[30px] items-center">
             <ArrowLeft size={18} />
             <div className="flex items-center gap-[8px] max-w-[200px] m-auto text-center w-full">
               <Image

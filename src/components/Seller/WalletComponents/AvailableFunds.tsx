@@ -14,7 +14,7 @@ const AvailableFunds = () => {
   >(null);
 
   return (
-    <div className="flex flex-wrap gap-[20px]">
+    <div className="flex lg:flex-wrap flex-nowrap gap-[20px]">
       <FundCard label="Sold" onClick={() => setStep("document")} />
       <FundCard label="Purchase" onClick={() => setStep("document")} />
 
