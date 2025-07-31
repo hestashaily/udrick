@@ -11,7 +11,7 @@ export default function MainLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen mt-[76px]">{children}</main>
 
       <Footer />
     </div>

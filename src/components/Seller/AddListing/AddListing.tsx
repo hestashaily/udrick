@@ -15,7 +15,7 @@ const AddListing = () => {
 
   return (
     <div className="bg-gray-50">
-      <div className=" bg-white shadow p-4 ">
+      <div className=" bg-white shadow p-4 mt-[76px] ">
         <div className="container flex items-center mx-auto">
           <Link href="/">
             <div className="flex justify-center items-center">

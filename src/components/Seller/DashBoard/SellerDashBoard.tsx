@@ -85,7 +85,7 @@ const SellerDashBoard = () => {
       <Header />
       <div className="min-h-screen">
         <div className="bg-white shadow">
-          <div className="container mx-auto p-4">
+          <div className="container mx-auto p-4 mt-[76px]">
             {/* Top Section */}
             <div className="flex flex-col lg:flex-row gap-6 justify-between">
               <div>

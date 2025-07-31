@@ -22,7 +22,7 @@ const WithdrawlRequest = () => {
           <div
             key={tab.value}
             onClick={() => setActiveTab(tab.value)}
-            className={`cursor-pointer border font-[500] md:text-[16px] text-[10px] max-w-[134px] w-full md:p-[15px] p-[6px] rounded-[12px] text-center
+            className={`cursor-pointer border font-[500] md:text-[16px] text-[10px] md:p-[15px] p-[6px] rounded-[12px] text-center
               ${
                 activeTab === tab.value
                   ? 'border-[#936639] text-white bg-[#936639]'
