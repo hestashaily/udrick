@@ -29,7 +29,7 @@ const LeftPanel: React.FC<LeftSideVisitRequestsProps> = ({ listings }) => {
   const router = useRouter()
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full lg:w-2/3 rounded-xl">
+    <div className="w-full lg:w-[65%] rounded-xl">
       {listings.length > 0 && (
         <div className="mb-4 flex justify-between px-2">
           <h2 className="text-[#313131] font-bold text-xl">

@@ -118,7 +118,7 @@ const Header = () => {
   }
 
   return (
-    <div className="shadow-md border-b border-[#FCBE4B] py-3 w-full">
+    <div className="shadow-md border-b border-[#FCBE4B] py-3 px-0 md:px-4 w-full">
       {/* // <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-[#FCBE4B] py-3"> */}
 
       <header className="flex items-center justify-between px-4 lg:px-0 mx-auto container">

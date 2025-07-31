@@ -190,25 +190,7 @@ const Refund = () => {
               </TabsTrigger>
             </TabsList>
 
-            {/* <TabsContent value="all" className="mt-6 space-y-6">
-              {listings.map((item) => (
-                <RefundHistoryCard key={item.id} listing={item} />
-              ))}
-            </TabsContent>
-
-            {["purchased", "rented"].map((status) => (
-              <TabsContent
-                value={status}
-                key={status}
-                className="mt-6 space-y-6"
-              >
-                {listings
-                  .filter((item) => item.status.toLowerCase() === status)
-                  .map((item) => (
-                    <RefundHistoryCard key={item.id} listing={item} />
-                  ))}
-              </TabsContent>
-            ))} */}
+            
             <TabsContent value="all">
               {listingsData
                 .filter((item) => item.refundStatus === "none") // only show items that haven't been requested

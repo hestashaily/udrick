@@ -1,6 +1,6 @@
 import React from "react";
+import SellerVisitRequestCard from "../Seller/VisitRequestCard/SellerVisitRequestCard";
 // import Image from "next/image";
-import VisitRequestCard from "../Seller/VisitRequestCard/SellerVisitRequestCard";
 
 
 
@@ -77,7 +77,7 @@ const Accepted = () => {
         {
           data.map((request) => (
 
-            <VisitRequestCard
+            <SellerVisitRequestCard
               key={request.id}
               name={request.name}
               avatar={request.avatar}

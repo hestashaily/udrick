@@ -64,7 +64,7 @@ const AddListing = () => {
         <div className="flex justify-end items-end">
           <button
             disabled
-            className="flex justify-center items-center gap-2 px-8 py-2 rounded-3xl bg-gradient-to-r from-[#C69C6D] to-[#936639] text-white "
+            className="flex justify-center items-center gap-2 px-4 py-3 rounded-3xl bg-gradient-to-r from-[#C69C6D] to-[#936639] text-white "
           >
             Publish Property <ArrowRight />
           </button>

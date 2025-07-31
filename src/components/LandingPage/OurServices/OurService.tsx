@@ -19,7 +19,7 @@ const OurService = () => {
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
           {[
             {
               title: 'Purchase Property',
@@ -35,7 +35,7 @@ const OurService = () => {
             },
             {
               title: 'List Your Property',
-              desc: 'Post your property and reach genuine buyers or renters',
+              desc: 'Post property and reach genuine buyers or renters',
               icon: '/landing/sell.svg',
               button: 'See Option',
             },
@@ -46,11 +46,11 @@ const OurService = () => {
                 alt={item.title}
                 height={130}
                 width={130}
-                className="object-contain mb-4"
+                className="object-contain mb-4 w-16 h-16 sm:w-18 sm:h-19 lg:w-32 lg:h-32"
               />
               <h2 className="text-[#313131] font-semibold text-lg sm:text-xl mb-2">{item.title}</h2>
-              <p className="text-[#505050] text-sm sm:text-base">{item.desc}</p>
-              <button className="mt-6 inline-flex items-center justify-center gap-2 tracking-wider font-bold text-sm sm:text-base md:text-lg border bg-gradient-to-t from-[#A68A64] to-[#936639] text-white py-3.5 px-6 rounded-xl hover:opacity-90 transition">
+              <p className="text-[#505050] text-sm sm:text-sm lg:text-base">{item.desc}</p>
+              <button className="mt-6 inline-flex items-center justify-center gap-2 tracking-wider font-mediumsm:text-sm lg:text-lg border bg-gradient-to-t from-[#A68A64] to-[#936639] text-white py-2 lg:py-3.5 px-6 rounded-xl hover:opacity-90 transition">
                 {item.button}
               </button>
             </div>

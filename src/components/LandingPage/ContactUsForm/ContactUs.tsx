@@ -13,6 +13,9 @@ const ContactUs = () => {
           
           {/* Form */}
           <div className="flex-1 w-full sm:px-6">
+             <h1 className="text-2xl block md:hidden underline tracking-wider text-center sm:text-3xl md:text-4xl font-bold text-[#313131] mb-2">
+            Contact Us
+          </h1>
             <form className="space-y-6">
               {/* name + email fields */}
               <div className="flex flex-col gap-6 lg:flex-row">
@@ -30,6 +33,7 @@ const ContactUs = () => {
                     />
                     <FaRegUser
                       size={18}
+                      color="#936639"
                       className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"
                     />
                   </div>
@@ -48,6 +52,7 @@ const ContactUs = () => {
                     />
                     <MdOutlineEmail
                       size={18}
+                      color="#936639"
                       className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"
                     />
                   </div>
@@ -76,6 +81,8 @@ const ContactUs = () => {
           </div>
 
           {/* Image */}
+          <div className="hidden flex-1 md:block">
+
           <div className="flex-1 w-full flex justify-center sm:justify-end">
             <Image
               src="/landing/lady.svg"
@@ -83,8 +90,9 @@ const ContactUs = () => {
               width={570}
               height={540}
               className="w-full  object-cover"
-            />
+              />
           </div>
+              </div>
         </div>
       </div>
     </div>

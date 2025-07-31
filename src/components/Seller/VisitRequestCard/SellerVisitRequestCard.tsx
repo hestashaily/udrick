@@ -20,7 +20,7 @@ interface VisitRequestCardProps {
   onReject?: (reason: string) => void;
 }
 
-export default function VisitRequestCard({
+export default function SellerVisitRequestCard({
   name,
   avatar,
   property,
@@ -45,10 +45,10 @@ export default function VisitRequestCard({
     <>
       <Card className="rounded-2xl shadow-sm border border-[#EDEDED] w-full">
         <CardContent className="p-4 space-y-4">
-          {/* ✅ Responsive Flex Layout */}
+          {/*  Responsive Flex Layout */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
            <div className="flex flex-col items-center md:flex-row gap-4">
-             {/* ✅ Left Section - Image */}
+             {/*  Left Section - Image */}
             <div className="flex-shrink-0">
               <Image
                 src={avatar}
@@ -59,7 +59,7 @@ export default function VisitRequestCard({
               />
             </div>
 
-            {/* ✅ Middle Section - Details + Buttons */}
+            {/*  Middle Section - Details + Buttons */}
             <div className="flex-1 flex flex-col text-center md:text-start w-full">
               <div>
                 <h3 className="font-semibold text-base">{name}</h3>
@@ -70,7 +70,7 @@ export default function VisitRequestCard({
                 </p>
               </div>
 
-              {/* ✅ Buttons - Appear below details */}
+              {/* Buttons - Appear below details */}
               {status === "Pending" && (
                 <div className="flex gap-3 mt-3">
                   <Button
@@ -92,7 +92,7 @@ export default function VisitRequestCard({
                 </div>
               )}
 
-              {/* ✅ Show rejection reason if Rejected */}
+              {/* Show rejection reason if Rejected */}
               {status === "Rejected" && rejectionReason && (
                 <div className="p-[15px]  bg-[#FEF2F2] rounded-[12px] border-l-[6px] mt-[12px] border-[#FFCECE]">
                   <p className="font-[400] text-[14px] text-[#AB0712]">
@@ -103,14 +103,14 @@ export default function VisitRequestCard({
               )}
             </div>
            </div>
-           {/* ✅ Right Section - Status Badge */}
+           {/*  Right Section - Status Badge */}
             <div
               className={clsx(
-                "flex items-center gap-2 px-3 py-1  border rounded-full text-xs sm:text-sm font-medium self-center md:self-center",
+                "flex items-center gap-2 px-2 py-1  border rounded-full text-xs sm:text-xs !font-light tracking-wide self-center md:self-center",
                 statusConfig[status].color
               )}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-3 h-3" />
               {status}
             </div>
 

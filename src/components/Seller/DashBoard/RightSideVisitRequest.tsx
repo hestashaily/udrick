@@ -3,8 +3,8 @@
 import { CalendarDays } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import VisitRequestCard from "../VisitRequestCard/SellerVisitRequestCard";
 import { useRouter } from "next/navigation";
+import SellerVisitRequestCard from "../VisitRequestCard/SellerVisitRequestCard";
 
 export interface VisitRequest {
   id: number;
@@ -23,7 +23,7 @@ interface RightSideVisitRequestsProps {
 const RightSideVisitRequest: React.FC<RightSideVisitRequestsProps> = ({ data }) => {
   const router = useRouter()
   return (
-    <div className="w-full lg:w-1/3 bg-white min:h-[600px] rounded-2xl shadow-md border p-4">
+    <div className="w-full lg:w-[35%] bg-white min:h-[600px] rounded-2xl shadow-md border p-4">
       <div className="flex justify-between items-center mb-3">
         <h2 className="flex gap-3 items-center mb-4 text-base font-semibold">
           <CalendarDays /> Visit Requests
@@ -38,7 +38,7 @@ const RightSideVisitRequest: React.FC<RightSideVisitRequestsProps> = ({ data }) 
       {data.length > 0 ? (
         <div className="space-y-4">
           {data.map((request) => (
-            <VisitRequestCard
+            <SellerVisitRequestCard
               key={request.id}
               name={request.name}
               avatar={request.avatar}
