@@ -126,19 +126,19 @@ export default function SellerRentListingCard({
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-2xl border shadow-md overflow-hidden p-4 gap-4 w-full">
       {/* Left: Image */}
-      <div className="relative w-full md:w-[300px] h-[150px] md:h-[200px]  rounded-xl overflow-hidden">
+      <div className="relative w-full md:w-[380px] h-[150px] md:h-[200px]  rounded-xl overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
 
       {/* Right: Content */}
-      <div className="flex flex-col justify-between w-full">
+      <div className="flex flex-col space-y-4 w-full">
         <div className="flex justify-between items-start flex-wrap gap-2">
           <div>
             <h2 className="text-base md:text-lg font-semibold text-[#2A2C3F]">
               {title}
             </h2>
             <p className="text-sm flex items-center gap-2 text-gray-500 mt-1">
-              <MapPin size={16} /> {location}
+              <MapPin size={16} color="black" /> {location}
             </p>
           </div>
 
@@ -160,14 +160,14 @@ export default function SellerRentListingCard({
           </div>
         </div>
 
-        <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+        <p className="text-sm text-gray-600 w-full md:w-96 line-clamp-2">
           {description}{" "}
           <span className="text-[#936639] font-medium cursor-pointer">
             Read more
           </span>
         </p>
 
-        <div className="border-t pt-3 mt-3 flex flex-wrap justify-between items-center gap-2">
+        <div className="border-t pt-3 mt-1 md:mt-6 flex flex-wrap justify-between items-center gap-2">
           <div className="flex gap-4 md:gap-6 text-sm text-gray-600">
             <span className="flex items-center gap-1">
               <BedSingle size={16} /> {beds} Beds
