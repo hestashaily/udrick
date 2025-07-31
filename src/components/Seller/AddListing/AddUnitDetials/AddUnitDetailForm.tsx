@@ -83,7 +83,8 @@ const AddUnitDetailForm = ({ propertyType }: Props) => {
 
       {/* Rental Period (Only for Event Centre) */}
       {/* {(selectedOption === "rent" || isEvent && selectedOption === "sell") && ( */}
-      {(selectedOption === "rent" || propertyType !== "Eventcentre") && (
+      {/* {(selectedOption === "rent" || propertyType !== "Eventcentre") && ( */}
+      {(selectedOption === "rent" || (selectedOption === "sell" && propertyType !== "EmptyLand")) && (
         <div className="flex flex-col md:flex-row gap-4">
           {/* Rental Start Date */}
           <div className="w-full">

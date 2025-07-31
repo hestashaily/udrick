@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Info, Plus } from "lucide-react";
+import { Files, Info, PenLine, Plus, Trash2 } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -116,7 +116,7 @@ export default function AddListingForm() {
       {/* Add Unit Details Button */}
       <div
         onClick={handleNavigate}
-        className="mt-2 w-full flex px-4 rounded-xl py-2 h-auto justify-between border-2 border-[#b88b4a] text-[#b88b4a] hover:bg-[#f3ece3] hover:text-[#b88b4a]"
+        className="mt-2 w-full cursor-pointer flex px-4 rounded-xl py-2 h-auto justify-between border-2 border-[#b88b4a] text-[#b88b4a] hover:bg-[#f3ece3] hover:text-[#b88b4a]"
       >
         <span className="flex items-center gap-1">
           <Tooltip>
@@ -136,6 +136,20 @@ export default function AddListingForm() {
 
         <Plus className="h-5 w-5" />
       </div>
+
+      {/* Unit Name will show when i add unit */}
+      <div className="mt-2 w-full flex px-4 rounded-xl py-2 h-auto justify-between border-2 border-[#b88b4a] text-[#b88b4a] hover:bg-[#f3ece3] hover:text-[#b88b4a]">
+        <p>Unit Name</p>
+        <div className="flex gap-2">
+          <PenLine size={20} color="#4B8AD3"/>
+          <Files size={20} color="#4B8AD3"/>
+          <Trash2 size={20} color="#EB4335"/>
+
+        </div>
+
+      </div>
     </div>
   );
 }
+
+

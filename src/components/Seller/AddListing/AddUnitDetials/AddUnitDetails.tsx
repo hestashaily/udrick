@@ -52,13 +52,30 @@ const AddUnitDetails = () => {
       {/* Header */}
       <div className="bg-white shadow p-4">
         <div className="container flex items-center mx-auto">
-          <Link href="/add-listing">
+          <Link
+            href={
+              step === 2
+                ? `/add-listing/add-unit-details?type=${propertyType}&step=1`
+                : "/add-listing"
+            }
+            onClick={(e) => {
+              if (step === 2) {
+                e.preventDefault(); 
+                dispatch(setStep(1));
+                router.push(
+                  `/add-listing/add-unit-details?type=${propertyType}&step=1`
+                );
+              }
+            }}
+          >
             <div className="flex justify-center items-center">
               <ArrowLeft size={18} />
             </div>
           </Link>
           <div className="flex flex-1 flex-col justify-center items-center">
-            <h2 className="text-[#313131] text-xl md:text-2xl font-medium">Add Listing</h2>
+            <h2 className="text-[#313131] text-xl md:text-2xl font-medium">
+              Add Listing
+            </h2>
           </div>
         </div>
       </div>
@@ -69,7 +86,7 @@ const AddUnitDetails = () => {
 
         <div className="rounded-md my-5 bg-white border-gray-100 border shadow py-6 px-8">
           {step === 1 ? (
-            <AddUnitDetailForm  propertyType={propertyType} />
+            <AddUnitDetailForm propertyType={propertyType} />
           ) : (
             <UnitDetailsUploadDoc
               propertyType={propertyType}
@@ -116,7 +133,8 @@ const AddUnitDetails = () => {
         <DialogContent className="sm:max-w-sm text-center">
           <DialogHeader>
             <DialogTitle className="text-lg text-center font-semibold">
-              Unit Details Added<br/> Successfully!
+              Unit Details Added
+              <br /> Successfully!
             </DialogTitle>
           </DialogHeader>
         </DialogContent>
