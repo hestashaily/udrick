@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import AvailableFunds from "./AvailableFunds";
+import WithdrawlRequest from "./WithdrawlComponents/WithdrawlRequest";
+import Transaction from "./TransactionComponents/Transaction";
 
 
 const  WalletTabs = () => {
@@ -8,8 +10,8 @@ const  WalletTabs = () => {
 
   const tabs = [
     { id: "tab1", label: "Available funds", content: <AvailableFunds/> },
-    { id: "tab2", label: "Withdrawal Requests", content: "dsedx"  },
-    { id: "tab3", label: "Transactions", content: "iswjisjwjisji" },
+    { id: "tab2", label: "Withdrawal Requests", content: <WithdrawlRequest/>  },
+    { id: "tab3", label: "Transactions", content: <Transaction/> },
   ];
 
   return (
@@ -18,7 +20,7 @@ const  WalletTabs = () => {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`flex items-center md:text-[16px] text-[14px] justify-center gap-[10px] flex-1 py-2 text-center font-medium transition-colors duration-200 ${
+            className={`flex items-center md:text-[16px] text-[10px] justify-center gap-[10px] flex-1 py-2 text-center font-medium transition-colors duration-200 ${
               activeTab === tab.id ? "text-[#000000] bg-[#FFFFFF] rounded-[15px]" : "text-[#936639]"
             }`}
             onClick={() => setActiveTab(tab.id)}
