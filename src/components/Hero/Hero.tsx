@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import {  Logs, MapPin, Search } from "lucide-react";
-import Link from "next/link";
+import React from "react";
+// import {  Logs, MapPin, Search } from "lucide-react";
+// import Link from "next/link";
 
 const Hero = () => {
-  const [activeTab, setActiveTab] = useState<"buy" | "rent">("buy");
+  // const [activeTab, setActiveTab] = useState<"buy" | "rent">("buy");
 
   return (
     <div
       className="py-24 bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: "url('/landing/hero.svg')" }}
     >
-      <div className="container mx-auto flex flex-col items-center text-center px-4">
+      <div className="container mt-10 mx-auto flex flex-col items-center text-center px-4">
         <h1 className="text-white font-bold text-3xl md:text-6xl leading-tight">
           Looking for Your Dream <br /> House?
         </h1>
@@ -23,8 +23,8 @@ const Hero = () => {
         </p>
 
         {/* Search Card */}
-        <div className="bg-white mt-14 w-full max-w-4xl rounded-xl shadow-md overflow-hidden">
-          {/* Tabs */}
+        {/* <div className="bg-white mt-14 w-full max-w-4xl rounded-xl shadow-md overflow-hidden">
+         
           <div className="flex border-b justify-start px-6 pb-1 pt-4 gap-8">
             {["buy", "rent"].map((tab) => (
               <button
@@ -42,7 +42,7 @@ const Hero = () => {
             ))}
           </div>
 
-          {/* Filter Inputs */}
+       
           <div className="flex flex-wrap items-center gap-2 p-4">
             <select
               className="px-4 py-2   text-sm text-gray-600 focus:outline-none"
@@ -77,12 +77,11 @@ const Hero = () => {
               <Search/> Search
             </button>
           </div>
-        </div>
+        </div> */}
 
-        {/* Action Buttons */}
-        <div className="flex gap-4 my-14">
+        {/* <div className="flex gap-4 my-14">
           <Link href="explore-on-map">
-          {/* <Link href="/"> */}
+          
 
           <button className="flex items-center gap-2 bg-[#3264e0] hover:bg-[#2c57c5] text-white px-3 md:px-6 py-3.5 rounded-full text-[12px] md:text-sm font-medium shadow">
             <MapPin size={18}/> Explore on Map
@@ -91,6 +90,10 @@ const Hero = () => {
           <button className="flex items-center gap-2 bg-white px-3 md:px-6 py-3 rounded-full text-[12px] md:text-sm font-medium shadow border">
             <Logs size={18}/> Browse Listings
           </button>
+        </div> */}
+        <div className="mt-32">
+          <h1 className="text-white text-5xl">Coming Soon</h1>
+
         </div>
       </div>
     </div>

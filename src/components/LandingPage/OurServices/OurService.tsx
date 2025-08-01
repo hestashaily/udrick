@@ -4,7 +4,7 @@ import React from 'react';
 const OurService = () => {
   return (
     <div
-      className="bg-[#F6F3EE] my-2 py-16 bg-no-repeat bg-cover bg-center overflow-hidden"
+      className="bg-[#F6F3EE]  py-16 bg-no-repeat bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/landing/Background.svg')" }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -45,7 +45,7 @@ const data = [
     agent: "Emeka Nzerem",
     selltype: "rent",
   },
-   {
+  {
     id: 3,
     images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
     title: "5 Bedroom Detached Duplex",
@@ -59,7 +59,7 @@ const data = [
     agent: "Emeka Nzerem",
     selltype: "rent",
   },
-   {
+  {
     id: 4,
     images: ["/landing/pro.png", "/landing/pro.png", "/landing/pro.png"],
     title: "5 Bedroom Detached Duplex",
@@ -121,16 +121,22 @@ const ExploreOnMap = () => {
               </div>
             </Link>
 
-            <ToggleSwitch
-              value={value}
-              onChange={setValue}
-              options={[
-                { label: "Buy", value: "buy", icon: <Home size={16} /> },
-                { label: "Rent", value: "rent", icon: <Building2 size={16} /> },
-              ]}
-              activeColors={{ from: "#9c6b3c", to: "#b38758" }}
-              borderColor="#b38758"
-            />
+            <div className="ml-0 md:ml-8">
+              <ToggleSwitch
+                value={value}
+                onChange={setValue}
+                options={[
+                  { label: "Buy", value: "buy", icon: <Home size={16} /> },
+                  {
+                    label: "Rent",
+                    value: "rent",
+                    icon: <Building2 size={16} />,
+                  },
+                ]}
+                activeColors={{ from: "#9c6b3c", to: "#b38758" }}
+                borderColor="#b38758"
+              />
+            </div>
           </div>
 
           {/* Search Bar */}
@@ -166,7 +172,7 @@ const ExploreOnMap = () => {
               value={map}
               onChange={setMap}
               options={[
-                { label: "", value: "grid", icon: <LayoutGrid size={16} /> },
+                { label: "", value: "grid", icon: <LayoutGrid size={20} /> },
                 { label: "", value: "map", icon: <Map size={20} /> },
               ]}
               activeColors={{ from: "#9c6b3c", to: "#b38758" }}
@@ -184,7 +190,11 @@ const ExploreOnMap = () => {
             <div className="flex-1 overflow-y-auto pr-0  pb-4 lg:pr-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 md::grid-cols-2 gap-4">
                 {data.map((property) => (
-                  <PropertyCard key={property.id} {...property} sellType={property.selltype} />
+                  <PropertyCard
+                    key={property.id}
+                    {...property}
+                    sellType={property.selltype}
+                  />
                 ))}
               </div>
             </div>

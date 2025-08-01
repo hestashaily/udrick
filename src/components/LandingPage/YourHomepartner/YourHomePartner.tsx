@@ -21,7 +21,8 @@ const YourHomePartner = () => {
               track site visits, sign documents, and make secure payments —
               directly from your phone.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
+            <div className="">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
               <Image
                 src="/landing/apple.svg"
                 height={60}
@@ -36,6 +37,8 @@ const YourHomePartner = () => {
                 alt="Play Store"
                 className="object-contain"
               />
+            </div>
+            <h1 className="mt-4 text-white text-lg ">Coming Soon....</h1>
             </div>
           </div>
 

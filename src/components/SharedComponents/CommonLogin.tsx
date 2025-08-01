@@ -137,6 +137,7 @@ export default function CommonLogin({ role, onBack }: Props) {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
+               style={{ accentColor: "#A68A64" }}  // added 
             />
             <p className="font-[400] text-[14px] text-[#8C8C8C]">Remember me</p>
           </div>

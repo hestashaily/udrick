@@ -21,7 +21,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
 
   return (
     <div
-      className={`relative flex items-start justify-start gap-[15px] border-[2px] rounded-[20px] p-[20px] transition-colors duration-200 cursor-pointer ${
+      className={`relative flex items-start justify-start gap-[15px] border-[1px] rounded-[20px] p-[20px] transition-colors duration-200 cursor-pointer ${
         isHovered ? "border-[#007BFF] bg-[#E6F0FF]" : "border-[#E8E0D4]"
       }`}
       onMouseEnter={() => setIsHovered(true)}

@@ -36,9 +36,9 @@ const FilterSheet: React.FC<FilterSheetProps> = ({
   return (
     <Sheet>
       <SheetTrigger className="!h-auto" asChild>
-        <div className="px-4 text-sm gap-2 !h-auto !rounded-3xl py-2 flex items-center justify-center border text-[#515151] border-[#b38758] hover:bg-[#f8f4ef]">
-          <Funnel size={16} color="#b38758" />
-          <span className="hidden md:block">Filter</span>
+        <div className="px-4 cursor-pointer text-sm gap-2 !h-auto !rounded-3xl py-2 flex items-center justify-center border text-[#515151] border-[#CDC7C1] hover:bg-[#f8f4ef]">
+          <Funnel size={16} color="#515151" />
+          <span className="hidden md:block text-[#515151]">Filter</span>
         </div>
       </SheetTrigger>
 
