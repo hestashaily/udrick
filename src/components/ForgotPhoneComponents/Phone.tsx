@@ -26,7 +26,8 @@ const Phone = () => {
     <>
       {step === "reset" && <ResetViaPhone onContinue={handleContinue} />}
       {step === "verify" && (
-        <VerifyPhoneNumber email={phone} onVerify={handleVerify} />
+        <VerifyPhoneNumber phone={phone} onVerify={handleVerify} />
+
       )}
       {step === "setpassword" && (
         <SetPasswordViaPhone phone={phone} onSuccess={handlePasswordSuccess} />

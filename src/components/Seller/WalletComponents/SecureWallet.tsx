@@ -39,7 +39,7 @@ const SecureWallet: React.FC<SecureWalletProps> = ({ onSetPin }) => {
           />
           <p className="font-[700] text-[18px] text-[#313131]">Secure Your Wallet</p>
           <p className="font-[400] text-[12px] text-[#515151] mt-[4px]">
-            Enhance Your Wallet's Security! Create your PIN in just a few simple steps!
+            Enhance Your Wallet&apos;s Security! Create your PIN in just a few simple steps!
           </p>
           <div className="flex justify-center gap-4 mt-[30px]">
             <button className="py-[12px] px-[30px] border border-[#936639] rounded-[12px] font-[600] text-[14px] max-w-[150px] w-full text-[#936639]">

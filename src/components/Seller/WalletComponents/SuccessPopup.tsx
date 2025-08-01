@@ -1,6 +1,6 @@
 // SuccessPopup.tsx
 import React from "react";
-import { CheckCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 
 interface SuccessPopupProps {

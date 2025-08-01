@@ -1,6 +1,6 @@
 
 "use client";
-
+import Image from "next/image";
 import React, { useRef, useState } from "react";
 interface Props {
   onNext: () => void;
@@ -30,11 +30,13 @@ const SignProfilePicture: React.FC<Props> = ({ onNext }) => {
           onClick={handleBrowseClick}
         >
           {preview ? (
-            <img
-              src={preview}
-              alt="Profile Preview"
-              className="w-full h-full object-cover rounded-full"
-            />
+           
+               <Image
+                    src={preview}
+
+                    alt="Profile Preview"
+                    className="w-full h-full object-cover rounded-full"
+                />
           ) : (
             <svg
               width="83"
