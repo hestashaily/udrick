@@ -2,6 +2,7 @@
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import { Suspense } from "react";
 
 export default function MainLayout({
   children,
@@ -11,7 +12,9 @@ export default function MainLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <Suspense fallback={<div>Loading...</div>}>
       <main className="min-h-screen mt-[76px]">{children}</main>
+      </Suspense>
 
       <Footer />
     </div>
