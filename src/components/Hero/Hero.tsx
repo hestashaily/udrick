@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div
       className="py-24 bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: "url('/landing/hero.svg')" }}
+      style={{ backgroundImage: "url('/landing/hero.png')" }}
     >
       <div className="container mt-10 mx-auto flex flex-col items-center text-center px-4">
         <h1 className="text-white font-bold text-3xl md:text-6xl leading-tight">
