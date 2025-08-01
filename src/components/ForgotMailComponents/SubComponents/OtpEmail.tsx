@@ -16,19 +16,21 @@ const OtpEmail: React.FC<Props> = ({ email, onVerify }) => {
 
   return (
     <>
-    <Link href="">
-      <div className="flex items-center gap-[7px] justify-start pb-[40px]">
-        <Image src="/auth-images/back.png" alt="back" width={18} height={18} />
-        <p className="font-[500] text-[16px] text-[#313131]">Back</p>
-      </div>
-</Link>
+      <Link href="">
+        <div className="flex items-center gap-[7px] justify-start pb-[40px]">
+          <Image src="/auth-images/back.png" alt="back" width={18} height={18} />
+          <p className="font-[500] text-[16px] text-[#313131]">Back</p>
+        </div>
+      </Link>
+
       <div className="max-w-[428px] w-full m-auto flex flex-col items-center">
         <Image src="/auth-images/verify-otp.png" alt="otp" width={100} height={100} />
 
         <div className="text-center mt-[50px]">
           <p className="font-[500] text-[16px] text-[#313131]">Verify Your Email</p>
           <p className="font-[400] text-[14px] text-[#8C8C8C] mt-2">
-            Enter 6 digit verification code.
+            Enter the 6-digit verification code sent to{" "}
+            <span className="font-[500] text-[#313131]">{email}</span>.
           </p>
           <div className="mt-4">
             <OtpInput
